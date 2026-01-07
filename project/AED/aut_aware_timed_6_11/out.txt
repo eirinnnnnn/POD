@@ -1,0 +1,24 @@
+[PASS A] Coset invariance verified
+[PASS B] Membership equivalence verified
+[info] starting coset-distinct random search
+[best] total_bha=8.858267 trials=1 accepted=1
+[best] total_bha=8.413489 trials=2 accepted=2
+[best] total_bha=8.394753 trials=27 accepted=27
+[best] total_bha=8.338098 trials=99 accepted=99
+[best] total_bha=8.225562 trials=176 accepted=176
+[best] total_bha=8.045696 trials=271 accepted=271
+[best] total_bha=7.89188 trials=1200 accepted=1200
+[best] total_bha=7.817915 trials=1429 accepted=1429
+[best] total_bha=7.62689 trials=1630 accepted=1630
+[best] total_bha=7.478911 trials=6682 accepted=6682
+[best] total_bha=7.478716 trials=34404 accepted=34404
+[best] total_bha=7.256041 trials=46222 accepted=46222
+[best] total_bha=7.111552 trials=679196 accepted=679196
+[best] total_bha=7.091701 trials=685657 accepted=685657
+[best] total_bha=7.054176 trials=797705 accepted=797705
+[best] total_bha=7.003521 trials=2902203 accepted=2902203
+[best] total_bha=6.806403 trials=9364776 accepted=9364776
+[done]
+  trials   = 10000000
+  accepted = 10000000
+  unique cosets = 10000000
