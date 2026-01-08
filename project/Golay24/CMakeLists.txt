@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 2.6)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_BUILD_TYPE Release)
+add_definitions(-Wall -O2)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
+get_filename_component(project_name ${CMAKE_CURRENT_LIST_DIR} NAME)
+
+include_directories("../../src")
+include_directories("../../src/ErrorCorrectionCode")
+include_directories("../../src/lib")
+include_directories("../../src/channel")
+
+set(src main.cpp
+        ../../src/lib/libMath.cpp
+        ../../src/lib/libParser.cpp
+        ../../src/channel/channelBase.cpp
+        ../../src/channel/AWGN.cpp
+        ../../src/ErrorCorrectionCode/BCH.cpp
+        ../../src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp
+        ../../src/ErrorCorrectionCode/KernalManager.cpp
+        ../../src/ErrorCorrectionCode/PolarMultiKernal_AED.cpp
+    )
+
+set(header  ../../src/lib/libDebug.h
+            ../../src/lib/libMath.h
+            ../../src/lib/libParser.h
+            ../../src/channel/channelBase.h
+            ../../src/channel/AWGN.h
+            ../../src/ErrorCorrectionCode/BCH.h
+            ../../src/ErrorCorrectionCode/ErrorCorrectionCodeBase.h
+            ../../src/ErrorCorrectionCode/KernalManager.h
+            ../../src/ErrorCorrectionCode/PolarMultiKernal_AED.h
+    )
+
+add_executable(${project_name} ${src} ${header})

@@ -1,0 +1,3 @@
+/home/eirin/Polar_eirin_20260107/project/Golay24/AEDtest_20260108/CMakeFiles/Golay24.dir
+/home/eirin/Polar_eirin_20260107/project/Golay24/AEDtest_20260108/CMakeFiles/edit_cache.dir
+/home/eirin/Polar_eirin_20260107/project/Golay24/AEDtest_20260108/CMakeFiles/rebuild_cache.dir
