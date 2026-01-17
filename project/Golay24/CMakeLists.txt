@@ -23,7 +23,7 @@ set(src main.cpp
         ../../src/ErrorCorrectionCode/BCH.cpp
         ../../src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp
         ../../src/ErrorCorrectionCode/KernalManager.cpp
-        ../../src/ErrorCorrectionCode/PolarMultiKernal_AED.cpp
+        ../../src/ErrorCorrectionCode/PolarMultiKernal.cpp
     )
 
 set(header  ../../src/lib/libDebug.h
@@ -34,7 +34,7 @@ set(header  ../../src/lib/libDebug.h
             ../../src/ErrorCorrectionCode/BCH.h
             ../../src/ErrorCorrectionCode/ErrorCorrectionCodeBase.h
             ../../src/ErrorCorrectionCode/KernalManager.h
-            ../../src/ErrorCorrectionCode/PolarMultiKernal_AED.h
+            ../../src/ErrorCorrectionCode/PolarMultiKernal.h
     )
 
 add_executable(${project_name} ${src} ${header})
