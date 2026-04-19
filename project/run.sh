@@ -1,0 +1,18 @@
+#!/bin/bash
+
+gnome-terminal --tab --title="run_4_0" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_4_0 --P_IDX -4; exec bash'
+gnome-terminal --tab --title="run_4_1" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_4_1 --P_IDX -4; exec bash'
+gnome-terminal --tab --title="run_4_2" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_4_2 --P_IDX -4; exec bash'
+gnome-terminal --tab --title="run_4_3" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_4_3 --P_IDX -4; exec bash'
+gnome-terminal --tab --title="run_5_0" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_5_0 --P_IDX -5; exec bash'
+gnome-terminal --tab --title="run_5_1" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_5_1 --P_IDX -5; exec bash'
+gnome-terminal --tab --title="run_5_2" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_5_2 --P_IDX -5; exec bash'
+gnome-terminal --tab --title="run_5_3" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_5_3 --P_IDX -5; exec bash'
+gnome-terminal --tab --title="run_6_0" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_6_0 --P_IDX -6; exec bash'
+gnome-terminal --tab --title="run_6_1" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_6_1 --P_IDX -6; exec bash'
+gnome-terminal --tab --title="run_6_2" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_6_2 --P_IDX -6; exec bash'
+gnome-terminal --tab --title="run_6_3" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_6_3 --P_IDX -6; exec bash'
+gnome-terminal --tab --title="run_7_0" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_7_0 --P_IDX -7; exec bash'
+gnome-terminal --tab --title="run_7_1" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_7_1 --P_IDX -7; exec bash'
+gnome-terminal --tab --title="run_7_2" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_7_2 --P_IDX -7; exec bash'
+gnome-terminal --tab --title="run_7_3" -- bash -c 'uv run python -O SA_eRS_256_181.py --run-dir run_7_3 --P_IDX -7; exec bash'
