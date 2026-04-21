@@ -1,4 +1,4 @@
-# Install script for directory: /home/eirin/Polar/Polar/project/AED_20260103
+# Install script for directory: /mnt/c/Users/jin05/Desktop/Universal_Polar_AED/project/POD
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/eirin/Polar/Polar/project/AED_20260103/m6t11_isit2026/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/jin05/Desktop/Universal_Polar_AED/project/POD/m6t11_isit2026/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
