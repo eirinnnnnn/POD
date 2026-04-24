@@ -30,7 +30,8 @@ OSD_RE = re.compile(r"^OSD(\d+)$", re.IGNORECASE)
 # Effective list sizes to be represented consistently across all plots.
 EFF_SIZES = [1, 4, 8, 16, 32, 64, 128, 256]
 
-# Color = decoder family / type (fixed across all plots)
+# Color = decoder family / type.
+# For POD/PED, this is only the fallback base color.
 FAMILY_COLOR: Dict[str, str] = {
     "HD": "tab:blue",
     "SC": "tab:orange",
@@ -42,7 +43,19 @@ FAMILY_COLOR: Dict[str, str] = {
     "UNKNOWN": "tab:blue",
 }
 
-# Marker = effective list size
+# Dark green palette for PED/POD ensemble size M.
+# The first one starts from the normal matplotlib tab:green color.
+PED_M_COLOR: Dict[int, str] = {
+    4: "#2ca02c",   # normal tab:green
+    # 32: "#238823",
+    16: "#1f6f1f",
+    32: "#1f6f1f",
+    64: "#1f6f1f",
+    # 64: "#185c18",
+    # 64: "#104510",
+}
+
+# Marker = effective list size.
 EFF_MARKER: Dict[int, str] = {
     1: "o",
     4: "s",
@@ -66,7 +79,7 @@ FAMILY_FALLBACK_MARKER: Dict[str, str] = {
     "UNKNOWN": "o",
 }
 
-# Linestyle = broad family
+# Linestyle = broad family.
 LINESTYLE_MAP: Dict[str, object] = {
     "HD": "-",
     "SC": "--",
@@ -78,11 +91,16 @@ LINESTYLE_MAP: Dict[str, object] = {
     "UNKNOWN": "-",
 }
 
-# More visible colors used only for emphasized curves.
-EMPH_COLOR_BY_FAMILY: Dict[str, str] = {
-    "POD_SCL": "tab:red",
-    "UNKNOWN": "tab:blue"
-}
+# Emphasis should not destroy the semantic color encoding.
+# Therefore emphasized curves keep their original color, but become visually stronger.
+def apply_emphasis(style: Dict[str, object]) -> Dict[str, object]:
+    emph = dict(style)
+    emph["linewidth"] = max(float(style["linewidth"]), 2.0)
+    emph["markersize"] = max(float(style["markersize"]), 10.0)
+    emph["markeredgecolor"] = style["color"]
+    emph["markeredgewidth"] = 1.8
+    emph["zorder"] = 6
+    return emph
 
 
 def parse_log(log_path: Path) -> Tuple[List[float], List[float]]:
@@ -108,6 +126,8 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "HD",
             "eff_size": 1,
+            "M": None,
+            "L": None,
             "label": r"$\mathrm{HD}$",
         }
 
@@ -115,6 +135,8 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "SC",
             "eff_size": 1,
+            "M": None,
+            "L": 1,
             "label": r"$\mathrm{SC}$",
         }
 
@@ -124,6 +146,8 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "SCL",
             "eff_size": L,
+            "M": None,
+            "L": L,
             "label": rf"$\mathrm{{SCL}}_{{{L}}}$",
         }
 
@@ -133,6 +157,8 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "POD_SC",
             "eff_size": M,
+            "M": M,
+            "L": 1,
             "label": rf"$\mathrm{{PED}}_{{{M}}}\!-\!\mathrm{{SC}}$",
         }
 
@@ -143,6 +169,8 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "POD_SCL",
             "eff_size": M * L,
+            "M": M,
+            "L": L,
             "label": rf"$\mathrm{{PED}}_{{{M}}}\!-\!\mathrm{{SCL}}_{{{L}}}$",
         }
 
@@ -150,6 +178,8 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "MLD",
             "eff_size": None,
+            "M": None,
+            "L": None,
             "label": r"$\mathrm{MLD}$",
         }
 
@@ -159,14 +189,32 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "OSD",
             "eff_size": order,
+            "M": None,
+            "L": None,
             "label": rf"$\mathrm{{OSD}}_{{{order}}}$",
         }
 
     return {
         "family": "UNKNOWN",
         "eff_size": None,
+        "M": None,
+        "L": None,
         "label": s,
     }
+
+
+def color_of(info: Dict[str, object]) -> str:
+    family = str(info["family"])
+
+    # For PED/POD curves:
+    #   hue = PED family, fixed as green
+    #   darkness = ensemble size M
+    if family in {"POD_SC", "POD_SCL"}:
+        M = info.get("M", None)
+        if isinstance(M, int):
+            return PED_M_COLOR.get(M, FAMILY_COLOR.get(family, "tab:green"))
+
+    return FAMILY_COLOR.get(family, "tab:gray")
 
 
 def style_of(name: str) -> Dict[str, object]:
@@ -174,7 +222,7 @@ def style_of(name: str) -> Dict[str, object]:
     family = str(info["family"])
     eff_size = info["eff_size"]
 
-    color = FAMILY_COLOR.get(family, "tab:gray")
+    color = color_of(info)
     marker = EFF_MARKER.get(eff_size, FAMILY_FALLBACK_MARKER.get(family, "o"))
     linestyle = LINESTYLE_MAP.get(family, "-")
 
@@ -190,23 +238,12 @@ def style_of(name: str) -> Dict[str, object]:
         "label": info["label"],
         "family": family,
         "eff_size": eff_size,
+        "M": info.get("M", None),
+        "L": info.get("L", None),
     }
 
 
-def apply_emphasis(style: Dict[str, object]) -> Dict[str, object]:
-    family = str(style["family"])
-    emph = dict(style)
-
-    emph["color"] = EMPH_COLOR_BY_FAMILY.get(family, "tab:blue")
-    emph["linewidth"] = max(float(style["linewidth"]), 1.6)
-    emph["markersize"] = max(float(style["markersize"]), 10.0)
-    emph["markeredgecolor"] = emph["color"]
-    emph["markeredgewidth"] = 1.4
-    emph["zorder"] = 6
-    return emph
-
-
-def sort_key(folder_name: str) -> Tuple[int, int, str]:
+def sort_key(folder_name: str) -> Tuple[int, int, int, int, str]:
     info = decode_info(folder_name)
     family_order = {
         "HD": 0,
@@ -218,9 +255,22 @@ def sort_key(folder_name: str) -> Tuple[int, int, str]:
         "OSD": 6,
         "UNKNOWN": 7,
     }
+
     eff = info["eff_size"]
+    M = info.get("M", None)
+    L = info.get("L", None)
+
     eff_rank = EFF_SIZES.index(eff) if eff in EFF_SIZES else 999
-    return (family_order.get(info["family"], 999), eff_rank, folder_name.upper())
+    M_rank = int(M) if isinstance(M, int) else 999
+    L_rank = int(L) if isinstance(L, int) else 999
+
+    return (
+        family_order.get(str(info["family"]), 999),
+        eff_rank,
+        M_rank,
+        L_rank,
+        folder_name.upper(),
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -241,7 +291,7 @@ def build_parser() -> argparse.ArgumentParser:
         nargs="*",
         default=[],
         metavar="FOLDER_NAME",
-        help="Emphasize the specified folder names (matched against folder basename).",
+        help="Emphasize the specified folder names, matched against folder basename.",
     )
     return p
 
@@ -285,15 +335,20 @@ def main() -> None:
             linewidth=st["linewidth"],
             markersize=st["markersize"],
             markerfacecolor="none",
-            markeredgecolor=st.get("markeredgecolor", None),
-            markeredgewidth=st.get("markeredgewidth", None),
+            markeredgecolor=st.get("markeredgecolor", st["color"]),
+            markeredgewidth=st.get("markeredgewidth", 1.0),
             zorder=st.get("zorder", 3),
         )
 
         eff = st["eff_size"]
+        M = st["M"]
+        L = st["L"]
+
         eff_text = f", eff={eff}" if eff is not None else ""
+        ped_text = f", M={M}, L={L}" if M is not None else ""
         emph_text = ", emphasized" if is_emph else ""
-        print(f"[info] {folder.name}: {len(snrs)} points{eff_text}{emph_text}")
+
+        print(f"[info] {folder.name}: {len(snrs)} points{eff_text}{ped_text}{emph_text}")
         plotted = True
 
     if not plotted:
