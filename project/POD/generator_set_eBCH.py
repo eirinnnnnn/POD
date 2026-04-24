@@ -618,7 +618,7 @@ def save_matrix_txt(path, M):
 
 if __name__ == "__main__":
     m = 7 
-    t = 3 
+    t = 10 
 
     print(f"[info] Building eBCH(m={m}, t={t}) with canonical GF-indexing...")
     G, H, elements, GF = generate_eBCH(m, t)

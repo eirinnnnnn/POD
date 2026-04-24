@@ -1,286 +1,326 @@
 #!/usr/bin/env python3
-# plot_logs.py
 import argparse
 import re
 from pathlib import Path
-from typing import List, Tuple, Dict
+from typing import Dict, List, Tuple
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 LINE_RE = re.compile(
     r"SNR\s*=\s*([+-]?\d+(?:\.\d+)?)\s*,.*?BLER\s*=\s*\d+\s*/\s*\d+\s*=\s*([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)"
 )
 
-# ===== POD legend mapping =====
-AED_SC_RE  = re.compile(r"^AED(\d+)SC$", re.IGNORECASE)
-AED_SCL_RE = re.compile(r"^AED(\d+)SCL(\d+)$", re.IGNORECASE)
-SCL_RE     = re.compile(r"^SCL(\d+)$", re.IGNORECASE)
-OSD_RE     = re.compile(r"^OSD(\d+)$", re.IGNORECASE)
+# Supported names:
+#   HD
+#   SC
+#   SCL4, SCL8, ...
+#   POD4SC, POD8SCL4, ...
+#   AED4SC, AED8SCL4, ...   (legacy alias -> treated as POD)
+#   MLD
+#   OSD1, OSD2, ...
+HD_RE = re.compile(r"^HD$", re.IGNORECASE)
+SC_RE = re.compile(r"^SC$", re.IGNORECASE)
+SCL_RE = re.compile(r"^SCL(\d+)$", re.IGNORECASE)
+POD_SC_RE = re.compile(r"^(?:POD|AED)(\d+)SC$", re.IGNORECASE)
+POD_SCL_RE = re.compile(r"^(?:POD|AED)(\d+)SCL(\d+)$", re.IGNORECASE)
+MLD_RE = re.compile(r"^MLD$", re.IGNORECASE)
+OSD_RE = re.compile(r"^OSD(\d+)$", re.IGNORECASE)
 
-# =========================
-# Publication-grade palette
-# =========================
-# Deep, high-contrast, print-friendly colors (NO gray/cyan/purple/pink)
-C_BLUE   = "#1f4ed8"   # royal blue
-C_ORANGE = "#d97706"   # amber
-C_GREEN  = "#15803d"   # forest green
-C_RED    = "#b91c1c"   # deep red
-C_BROWN  = "#7c2d12"   # chestnut
-C_OLIVE  = "#4d7c0f"   # olive
-C_TEAL   = "#0f766e"   # dark teal
-C_GOLD   = "#ca8a04"   # gold
-C_MAROON = "#7f1d1d"   # wine (still "red-family" but distinct)
-C_NAVY   = "#1e3a8a"   # navy
+# Effective list sizes to be represented consistently across all plots.
+EFF_SIZES = [1, 4, 8, 16, 32, 64, 128, 256]
 
-COLOR_POOL = [
-    C_BLUE, C_ORANGE, C_GREEN, C_RED,
-    C_BROWN, C_OLIVE, C_TEAL, C_GOLD, C_MAROON, C_NAVY
-]
-
-# Enumerate BOTH (color, linestyle) within a family
-POD_SC_LINESTYLES  = ["--", "-.", ":"]
-POD_SCL_LINESTYLES = ["-.", ":", "--"]
-
-def _combos(colors: List[str], linestyles: List[str]) -> List[Tuple[str, str]]:
-    """Return list of (color, linestyle) pairs in stable order."""
-    return [(c, ls) for ls in linestyles for c in colors]
-
-# POD families: marker fixed per family, but enumerate (color, linestyle)
-POD_SC_COMBOS = _combos(
-    colors=[C_BROWN, C_BLUE, C_GREEN, C_RED, C_OLIVE, C_NAVY],
-    linestyles=POD_SC_LINESTYLES,
-)
-POD_SCL_COMBOS = _combos(
-    colors=[C_RED, C_GREEN, C_BROWN, C_BLUE, C_OLIVE, C_TEAL],
-    linestyles=POD_SCL_LINESTYLES,
-)
-
-# (ii) Hard-fix these curves across ALL figures
-# Keys are folder names (case-insensitive handling is done in get_decoder_style)
-POD_FIXED: Dict[str, Tuple[str, str, str]] = {
-    # folder      (linestyle, marker, color)
-    "AED4SC":     ("--", "v", C_BROWN),
-    "AED8SC":     ("-.", "v", C_BLUE),
-    "AED8SCL2":   ("-",  "D", C_RED),
-    "AED8SCL8":   ("-",  "D", "m"),
+# Color = decoder family / type (fixed across all plots)
+FAMILY_COLOR: Dict[str, str] = {
+    "HD": "tab:blue",
+    "SC": "tab:orange",
+    "SCL": "tab:orange",
+    "POD_SC": "tab:green",
+    "POD_SCL": "tab:green",
+    "MLD": "black",
+    "OSD": "tab:blue",
+    "UNKNOWN": "tab:blue",
 }
 
-def get_decoder_style(folder_name: str) -> Tuple[str, str, str]:
-    """
-    Return (linestyle, marker, color) based on decoder type.
+# Marker = effective list size
+EFF_MARKER: Dict[int, str] = {
+    1: "o",
+    4: "s",
+    8: "^",
+    16: "D",
+    32: "v",
+    64: "P",
+    128: "X",
+    256: "*",
+}
 
-    Requirements implemented:
-      (i) Within same POD family: enumerate both color and linestyle; marker fixed per family.
-      (ii) POD_FIXED entries are identical across figures.
-      (iii) Avoid light colors (cyan/purple/pink) and also avoid gray by construction.
-    """
-    name = folder_name.strip()
-    up = name.upper()
+# Fallback marker when a decoder does not have one of the canonical effective sizes.
+FAMILY_FALLBACK_MARKER: Dict[str, str] = {
+    "HD": "o",
+    "SC": "o",
+    "SCL": "o",
+    "POD_SC": "o",
+    "POD_SCL": "o",
+    "MLD": "X",
+    "OSD": "^",
+    "UNKNOWN": "o",
+}
 
-    # Fixed POD styles first
-    if up in POD_FIXED:
-        return POD_FIXED[up]
+# Linestyle = broad family
+LINESTYLE_MAP: Dict[str, object] = {
+    "HD": "-",
+    "SC": "--",
+    "SCL": "--",
+    "POD_SC": "-",
+    "POD_SCL": "-",
+    "MLD": "-",
+    "OSD": (0, (3, 1, 1, 1)),
+    "UNKNOWN": "-",
+}
 
-    # Baselines
-    if up == "HD":
-        return "-", "o", C_NAVY
-    if up == "SC":
-        return "--", "s", C_ORANGE
-    if up == "MLD":
-        return "-.", None, "black"  # keep black for reference curve
-
-    # SCL family: keep marker consistent, color varies with L
-    # m = SCL_RE.match(name)
-    # if m:
-    #     L = int(m.group(1))
-    #     scl_color_map = {
-    #         2:  C_GREEN,
-    #         4:  C_MAROON,
-    #         8:  C_RED,
-    #         16: C_BROWN,
-    #         32: C_GREEN,
-    #         64: C_NAVY,
-    #     }
-    #     color = scl_color_map.get(L, COLOR_POOL[L % len(COLOR_POOL)])
-    #     return "-.", "P", color
-    # Canonical SCL baseline ladder (explicit, cross-figure fixed)
-    m = SCL_RE.match(name)
-    if m:
-        L = int(m.group(1))
-
-        SCL_CANONICAL = {
-            4:  ("--", "P", "tab:orange"),
-            8:  ("-.", "P", "tab:pink"),
-            32: (":",  "P", "tab:green"),
-            64: ("-",  "P", "tab:gray"),
-        }
-
-        if L in SCL_CANONICAL:
-            return SCL_CANONICAL[L]
-
-        # fallback for any other SCL
-        return "-.", "P", C_OLIVE
-
-
-    # OSD family: keep marker consistent; avoid gray
-    m = OSD_RE.match(name)
-    if m:
-        order = int(m.group(1))
-        osd_colors = ["b", C_OLIVE, C_BROWN, C_BLUE, C_GREEN, C_RED, C_GOLD, C_NAVY]
-        color = osd_colors[(order - 1) % len(osd_colors)]
-        return "-.", "^", color
-
-    # POD_M-SC (AED{M}SC): marker fixed = 'v', enumerate (color, linestyle)
-    m = AED_SC_RE.match(name)
-    if m:
-        M = int(m.group(1))
-        color, ls = POD_SC_COMBOS[M % len(POD_SC_COMBOS)]
-        return ls, "v", color
-
-    # POD_M-SCL_L (AED{M}SCL{L}): marker fixed = 'D', enumerate (color, linestyle)
-    m = AED_SCL_RE.match(name)
-    if m:
-        M, L = int(m.group(1)), int(m.group(2))
-        # deterministic mixing of (M, L) into an index
-        idx = (1000 * M + L) % len(POD_SCL_COMBOS)
-        color, ls = POD_SCL_COMBOS[idx]
-        return ls, "D", color
-
-    # Fallback: still avoid gray
-    return "-", "X", C_GOLD
+# More visible colors used only for emphasized curves.
+EMPH_COLOR_BY_FAMILY: Dict[str, str] = {
+    "POD_SCL": "tab:red",
+    "UNKNOWN": "tab:blue"
+}
 
 
 def parse_log(log_path: Path) -> Tuple[List[float], List[float]]:
     snrs, blers = [], []
-    for line in log_path.read_text(encoding="utf-8", errors="replace").splitlines():
+    text = log_path.read_text(encoding="utf-8", errors="replace")
+    for line in text.splitlines():
         m = LINE_RE.search(line)
         if m:
             snrs.append(float(m.group(1)))
             blers.append(float(m.group(2)))
+
     pairs = sorted(zip(snrs, blers), key=lambda x: x[0])
-    return (list(zip(*pairs))[0], list(zip(*pairs))[1]) if pairs else ([], [])
+    if not pairs:
+        return [], []
+    xs, ys = zip(*pairs)
+    return list(xs), list(ys)
 
 
-def folder_label(folder: Path) -> str:
-    name = folder.name
+def decode_info(name: str) -> Dict[str, object]:
+    s = name.strip()
 
-    m = AED_SC_RE.match(name)
+    if HD_RE.match(s):
+        return {
+            "family": "HD",
+            "eff_size": 1,
+            "label": r"$\mathrm{HD}$",
+        }
+
+    if SC_RE.match(s):
+        return {
+            "family": "SC",
+            "eff_size": 1,
+            "label": r"$\mathrm{SC}$",
+        }
+
+    m = SCL_RE.match(s)
     if m:
-        M = m.group(1)
-        return rf"$\mathrm{{POD}}_{{{M}}}\!-\!\mathrm{{SC}}$"
+        L = int(m.group(1))
+        return {
+            "family": "SCL",
+            "eff_size": L,
+            "label": rf"$\mathrm{{SCL}}_{{{L}}}$",
+        }
 
-    m = AED_SCL_RE.match(name)
+    m = POD_SC_RE.match(s)
     if m:
-        M, L = m.group(1), m.group(2)
-        return rf"$\mathrm{{POD}}_{{{M}}}\!-\!\mathrm{{SCL}}_{{{L}}}$"
+        M = int(m.group(1))
+        return {
+            "family": "POD_SC",
+            "eff_size": M,
+            "label": rf"$\mathrm{{PED}}_{{{M}}}\!-\!\mathrm{{SC}}$",
+        }
 
-    m = SCL_RE.match(name)
+    m = POD_SCL_RE.match(s)
     if m:
-        L = m.group(1)
-        return rf"$\mathrm{{SCL}}_{{{L}}}$"
+        M = int(m.group(1))
+        L = int(m.group(2))
+        return {
+            "family": "POD_SCL",
+            "eff_size": M * L,
+            "label": rf"$\mathrm{{PED}}_{{{M}}}\!-\!\mathrm{{SCL}}_{{{L}}}$",
+        }
 
-    m = OSD_RE.match(name)
+    if MLD_RE.match(s):
+        return {
+            "family": "MLD",
+            "eff_size": None,
+            "label": r"$\mathrm{MLD}$",
+        }
+
+    m = OSD_RE.match(s)
     if m:
-        L = m.group(1)
-        return rf"$\mathrm{{OSD}}_{{{L}}}$"
+        order = int(m.group(1))
+        return {
+            "family": "OSD",
+            "eff_size": order,
+            "label": rf"$\mathrm{{OSD}}_{{{order}}}$",
+        }
 
-    return name
+    return {
+        "family": "UNKNOWN",
+        "eff_size": None,
+        "label": s,
+    }
 
 
-def main():
-    ap = argparse.ArgumentParser(description="Plot BLER vs SNR from folders.")
-    ap.add_argument("folders", nargs="+")
-    ap.add_argument("--log-name", default="log.txt")
-    ap.add_argument("--title", default="BLER vs SNR")
-    ap.add_argument("--out", default="bler_vs_snr.png")
-    ap.add_argument("--show", action="store_true")
-    ap.add_argument("--no-grid", action="store_true")
-    args = ap.parse_args()
+def style_of(name: str) -> Dict[str, object]:
+    info = decode_info(name)
+    family = str(info["family"])
+    eff_size = info["eff_size"]
 
-    plt.figure()
-    any_curve = False
+    color = FAMILY_COLOR.get(family, "tab:gray")
+    marker = EFF_MARKER.get(eff_size, FAMILY_FALLBACK_MARKER.get(family, "o"))
+    linestyle = LINESTYLE_MAP.get(family, "-")
 
-    for f in args.folders:
-        folder = Path(f).expanduser().resolve()
-        log_path = folder / args.log_name
+    linewidth = 1.8 if family in {"HD", "MLD"} else 1.3
+    markersize = 6 if family not in {"MLD"} else 7
+
+    return {
+        "color": color,
+        "marker": marker,
+        "linestyle": linestyle,
+        "linewidth": linewidth,
+        "markersize": markersize,
+        "label": info["label"],
+        "family": family,
+        "eff_size": eff_size,
+    }
+
+
+def apply_emphasis(style: Dict[str, object]) -> Dict[str, object]:
+    family = str(style["family"])
+    emph = dict(style)
+
+    emph["color"] = EMPH_COLOR_BY_FAMILY.get(family, "tab:blue")
+    emph["linewidth"] = max(float(style["linewidth"]), 1.6)
+    emph["markersize"] = max(float(style["markersize"]), 10.0)
+    emph["markeredgecolor"] = emph["color"]
+    emph["markeredgewidth"] = 1.4
+    emph["zorder"] = 6
+    return emph
+
+
+def sort_key(folder_name: str) -> Tuple[int, int, str]:
+    info = decode_info(folder_name)
+    family_order = {
+        "HD": 0,
+        "SC": 1,
+        "SCL": 2,
+        "POD_SC": 3,
+        "POD_SCL": 4,
+        "MLD": 5,
+        "OSD": 6,
+        "UNKNOWN": 7,
+    }
+    eff = info["eff_size"]
+    eff_rank = EFF_SIZES.index(eff) if eff in EFF_SIZES else 999
+    return (family_order.get(info["family"], 999), eff_rank, folder_name.upper())
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description="Plot BLER vs SNR from decoder log folders.")
+    p.add_argument("folders", nargs="+", help="Decoder result folders.")
+    p.add_argument("--title", default="BLER vs SNR", help="Plot title.")
+    p.add_argument("--savepath", default="./bler_vs_snr.png", help="Output figure path.")
+    p.add_argument(
+        "--snr",
+        nargs=3,
+        type=float,
+        metavar=("START", "STOP", "STEP"),
+        default=(2.0, 4.6, 0.25),
+        help="SNR axis setup: START STOP STEP",
+    )
+    p.add_argument(
+        "--emph",
+        nargs="*",
+        default=[],
+        metavar="FOLDER_NAME",
+        help="Emphasize the specified folder names (matched against folder basename).",
+    )
+    return p
+
+
+def main() -> None:
+    args = build_parser().parse_args()
+
+    snr_start, snr_stop, snr_step = args.snr
+    xticks = np.arange(snr_start, snr_stop + 0.5 * snr_step, snr_step)
+
+    plt.figure(figsize=(8.0, 5.6))
+    plotted = False
+    emph_names = {name.strip().upper() for name in args.emph}
+
+    for folder_str in sorted(args.folders, key=lambda s: sort_key(Path(s).name)):
+        folder = Path(folder_str).expanduser().resolve()
+        log_path = folder / "log.txt"
         if not log_path.exists():
             print(f"[warn] missing {log_path}")
             continue
 
         snrs, blers = parse_log(log_path)
         if not snrs:
-            print(f"[warn] no data in {log_path}")
+            print(f"[warn] no valid BLER lines in {log_path}")
             continue
 
+        st = style_of(folder.name)
+        is_emph = folder.name.upper() in emph_names
+        if is_emph:
+            st = apply_emphasis(st)
+
         blers = [max(b, 1e-15) for b in blers]
-        label = folder_label(folder)
 
-        if folder.name.upper() == "MLD":
-            plt.semilogy(
-                snrs, blers,
-                linestyle="--", linewidth=1.2,
-                color="black", marker=None,
-                label=label, zorder=10
-            )
-        else:
-            # linestyle, marker, color = get_decoder_style(folder.name)
-            # plt.semilogy(
-            #     snrs, blers,
-            #     linestyle=linestyle,
-            #     marker=marker,
-            #     color=color,
-            #     linewidth=1.0,
-            #     markersize=5,
-            #     markerfacecolor="none",
-            #     label=label
-            # )
-            linestyle, marker, color = get_decoder_style(folder.name)
-            is_landmark = folder.name.upper() in ("AED8SCL2", "AED8SCL8", "AED16SC")
+        plt.semilogy(
+            snrs,
+            blers,
+            label=st["label"],
+            color=st["color"],
+            linestyle=st["linestyle"],
+            marker=st["marker"],
+            linewidth=st["linewidth"],
+            markersize=st["markersize"],
+            markerfacecolor="none",
+            markeredgecolor=st.get("markeredgecolor", None),
+            markeredgewidth=st.get("markeredgewidth", None),
+            zorder=st.get("zorder", 3),
+        )
 
-            plt.semilogy(
-                snrs, blers,
-                linestyle=linestyle,
-                marker=marker,
-                color=color,
-                linewidth=1.6 if is_landmark else 1.0,
-                markersize=10 if is_landmark else 5,
-                markerfacecolor="none",
-                markeredgecolor= color if is_landmark else None,
-                markeredgewidth=1.2 if is_landmark else None,
-                zorder=5 if is_landmark else 3,
-                label=label
-            )
+        eff = st["eff_size"]
+        eff_text = f", eff={eff}" if eff is not None else ""
+        emph_text = ", emphasized" if is_emph else ""
+        print(f"[info] {folder.name}: {len(snrs)} points{eff_text}{emph_text}")
+        plotted = True
 
+    if not plotted:
+        raise SystemExit("No curves were plotted.")
 
-        print(f"[info] {label}: {len(snrs)} points")
-        any_curve = True
-
-    if not any_curve:
-        raise SystemExit("No curves plotted.")
-
-    plt.xlabel("$\mathrm{E_b/N_0}$ (dB)")
+    plt.xlabel(r"$\mathrm{E_b/N_0}$ (dB)")
     plt.ylabel("BLER")
     plt.title(args.title)
-    if not args.no_grid:
-        plt.grid(True, which="both", linestyle="--", linewidth=0.5, alpha=0.6)
+    plt.xlim(snr_start, snr_stop)
+    plt.xticks(xticks)
+    plt.grid(True, which="both", linestyle="--", linewidth=0.5, alpha=0.6)
 
     plt.legend(
         loc="lower left",
         ncol=2,
         frameon=True,
         fontsize=10,
-        columnspacing=1.2,
-        handletextpad=0.6,
-        borderaxespad=0.5
+        columnspacing=1.0,
+        handletextpad=0.5,
+        borderaxespad=0.4,
     )
 
-    plt.tight_layout()
-    out_path = Path(args.out).expanduser().resolve()
+    out_path = Path(args.savepath).expanduser().resolve()
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(out_path, dpi=300)
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=300, bbox_inches="tight")
     print(f"[ok] saved to {out_path}")
-    if args.show:
-        plt.show()
 
 
 if __name__ == "__main__":
