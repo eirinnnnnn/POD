@@ -48,9 +48,9 @@ FAMILY_COLOR: Dict[str, str] = {
 PED_M_COLOR: Dict[int, str] = {
     4: "#2ca02c",   # normal tab:green
     # 32: "#238823",
-    16: "#1f6f1f",
-    32: "#1f6f1f",
-    64: "#1f6f1f",
+    # 16: "#1f6f1f",
+    32: "#104510",
+    64: "#104510",
     # 64: "#185c18",
     # 64: "#104510",
 }
@@ -91,13 +91,19 @@ LINESTYLE_MAP: Dict[str, object] = {
     "UNKNOWN": "-",
 }
 
+EMPH_COLOR_BY_FAMILY: Dict[str, str] = {
+    "POD_SCL": "tab:red",
+    "UNKNOWN": "tab:blue"
+}
+
 # Emphasis should not destroy the semantic color encoding.
 # Therefore emphasized curves keep their original color, but become visually stronger.
 def apply_emphasis(style: Dict[str, object]) -> Dict[str, object]:
     emph = dict(style)
     emph["linewidth"] = max(float(style["linewidth"]), 2.0)
     emph["markersize"] = max(float(style["markersize"]), 10.0)
-    emph["markeredgecolor"] = style["color"]
+    emph["markeredgecolor"] = "tab:red"
+    emph["color"] = "tab:red"
     emph["markeredgewidth"] = 1.8
     emph["zorder"] = 6
     return emph
