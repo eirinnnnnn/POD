@@ -312,7 +312,8 @@ def main() -> None:
     plotted = False
     emph_names = {name.strip().upper() for name in args.emph}
 
-    for folder_str in sorted(args.folders, key=lambda s: sort_key(Path(s).name)):
+    # for folder_str in sorted(args.folders, key=lambda s: sort_key(Path(s).name)):
+    for folder_str in args.folders:
         folder = Path(folder_str).expanduser().resolve()
         log_path = folder / "log.txt"
         if not log_path.exists():
