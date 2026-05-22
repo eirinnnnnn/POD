@@ -6,3 +6,8 @@ project/.venv/
 *.csv
 *.log
 project/**/inspect_*.csv
+
+# generated experiment outputs
+*.csv
+*.log
+project/**/inspect_*.csv
