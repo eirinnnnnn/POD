@@ -1,0 +1,8 @@
+wt.exe new-tab --title "run_2_0" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_2_0 --P_IDX -2 && exec bash"
+wt.exe new-tab --title "run_2_1" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_2_1 --P_IDX -2 && exec bash"
+wt.exe new-tab --title "run_2_2" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_2_2 --P_IDX -2 && exec bash"
+wt.exe new-tab --title "run_2_3" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_2_3 --P_IDX -2 && exec bash"
+wt.exe new-tab --title "run_3_0" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_3_0 --P_IDX -3 && exec bash"
+wt.exe new-tab --title "run_3_1" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_3_1 --P_IDX -3 && exec bash"
+wt.exe new-tab --title "run_3_2" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_3_2 --P_IDX -3 && exec bash"
+wt.exe new-tab --title "run_3_3" wsl.exe bash -lc "cd '$(pwd)' && uv run python -O SA_ptp.py --run-dir run_3_3 --P_IDX -3 && exec bash"

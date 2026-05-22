@@ -7,10 +7,73 @@
 #include <cstdio>
 #include <limits>
 
+static std::vector<unsigned int> parse_python_uint_list(const std::string &s){
+    std::vector<unsigned int> out;
+    std::string num;
+    bool inside = false;
+
+    for(char ch : s){
+        if(ch == '['){
+            inside = true;
+            continue;
+        }
+        if(ch == ']'){
+            if(!num.empty()){
+                out.push_back((unsigned int)std::stoul(num));
+                num.clear();
+            }
+            inside = false;
+            continue;
+        }
+        if(!inside)
+            continue;
+        if(std::isdigit((unsigned char)ch)){
+            num.push_back(ch);
+        }else if(ch == ',' || std::isspace((unsigned char)ch)){
+            if(!num.empty()){
+                out.push_back((unsigned int)std::stoul(num));
+                num.clear();
+            }
+        }else{
+            ERROR("Invalid character '%c' in permutation_list.", ch);
+        }
+    }
+
+    if(!num.empty())
+        out.push_back((unsigned int)std::stoul(num));
+
+    return out;
+}
+
+static void permutation_list_to_matrix(
+    const std::vector<unsigned int> &perm,
+    unsigned int n,
+    std::vector<std::vector<char> > &P
+){
+    if(perm.size() != n)
+        ERROR("permutation_list size(%lu) != codeword_length(%u).",
+              (unsigned long)perm.size(), n);
+
+    std::vector<char> used(n, 0);
+    P.assign(n, std::vector<char>(n, 0));
+
+    for(unsigned int row=0; row<n; row++){
+        unsigned int col = perm[row];
+        if(col >= n)
+            ERROR("permutation_list[%u]=%u out of range n=%u.", row, col, n);
+        if(used[col])
+            ERROR("permutation_list is not a permutation: duplicated value %u.", col);
+        used[col] = 1;
+        P[row][col] = 1;
+    }
+}
+
 AdjustPolarDecoder::AdjustPolarDecoder(std::map<std::string, std::string> config) : ErrorCorrectionCodeBase(config){
     // default setting
     ECC_info = "AdjustPolarDecoder";
     permutation_src = "";
+    permutation_path = "";
+    permutation_list = "";
     permutation_random_seed = -1;
     // dynamic_frozen_process = "frozen";
     target_raw_BER = 0.1;
@@ -32,6 +95,8 @@ AdjustPolarDecoder::AdjustPolarDecoder(std::map<std::string, std::string> config
     // deal config
     for(std::map<std::string, std::string>::iterator pair_idx = config.begin(); pair_idx != config.end(); pair_idx++){
         if      (pair_idx->first == "permutation_src")          permutation_src = pair_idx->second;
+        else if (pair_idx->first == "permutation_path")         permutation_path = pair_idx->second;
+        else if (pair_idx->first == "permutation_list")         permutation_list = pair_idx->second;
         else if (pair_idx->first == "permutation_random_seed")  permutation_random_seed = stol(pair_idx->second);
         // else if (pair_idx->first == "dynamic_frozen_process")   dynamic_frozen_process = pair_idx->second;
         else if (pair_idx->first == "target_raw_BER")           target_raw_BER = stod(pair_idx->second);
@@ -72,17 +137,27 @@ AdjustPolarDecoder::AdjustPolarDecoder(std::map<std::string, std::string> config
     }
     basic_bhattacharyya_value = log(-log(4*target_raw_BER*(1-target_raw_BER))/2);
 
-    // get permutation matrix
-    if(permutation_src == "random"){
-        permutationMatrix(permutation_matrix,codeword_length,&permutation_random_seed);
-    }else if(permutation_src != ""){
-        parseBinaryMatrix(permutation_src,permutation_matrix);
+    // get permutation matrix — priority: permutation_list > permutation_path > permutation_src > identity
+    if(permutation_list != ""){
+        std::vector<unsigned int> perm = parse_python_uint_list(permutation_list);
+        permutation_list_to_matrix(perm, codeword_length, permutation_matrix);
+        printf("permutation matrix loaded from permutation_list\n");
     }else{
-        printf("permutation matrix is idenity\n");
-        permutation_matrix.resize(codeword_length);
-        for(unsigned int idx=0; idx<codeword_length; idx++){
-            permutation_matrix[idx].assign(codeword_length,0);
-            permutation_matrix[idx][idx] = 1;
+        std::string effective_permutation_path = permutation_path;
+        if(effective_permutation_path == "")
+            effective_permutation_path = permutation_src;
+
+        if(effective_permutation_path == "random"){
+            permutationMatrix(permutation_matrix, codeword_length, &permutation_random_seed);
+        }else if(effective_permutation_path != ""){
+            parseBinaryMatrix(effective_permutation_path, permutation_matrix);
+        }else{
+            printf("permutation matrix is identity\n");
+            permutation_matrix.resize(codeword_length);
+            for(unsigned int idx=0; idx<codeword_length; idx++){
+                permutation_matrix[idx].assign(codeword_length, 0);
+                permutation_matrix[idx][idx] = 1;
+            }
         }
     }
     if(DEBUG_MODE){
@@ -538,6 +613,7 @@ bool AdjustPolarDecoder::parse_order_from_block(const std::vector<std::vector<un
             return false;
     return true;
 }
+
 // bool AdjustPolarDecoder::load_automorphism_set(){
 //     received_order_set.clear();
 

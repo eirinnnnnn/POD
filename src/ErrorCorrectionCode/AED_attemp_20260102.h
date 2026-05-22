@@ -4,6 +4,8 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <sstream>
+#include <cctype>
 #include "ErrorCorrectionCodeBase.h"
 
 typedef struct{
@@ -24,6 +26,8 @@ public:
 protected:
     // set by config
     std::string permutation_src;
+    std::string permutation_path;
+    std::string permutation_list;
     long permutation_random_seed;
     double target_raw_BER;
     std::string operationArray;

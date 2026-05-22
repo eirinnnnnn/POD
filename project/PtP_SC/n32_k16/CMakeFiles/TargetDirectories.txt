@@ -1,0 +1,4 @@
+/mnt/c/Users/jin05/Desktop/Universal_Polar_AED/project/PtP_SC/n32_k16/CMakeFiles/PtP_SC.dir
+/mnt/c/Users/jin05/Desktop/Universal_Polar_AED/project/PtP_SC/n32_k16/CMakeFiles/AED_SC_inspect.dir
+/mnt/c/Users/jin05/Desktop/Universal_Polar_AED/project/PtP_SC/n32_k16/CMakeFiles/edit_cache.dir
+/mnt/c/Users/jin05/Desktop/Universal_Polar_AED/project/PtP_SC/n32_k16/CMakeFiles/rebuild_cache.dir

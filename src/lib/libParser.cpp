@@ -43,10 +43,10 @@ char parseConfig(std::string config_path, std::map<std::string, std::map<std::st
 	while (fgets(line, sizeof(line), config_data)) {
         target_name = "key";
         for(int line_idx=0,name_idx=0; line_idx<20000; line_idx++){
-        	if      (line[line_idx] == '['){
+        	if      (line[line_idx] == '[' && target_name == "key"){
         		target_name = "section";
         		continue;
-        	}else if(line[line_idx] == ']'){
+        	}else if(line[line_idx] == ']' && target_name == "section"){
         		section_name[name_idx] = '\0';
         		continue;
         	}else if(line[line_idx] == '='){
