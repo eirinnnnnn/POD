@@ -1,3 +1,8 @@
 project/.venv/
 **/.venv/
-.venv/
+.venv/*.csv
+
+# inspection / experiment logs
+*.csv
+*.log
+project/**/inspect_*.csv
