@@ -65,7 +65,8 @@ def build_features(Xn, orders, mode, structure=None):
         if structure is None:
             raise ValueError("mode requested structure but no --structure was provided")
         B, M, _ = abs_perm.shape
-        static = np.broadcast_to(structure.reshape(1, 1, -1), (B, M, structure.size))
+        static_by_branch = structure[orders].reshape(1, M, -1)
+        static = np.broadcast_to(static_by_branch, (B, M, static_by_branch.shape[-1]))
         parts.append(static.astype(np.float32))
 
     if not parts:

@@ -281,7 +281,6 @@ def build_w_dense(
     }
     return w, stats
 
-
 def build_w_polar_butterfly(
     model: cp_model.CpModel,
     b: Dict[Tuple[int, int], cp_model.IntVar],
@@ -289,6 +288,7 @@ def build_w_polar_butterfly(
     n: int,
     constrained_cols: List[int],
     true_lit: cp_model.IntVar,
+    forced_zero_cols: Optional[List[int]] = None,
 ) -> Tuple[Dict[Tuple[int, int], cp_model.IntVar], Dict[str, int]]:
     """
     Polar butterfly W encoding for Gp = F^{tensor m}, F = [[1,0],[1,1]].
@@ -341,11 +341,37 @@ def build_w_polar_butterfly(
 
         x_prev = x_next
 
-    # W variables are aliases to the final layer, only for constrained columns.
+    # IMPORTANT:
+    # This block must be OUTSIDE the t-loop.
+    # Here x_prev is the final layer x^{(m)}, so w[r,j] = W[r,j].
+    # If this is accidentally placed inside the t-loop, then constraints such as
+    # W[:,j]=0 are imposed on intermediate layers x^{(1)},...,x^{(m-1)}, which
+    # is not mathematically valid and can make reachable instances infeasible.
     w: Dict[Tuple[int, int], cp_model.IntVar] = {}
     for r in range(k):
         for j in constrained_cols:
             w[r, j] = x_prev[r, j]
+
+    # Redundant but propagation-strengthening constraints:
+    #
+    # In the full model, M = U W and M[:, p_star] = I_k force U
+    # to be invertible. Therefore M[:,j] = 0 implies W[:,j] = 0.
+    #
+    # For j < p_star[0], all rows of M[:,j] are constrained to zero,
+    # so we can directly impose W[:,j] = 0.
+    num_forced_w_zeros = 0
+    if forced_zero_cols is not None:
+        constrained_set = set(constrained_cols)
+        for j in forced_zero_cols:
+            if j not in constrained_set:
+                raise ValueError(
+                    f"forced_zero_col j={j} is not in constrained_cols. "
+                    "Add it to constrained_cols before building W."
+                )
+
+            for r in range(k):
+                model.Add(w[r, j] == 0)
+                num_forced_w_zeros += 1
 
     stats = {
         "w_vars": 0,  # aliases only
@@ -353,10 +379,9 @@ def build_w_polar_butterfly(
         "w_total_support": 0,
         "butterfly_x_vars": num_x_vars,
         "butterfly_xor_constraints": num_xor_constraints,
+        "forced_w_zero_constraints": num_forced_w_zeros,
     }
     return w, stats
-
-
 def build_pivot_reconstruction_model(
     Gb: np.ndarray,
     Gp: np.ndarray,
@@ -526,12 +551,13 @@ def build_pivot_reconstruction_model(
 
     if actual_w_encoding == "butterfly":
         w, w_stats = build_w_polar_butterfly(
-            model=model,
-            b=b,
-            k=k,
-            n=n,
-            constrained_cols=constrained_cols,
-            true_lit=true_lit,
+            model,
+            b,
+            k,
+            n,
+            constrained_cols,
+            true_lit,
+            forced_zero_cols=list(range(p_star[0])),
         )
     else:
         w, w_stats = build_w_dense(
@@ -591,6 +617,7 @@ def build_pivot_reconstruction_model(
             print(f"  w vars = 0 aliases to final butterfly layer")
             print(f"  butterfly x vars = {w_stats['butterfly_x_vars']}")
             print(f"  butterfly XOR constraints = {w_stats['butterfly_xor_constraints']}")
+            print(f"  forced W zero constraints = {w_stats.get('forced_w_zero_constraints', 0)}")
         print(f"  z vars = {k*k*len(constrained_cols)}")
 
     variables = {
