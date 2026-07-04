@@ -1,0 +1,15 @@
+{
+  "format": "mclass_csv_v1",
+  "csv_path": "../../MClassifier/build/m7t10_m64_snr10p0_train_metric_12k.csv",
+  "ini_path": "AED64SCL4.ini",
+  "samples": 12000,
+  "label_mode": "metric",
+  "n": 128,
+  "k": 64,
+  "M": 64,
+  "list_size": 4,
+  "awgn_start": "10.0",
+  "awgn_step_type": "SNR",
+  "awgn_seed": "102001",
+  "message_seed": "101001"
+}

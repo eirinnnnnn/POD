@@ -1,0 +1,30 @@
+# m7t10_M64_SNR10
+dataset,build/m7t10_m64_snr10p0_test_metric_3k.csv
+samples,3000
+M,64
+teacher_bler,0.000000
+unique_labels,1
+label_top10,0:3000(1.000)
+label_entropy,-0.000000
+basin_size,mean=64.000000,median=64.0,p75=64.0,p90=64.0,max=64,allM=3000
+gap,positive_frac=0.000000,mean=0,median=0,p90=0,max=0
+
+## Prediction Summary
+model,unique_top1,top1_dist,top1_bler,top1_basin_hit,top1_argmin_hit
+majority,1,0:3000(1.000),0.000000,1.000000,1.000000
+
+## Top-k
+model,k,bler,basin_hit,argmin_hit
+majority,1,0.000000,1.000000,1.000000
+majority,2,0.000000,1.000000,1.000000
+majority,4,0.000000,1.000000,1.000000
+majority,8,0.000000,1.000000,1.000000
+majority,16,0.000000,1.000000,1.000000
+majority,32,0.000000,1.000000,1.000000
+majority,64,0.000000,1.000000,1.000000
+
+## Stratified Top1
+model,bin,count,teacher_bler,top1_bler,top1_basin_hit,top1_argmin_hit
+majority,all,3000,0.000000,0.000000,1.000000,1.000000
+majority,basin_all,3000,0.000000,0.000000,1.000000,1.000000
+majority,gap_zero,3000,0.000000,0.000000,1.000000,1.000000

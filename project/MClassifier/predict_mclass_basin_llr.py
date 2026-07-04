@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+import argparse
+from pathlib import Path
+
+import numpy as np
+
+from train_mclass_basin import load_basin_dataset
+from train_mclass_basin_llr import to_llr
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Predict top-k branches from LLR-input basin classifier.")
+    parser.add_argument("--dataset", required=True)
+    parser.add_argument("--model", required=True)
+    parser.add_argument("--out", required=True)
+    parser.add_argument("--topk", type=int, default=1)
+    args = parser.parse_args()
+
+    try:
+        import torch
+        import torch.nn as nn
+    except ImportError as exc:
+        raise SystemExit("PyTorch is required for prediction: pip install torch") from exc
+
+    ckpt = torch.load(args.model, map_location="cpu")
+    X, _, _, _, _, meta = load_basin_dataset(args.dataset, float(ckpt.get("delta", 1e-12)))
+    X = to_llr(X, meta)
+
+    model = nn.Sequential(
+        nn.Linear(int(ckpt["n"]), int(ckpt["hidden"])),
+        nn.ReLU(),
+        nn.Linear(int(ckpt["hidden"]), int(ckpt["hidden"])),
+        nn.ReLU(),
+        nn.Linear(int(ckpt["hidden"]), int(ckpt["M"])),
+    )
+    model.load_state_dict(ckpt["state_dict"])
+    model.eval()
+
+    Xn = ((X - ckpt["mean"]) / ckpt["std"]).astype(np.float32)
+    with torch.no_grad():
+        logits = model(torch.from_numpy(Xn))
+        topk = torch.topk(logits, k=min(args.topk, int(ckpt["M"])), dim=1).indices.cpu().numpy()
+
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with out.open("w", encoding="utf-8") as f:
+        f.write("sample")
+        for i in range(topk.shape[1]):
+            f.write(f",idx{i}")
+        f.write("\n")
+        for s, row in enumerate(topk):
+            f.write(str(s))
+            for idx in row:
+                f.write(f",{int(idx)}")
+            f.write("\n")
+    print(f"wrote {out}")
+
+
+if __name__ == "__main__":
+    main()

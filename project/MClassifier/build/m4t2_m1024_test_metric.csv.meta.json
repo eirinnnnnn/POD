@@ -1,0 +1,15 @@
+{
+  "format": "mclass_csv_v1",
+  "csv_path": "../../MClassifier/build/m4t2_m1024_test_metric.csv",
+  "ini_path": "../../MClassifier/build/m4t2_m1024_metric.ini",
+  "samples": 1000,
+  "label_mode": "metric",
+  "n": 16,
+  "k": 7,
+  "M": 960,
+  "list_size": 1,
+  "awgn_start": "2.0",
+  "awgn_step_type": "SNR",
+  "awgn_seed": "54001",
+  "message_seed": "53001"
+}
