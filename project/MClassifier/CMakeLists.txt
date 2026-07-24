@@ -62,3 +62,8 @@ add_executable(mclass_code_structure
         mclass_code_structure.cpp
         ${common_src}
     )
+
+add_executable(mclass_gmatrix_dump
+        mclass_gmatrix_dump.cpp
+        ${common_src}
+    )

@@ -1,0 +1,5 @@
+/home/eirin/Polar_eirin_20260107/project/triC/triC_49_1_5/CMakeFiles/triC.dir
+/home/eirin/Polar_eirin_20260107/project/triC/triC_49_1_5/CMakeFiles/AED_SC_inspect.dir
+/home/eirin/Polar_eirin_20260107/project/triC/triC_49_1_5/CMakeFiles/triC_BSC.dir
+/home/eirin/Polar_eirin_20260107/project/triC/triC_49_1_5/CMakeFiles/edit_cache.dir
+/home/eirin/Polar_eirin_20260107/project/triC/triC_49_1_5/CMakeFiles/rebuild_cache.dir

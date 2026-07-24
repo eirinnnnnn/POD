@@ -29,15 +29,23 @@ def main():
         raise SystemExit(f"dataset M={M} but model M={ckpt['M']}")
 
     Xn = ((X - ckpt["y_mean"]) / ckpt["y_std"]).astype(np.float32)
-    features = build_features(
-        Xn,
-        np.asarray(ckpt["orders"], dtype=np.int64),
-        str(ckpt["mode"]),
-        structure=ckpt.get("structure"),
-    )
+    orders = np.asarray(ckpt["orders"], dtype=np.int64)
+    mode = str(ckpt["mode"])
+    structure = ckpt.get("structure")
+    gmatrix = ckpt.get("gmatrix")
+
+    # Mirror the memory-safe split used in training: the gmatrix-derived
+    # part of the feature vector is identical across samples (it only
+    # depends on branch), so it is computed once and concatenated per
+    # batch rather than broadcast across the whole dataset up front.
+    heavy_static = gmatrix is not None and "gmatrix" in mode
+    dyn_mode = mode.replace("_gmatrix", "") if heavy_static else mode
+    static_g = gmatrix[orders].reshape(M, -1).astype(np.float32) if heavy_static else None
+    static_dim = static_g.shape[-1] if heavy_static else 0
+    static_g_t = torch.from_numpy(static_g) if heavy_static else None
+
     mean = np.asarray(ckpt["feature_mean"], dtype=np.float32).reshape(1, 1, -1)
     std = np.asarray(ckpt["feature_std"], dtype=np.float32).reshape(1, 1, -1)
-    features = ((features - mean) / std).astype(np.float32)
 
     model = nn.Sequential(
         nn.Linear(int(ckpt["input_dim"]), int(ckpt["hidden"])),
@@ -51,10 +59,15 @@ def main():
 
     top_rows = []
     with torch.no_grad():
-        for start in range(0, features.shape[0], args.batch_samples):
-            xb = torch.from_numpy(features[start:start + args.batch_samples])
-            B = xb.shape[0]
-            scores = model(xb.reshape(B * M, -1)).reshape(B, M)
+        for start in range(0, Xn.shape[0], args.batch_samples):
+            chunk = Xn[start:start + args.batch_samples]
+            dyn = build_features(chunk, orders, dyn_mode, structure=structure)
+            dyn = ((dyn - mean) / std).astype(np.float32)
+            xb = torch.from_numpy(dyn)
+            b = xb.shape[0]
+            if static_g_t is not None:
+                xb = torch.cat([xb, static_g_t.unsqueeze(0).expand(b, M, static_dim)], dim=2)
+            scores = model(xb.reshape(b * M, -1)).reshape(b, M)
             top = torch.topk(scores, k=min(args.topk, M), dim=1, largest=True).indices.cpu().numpy()
             top_rows.append(top)
     topk = np.concatenate(top_rows, axis=0)
