@@ -13,6 +13,7 @@ include_directories("../../src/ErrorCorrectionCode")
 include_directories("../../src/lib")
 include_directories("../../src/channel")
 include_directories(".")
+include_directories("common")
 
 set(common_src
         ../../src/lib/libMath.cpp
@@ -25,45 +26,50 @@ set(common_src
     )
 
 add_executable(mclass_dataset
-        mclass_dataset.cpp
+        past_experiments/mclass_dataset.cpp
         ${common_src}
     )
 
 add_executable(mclass_eval
-        mclass_eval.cpp
+        tools/mclass_eval.cpp
     )
 
 add_executable(mclass_selected_llr
-        mclass_selected_llr.cpp
+        past_experiments/mclass_selected_llr.cpp
         ${common_src}
     )
 
 add_executable(mclass_llr_proxy
-        mclass_llr_proxy.cpp
+        past_experiments/mclass_llr_proxy.cpp
         ${common_src}
     )
 
 add_executable(mclass_branch_orders
-        mclass_branch_orders.cpp
+        past_experiments/mclass_branch_orders.cpp
         ${common_src}
     )
 
 add_executable(mclass_perturb_audit
-        mclass_perturb_audit.cpp
+        past_experiments/mclass_perturb_audit.cpp
         ${common_src}
     )
 
 add_executable(mclass_trace_dataset
-        mclass_trace_dataset.cpp
+        common/mclass_trace_dataset.cpp
         ${common_src}
     )
 
 add_executable(mclass_code_structure
-        mclass_code_structure.cpp
+        past_experiments/mclass_code_structure.cpp
         ${common_src}
     )
 
 add_executable(mclass_gmatrix_dump
-        mclass_gmatrix_dump.cpp
+        past_experiments/mclass_gmatrix_dump.cpp
+        ${common_src}
+    )
+
+add_executable(mclass_bler_sim
+        common/mclass_bler_sim.cpp
         ${common_src}
     )

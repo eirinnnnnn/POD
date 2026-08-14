@@ -1,0 +1,110 @@
+EBN0 SWEEP EXPERIMENT -- PLAIN-TEXT RECORD
+Code: m7t10_m64 (eBCH, n=128, k=64), AED M=64 automorphisms, SCL list size L=4
+Decoder config: build/ebn0_sweep.ini (M=64 variant), build/ebn0_sweep_m8.ini (M=8 variant,
+  same automorphism ordering file truncated to its first 8 entries via aed_L=8)
+Driver scripts: build/ebn0_sweep/run_sweep.py, run_sweep_m8.py, rerun_sparse.py,
+  run_static_extra_t.py, plot_sweep.py
+Results table: build/ebn0_sweep/results.csv
+Figure: build/ebn0_sweep/ebn0_sweep_bler.png
+
+PURPOSE
+-------
+Compare, across Eb/N0 = 2.00-4.50 dB, three ways of running the M=64-branch
+AED/SCL decoder for the m7t10_m64 code:
+  1. full_ped      -- decode all M=64 branches, pick lowest final SCL metric
+                       (the reference upper bound; t-independent)
+  2. static_pm_rank -- no training. At checkpoint t, rank the 64 branches by
+                       their own raw partial path metric (t{t}_pm_min) and
+                       keep only the top k=8, then pick lowest final metric
+                       among those 8.
+  3. trace_learned  -- same k=8 pruning, but the top-8 selection comes from a
+                       trained MLP scorer (branch_ranker) over decoder trace
+                       features up to checkpoint t, instead of raw pm_min.
+Also added mid-run:
+  4. full_ped_m8    -- a genuinely smaller ensemble: aed_L=8 (first 8 of the
+                       same automorphism ordering file), decode all 8, pick
+                       lowest metric. NOT the same as static/trace k=8 --
+                       this never had 64 candidates to choose from.
+
+METHODOLOGY NOTES
+------------------
+- Per SNR point: mclass_dataset regenerates a fresh Monte Carlo dataset,
+  adaptive-stopping at target_errors=1000 full-ensemble block errors (a
+  block error = none of the 64 branches decoded correctly), capped at
+  100,000 samples (raised per-point where needed -- see SPARSE POINTS below).
+- Each SNR point uses a distinct channel/message seed pair (900001+i /
+  800001+i for the main sweep) -- independent draws, not shared random
+  numbers across SNR points.
+- k=8 chosen as the working point for static/trace pruning (8x reduction
+  from M=64).
+- Checkpoints t=8,32,64 were the three originally trained trace-ranker
+  models. t=80,96,112 were added later for static_pm_rank ONLY (no
+  training needed for that method) to see where the model-free baseline
+  closes the gap to full_ped.
+- full_ped BLER is computed once per SNR (t-independent) directly from the
+  base per-branch dataset via mclass_eval --topk 64: pick the branch with
+  the lowest final metric among ALL 64, check if it decoded correctly.
+
+SPARSE POINTS / RERUNS
+-----------------------
+At 4.0 and 4.5 dB the original 100k-sample cap gave too few full_ped error
+events (21 and 2 respectively) for a reliable BLER estimate. Reran those two
+points targeting 50 errors specifically for full_ped and t=64 (only t=64 --
+static/trace at t=8/32 were judged not worth the extra compute, since the
+open question was about high-t behavior):
+  4.0 dB: converged at 300,183 samples, 50 errors (cap was 400,000)
+  4.5 dB: capped at 4,000,000 samples, 48 errors (didn't quite hit 50) --
+          this alone took ~5.6h just for the base dataset generation, plus
+          several more hours for the trace-feature regeneration at t=64.
+Old sparse rows for full_ped/t=64 at those two SNRs were REPLACED; t=8/t=32
+rows at those two SNRs are still the ORIGINAL sparse values (21/2 error
+events) and should be treated as low-confidence if referenced directly.
+
+IMPORTANT CAVEAT -- TRAINING SNR MISMATCH (flagged during this run, not yet
+addressed -- planned as the NEXT experiment per user)
+------------------------------------------------------------------------
+The trace_learned models (build/m7t10_m64_snr2p0_trace_upto_t{8,32,64}_
+basin_h64_e20.pt) were trained ONLY on data generated at a single fixed
+SNR = 2.0 dB (data/m7t10_m64_snr2p0_train_metric_12k.csv, awgn_seed=92001,
+message_seed=91001 -- confirmed DIFFERENT from every sweep-point seed used
+here, so there is no literal train/test sample overlap at SNR=2.0).
+However: every sweep point other than 2.0 dB evaluates this SNR=2.0-trained
+model on a noise level it never saw during training -- a genuine
+distribution shift (not just held-out samples), including the feature
+normalization (mean/std) baked into the checkpoint, which was also fit on
+the SNR=2.0 training set. The trace-vs-static relative gap does not appear
+to shrink moving away from 2.0 dB in this run's data (if anything it widens
+slightly), which is evidence against obvious breakdown, but is not proof of
+robustness. NEXT EXPERIMENT (per user): train trace-ranker models on data
+spanning multiple/varying SNR rather than a fixed single point.
+
+KEY FINDINGS (as of this record; some SNR points still finishing at time of
+writing -- see results.csv for the authoritative/current numbers)
+------------------------------------------------------------------------
+1. At t=64, static_pm_rank and trace_learned are nearly indistinguishable
+   across the whole SNR range -- the learned model adds little beyond the
+   raw partial path metric by that point in decoding.
+2. full_ped_m8 (real 8-branch ensemble) is the WORST performer at every
+   SNR checked -- clearly worse than pruning 64 down to 8 via either
+   static or trace scoring. Diversity from a large ensemble, even if you
+   only keep 8 of the results, beats running a small ensemble from the
+   start.
+3. static_pm_rank closes the gap to full_ped completely by t=112 -- BLER
+   values match full_ped EXACTLY (bit-identical) at every SNR checked so
+   far (2.00, 2.25, 2.50, 2.75 dB confirmed; 3.00+ in progress). t=96 is
+   close but not exact; t=80 is intermediate. This makes sense: at t=112
+   of n=128, almost nothing is left undecided.
+4. Because (3) required no training and already closes the gap, training
+   new trace-ranker models at t=80/96/112 was judged not worth doing (per
+   user's call, confirmed by this result).
+
+FILE HYGIENE -- KEEP, DO NOT DELETE
+------------------------------------
+build/ebn0_sweep/ contains large per-branch and per-checkpoint trace CSVs
+(up to several GB each, up to ~11GB at the 4.5 dB sample count). These are
+the actual plain-text record of every individual trial (per-sample,
+per-branch metric/correct flags in snr{X}_metric*.csv; per-sample,
+per-branch, per-checkpoint trace features in snr{X}_trace_t{N}*.csv)
+that results.csv's BLER numbers were aggregated from. KEEP all of these --
+do not delete. results.csv and the figure are summaries derived from this
+raw data, not a replacement for it.
