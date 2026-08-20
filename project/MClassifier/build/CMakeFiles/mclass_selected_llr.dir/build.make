@@ -69,19 +69,19 @@ include CMakeFiles/mclass_selected_llr.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mclass_selected_llr.dir/flags.make
 
-CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o: CMakeFiles/mclass_selected_llr.dir/flags.make
-CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o: /home/eirin/Polar_eirin_20260107/project/MClassifier/past_experiments/mclass_selected_llr.cpp
-CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o: CMakeFiles/mclass_selected_llr.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o -MF CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o.d -o CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o -c /home/eirin/Polar_eirin_20260107/project/MClassifier/past_experiments/mclass_selected_llr.cpp
+CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o: CMakeFiles/mclass_selected_llr.dir/flags.make
+CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o: /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp
+CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o: CMakeFiles/mclass_selected_llr.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o -MF CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o.d -o CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o -c /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp
 
-CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eirin/Polar_eirin_20260107/project/MClassifier/past_experiments/mclass_selected_llr.cpp > CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.i
+CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp > CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.i
 
-CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eirin/Polar_eirin_20260107/project/MClassifier/past_experiments/mclass_selected_llr.cpp -o CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.s
+CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp -o CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.s
 
 CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o: CMakeFiles/mclass_selected_llr.dir/flags.make
 CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o: /home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp
@@ -183,7 +183,7 @@ CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorr
 
 # Object files for target mclass_selected_llr
 mclass_selected_llr_OBJECTS = \
-"CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o" \
+"CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o" \
 "CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o" \
 "CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o" \
 "CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o" \
@@ -195,7 +195,7 @@ mclass_selected_llr_OBJECTS = \
 # External object files for target mclass_selected_llr
 mclass_selected_llr_EXTERNAL_OBJECTS =
 
-mclass_selected_llr: CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o
+mclass_selected_llr: CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o
 mclass_selected_llr: CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 mclass_selected_llr: CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 mclass_selected_llr: CMakeFiles/mclass_selected_llr.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o

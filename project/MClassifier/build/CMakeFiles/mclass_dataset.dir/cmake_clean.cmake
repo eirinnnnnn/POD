@@ -13,8 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mclass_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o.d"
   "CMakeFiles/mclass_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o"
   "CMakeFiles/mclass_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o.d"
-  "CMakeFiles/mclass_dataset.dir/past_experiments/mclass_dataset.cpp.o"
-  "CMakeFiles/mclass_dataset.dir/past_experiments/mclass_dataset.cpp.o.d"
+  "CMakeFiles/mclass_dataset.dir/trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.o"
+  "CMakeFiles/mclass_dataset.dir/trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.o.d"
   "mclass_dataset"
   "mclass_dataset.pdb"
 )
