@@ -69,19 +69,19 @@ include CMakeFiles/golay_mclass_bler_sim.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/golay_mclass_bler_sim.dir/flags.make
 
-CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o: CMakeFiles/golay_mclass_bler_sim.dir/flags.make
-CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o: /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp
-CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o: CMakeFiles/golay_mclass_bler_sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o -MF CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o.d -o CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o -c /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp
+CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o: CMakeFiles/golay_mclass_bler_sim.dir/flags.make
+CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o: /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp
+CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o: CMakeFiles/golay_mclass_bler_sim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o -MF CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o.d -o CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o -c /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp
 
-CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp > CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.i
+CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp > CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.i
 
-CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp -o CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.s
+CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp -o CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.s
 
 CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o: CMakeFiles/golay_mclass_bler_sim.dir/flags.make
 CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o: /home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp
@@ -197,7 +197,7 @@ CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCo
 
 # Object files for target golay_mclass_bler_sim
 golay_mclass_bler_sim_OBJECTS = \
-"CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o" \
+"CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o" \
 "CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o" \
 "CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o" \
 "CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o" \
@@ -210,7 +210,7 @@ golay_mclass_bler_sim_OBJECTS = \
 # External object files for target golay_mclass_bler_sim
 golay_mclass_bler_sim_EXTERNAL_OBJECTS =
 
-golay_mclass_bler_sim: CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o
+golay_mclass_bler_sim: CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/egolay_24/common/golay_mclass_bler_sim.cpp.o
 golay_mclass_bler_sim: CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 golay_mclass_bler_sim: CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 golay_mclass_bler_sim: CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o

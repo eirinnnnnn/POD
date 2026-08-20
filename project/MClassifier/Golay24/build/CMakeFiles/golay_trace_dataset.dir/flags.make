@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src/ErrorCorrectionCode -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src/lib -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src/channel -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/. -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/trace_learnt_path_selector/common
+CXX_INCLUDES = -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src/ErrorCorrectionCode -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src/lib -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../../../src/channel -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/. -I/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/../trace_learnt_path_selector/egolay_24/common
 
 CXX_FLAGS = -O3 -DNDEBUG -std=gnu++11   -Wall -O2
 

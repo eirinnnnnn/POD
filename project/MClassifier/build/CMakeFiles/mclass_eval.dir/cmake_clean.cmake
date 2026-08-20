@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/mclass_eval.dir/trace_learnt_path_selector/tools/mclass_eval.cpp.o"
-  "CMakeFiles/mclass_eval.dir/trace_learnt_path_selector/tools/mclass_eval.cpp.o.d"
+  "CMakeFiles/mclass_eval.dir/trace_learnt_path_selector/ebch_m7t10/tools/mclass_eval.cpp.o"
+  "CMakeFiles/mclass_eval.dir/trace_learnt_path_selector/ebch_m7t10/tools/mclass_eval.cpp.o.d"
   "mclass_eval"
   "mclass_eval.pdb"
 )

@@ -13,8 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mclass_branch_orders.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o.d"
   "CMakeFiles/mclass_branch_orders.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o"
   "CMakeFiles/mclass_branch_orders.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o.d"
-  "CMakeFiles/mclass_branch_orders.dir/trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.o"
-  "CMakeFiles/mclass_branch_orders.dir/trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.o.d"
+  "CMakeFiles/mclass_branch_orders.dir/trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_branch_orders.cpp.o"
+  "CMakeFiles/mclass_branch_orders.dir/trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_branch_orders.cpp.o.d"
   "mclass_branch_orders"
   "mclass_branch_orders.pdb"
 )

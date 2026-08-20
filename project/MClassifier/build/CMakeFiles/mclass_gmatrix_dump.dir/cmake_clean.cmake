@@ -13,8 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o.d"
   "CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o"
   "CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o.d"
-  "CMakeFiles/mclass_gmatrix_dump.dir/trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.o"
-  "CMakeFiles/mclass_gmatrix_dump.dir/trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.o.d"
+  "CMakeFiles/mclass_gmatrix_dump.dir/trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_gmatrix_dump.cpp.o"
+  "CMakeFiles/mclass_gmatrix_dump.dir/trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_gmatrix_dump.cpp.o.d"
   "mclass_gmatrix_dump"
   "mclass_gmatrix_dump.pdb"
 )

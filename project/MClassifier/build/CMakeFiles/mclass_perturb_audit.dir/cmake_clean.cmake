@@ -13,8 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mclass_perturb_audit.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o.d"
   "CMakeFiles/mclass_perturb_audit.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o"
   "CMakeFiles/mclass_perturb_audit.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o.d"
-  "CMakeFiles/mclass_perturb_audit.dir/trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.o"
-  "CMakeFiles/mclass_perturb_audit.dir/trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.o.d"
+  "CMakeFiles/mclass_perturb_audit.dir/trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_perturb_audit.cpp.o"
+  "CMakeFiles/mclass_perturb_audit.dir/trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_perturb_audit.cpp.o.d"
   "mclass_perturb_audit"
   "mclass_perturb_audit.pdb"
 )

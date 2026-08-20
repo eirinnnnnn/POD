@@ -26,55 +26,55 @@ set(common_src
     )
 
 add_executable(mclass_dataset
-        trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp
+        trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_dataset.cpp
         ${common_src}
     )
 
 add_executable(mclass_eval
-        trace_learnt_path_selector/tools/mclass_eval.cpp
+        trace_learnt_path_selector/ebch_m7t10/tools/mclass_eval.cpp
     )
 
 add_executable(mclass_selected_llr
-        trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp
+        trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_selected_llr.cpp
         ${common_src}
     )
 
 add_executable(mclass_llr_proxy
-        trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp
+        trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_llr_proxy.cpp
         ${common_src}
     )
 
 add_executable(mclass_branch_orders
-        trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp
+        trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_branch_orders.cpp
         ${common_src}
     )
 
 add_executable(mclass_perturb_audit
-        trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp
+        trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_perturb_audit.cpp
         ${common_src}
     )
 
 add_executable(mclass_trace_dataset
-        trace_learnt_path_selector/common/mclass_trace_dataset.cpp
+        trace_learnt_path_selector/ebch_m7t10/common/mclass_trace_dataset.cpp
         ${common_src}
     )
 
 add_executable(mclass_code_structure
-        trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp
+        trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_code_structure.cpp
         ${common_src}
     )
 
 add_executable(mclass_gmatrix_dump
-        trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp
+        trace_learnt_path_selector/ebch_m7t10/architecture_experiments/mclass_gmatrix_dump.cpp
         ${common_src}
     )
 
 add_executable(mclass_bler_sim
-        trace_learnt_path_selector/common/mclass_bler_sim.cpp
+        trace_learnt_path_selector/ebch_m7t10/common/mclass_bler_sim.cpp
         ${common_src}
     )
 
 add_executable(mclass_adaptive_m_dataset
-        adaptive_path_selector/mclass_adaptive_m_dataset.cpp
+        adaptive_path_selector/ebch_m7t10/mclass_adaptive_m_dataset.cpp
         ${common_src}
     )
