@@ -1,7 +1,0 @@
-sig /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_sweep_m16_L2.ini|2.25|45000|t=8|/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_trace_t8_weights.txt|m=1,2,3,4,8,
-sample_count 20000
-full_ped_errors 709
-msg_seed 51523926
-channel_seed_string 1765124896
-static_errors 1259 924 812 769 718
-trace_errors 1150 850 775 754 714

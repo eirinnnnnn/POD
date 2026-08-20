@@ -1,5 +1,0 @@
-snr,method,t,m,samples,errors,bler
-4.0,static_pm_rank,4,4,531204.0,1141.0,0.00214795
-4.0,trace_learned,4,4,531204.0,1135.0,0.00213666
-4.0,static_pm_rank,4,8,531204.0,1000.0,0.00188252
-4.0,trace_learned,4,8,531204.0,1006.0,0.00189381
