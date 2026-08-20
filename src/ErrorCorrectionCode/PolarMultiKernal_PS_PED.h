@@ -88,7 +88,10 @@ protected:
     bool parityCheckZero(const std::vector<char> &codeword) const;
 
 public:
-    unsigned int branchCount() const { return useAED ? (unsigned int)received_order_set.size() : 1; }
+    unsigned int branchCount() const {
+        if (!useAED) return 1;
+        return aed_L == 0 ? (unsigned int)received_order_set.size() : aed_L;
+    }
 
     // Decode every AED branch (up to L, or all available orders if L==0),
     // returning each branch's final candidate/metric/parity-validity PLUS a

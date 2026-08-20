@@ -73,3 +73,8 @@ add_executable(mclass_bler_sim
         common/mclass_bler_sim.cpp
         ${common_src}
     )
+
+add_executable(mclass_adaptive_m_dataset
+        adaptive_path_selector/mclass_adaptive_m_dataset.cpp
+        ${common_src}
+    )

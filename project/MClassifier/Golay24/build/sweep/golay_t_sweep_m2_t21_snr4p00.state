@@ -1,0 +1,7 @@
+sig /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_sweep_m16_L2.ini|4|800000|t=21||m=2,
+sample_count 500000
+full_ped_errors 996
+msg_seed 1677699716
+channel_seed_string 1596316521
+static_errors 996
+trace_errors 0

@@ -142,6 +142,43 @@ golay_trace_dataset/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/build
 .PHONY : golay_trace_dataset/fast
 
+#=============================================================================
+# Target rules for targets named golay_adaptive_m_dataset
+
+# Build rule for target.
+golay_adaptive_m_dataset: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 golay_adaptive_m_dataset
+.PHONY : golay_adaptive_m_dataset
+
+# fast build rule for target.
+golay_adaptive_m_dataset/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/build
+.PHONY : golay_adaptive_m_dataset/fast
+
+adaptive_path_selector/golay_adaptive_m_dataset.o: adaptive_path_selector/golay_adaptive_m_dataset.cpp.o
+.PHONY : adaptive_path_selector/golay_adaptive_m_dataset.o
+
+# target to build an object file
+adaptive_path_selector/golay_adaptive_m_dataset.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/adaptive_path_selector/golay_adaptive_m_dataset.cpp.o
+.PHONY : adaptive_path_selector/golay_adaptive_m_dataset.cpp.o
+
+adaptive_path_selector/golay_adaptive_m_dataset.i: adaptive_path_selector/golay_adaptive_m_dataset.cpp.i
+.PHONY : adaptive_path_selector/golay_adaptive_m_dataset.i
+
+# target to preprocess a source file
+adaptive_path_selector/golay_adaptive_m_dataset.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/adaptive_path_selector/golay_adaptive_m_dataset.cpp.i
+.PHONY : adaptive_path_selector/golay_adaptive_m_dataset.cpp.i
+
+adaptive_path_selector/golay_adaptive_m_dataset.s: adaptive_path_selector/golay_adaptive_m_dataset.cpp.s
+.PHONY : adaptive_path_selector/golay_adaptive_m_dataset.s
+
+# target to generate assembly for a file
+adaptive_path_selector/golay_adaptive_m_dataset.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/adaptive_path_selector/golay_adaptive_m_dataset.cpp.s
+.PHONY : adaptive_path_selector/golay_adaptive_m_dataset.cpp.s
+
 common/golay_mclass_bler_sim.o: common/golay_mclass_bler_sim.cpp.o
 .PHONY : common/golay_mclass_bler_sim.o
 
@@ -197,6 +234,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.o: home/eirin/Polar_
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.i: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.i
@@ -206,6 +244,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.i: home/eirin/Polar_
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.s: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.s
@@ -215,6 +254,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.s: home/eirin/Polar_
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.o: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
@@ -224,6 +264,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.i: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
@@ -233,6 +274,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.s: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
@@ -242,6 +284,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.o: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.o
@@ -251,6 +294,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.o: home/ei
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.i: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.i
@@ -260,6 +304,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.i: home/ei
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.s: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.s
@@ -269,6 +314,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.s: home/ei
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/KernalManager.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.o: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.o
@@ -278,6 +324,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.i: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.i
@@ -287,6 +334,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.s: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.s
@@ -296,6 +344,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/PolarMultiKernal_PS_PED.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.o: home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
@@ -305,6 +354,7 @@ home/eirin/Polar_eirin_20260107/src/channel/AWGN.o: home/eirin/Polar_eirin_20260
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.i: home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
@@ -314,6 +364,7 @@ home/eirin/Polar_eirin_20260107/src/channel/AWGN.i: home/eirin/Polar_eirin_20260
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.s: home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
@@ -323,6 +374,7 @@ home/eirin/Polar_eirin_20260107/src/channel/AWGN.s: home/eirin/Polar_eirin_20260
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.o: home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
@@ -332,6 +384,7 @@ home/eirin/Polar_eirin_20260107/src/channel/channelBase.o: home/eirin/Polar_eiri
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.i: home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
@@ -341,6 +394,7 @@ home/eirin/Polar_eirin_20260107/src/channel/channelBase.i: home/eirin/Polar_eiri
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.s: home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
@@ -350,6 +404,7 @@ home/eirin/Polar_eirin_20260107/src/channel/channelBase.s: home/eirin/Polar_eiri
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/lib/libMath.o: home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
@@ -359,6 +414,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libMath.o: home/eirin/Polar_eirin_202601
 home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/lib/libMath.i: home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
@@ -368,6 +424,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libMath.i: home/eirin/Polar_eirin_202601
 home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/lib/libMath.s: home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
@@ -377,6 +434,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libMath.s: home/eirin/Polar_eirin_202601
 home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/lib/libParser.o: home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
@@ -386,6 +444,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.o: home/eirin/Polar_eirin_2026
 home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/lib/libParser.i: home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
@@ -395,6 +454,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.i: home/eirin/Polar_eirin_2026
 home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/lib/libParser.s: home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
@@ -404,6 +464,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.s: home/eirin/Polar_eirin_2026
 home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 
 # Help Target
@@ -414,8 +475,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... golay_adaptive_m_dataset"
 	@echo "... golay_mclass_bler_sim"
 	@echo "... golay_trace_dataset"
+	@echo "... adaptive_path_selector/golay_adaptive_m_dataset.o"
+	@echo "... adaptive_path_selector/golay_adaptive_m_dataset.i"
+	@echo "... adaptive_path_selector/golay_adaptive_m_dataset.s"
 	@echo "... common/golay_mclass_bler_sim.o"
 	@echo "... common/golay_mclass_bler_sim.i"
 	@echo "... common/golay_mclass_bler_sim.s"

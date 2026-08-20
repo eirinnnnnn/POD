@@ -1,0 +1,3 @@
+snr,L,method,samples,errors,bler
+2.0,45,pure_scl,20001.0,175.0,0.00874956
+2.0,55,pure_scl,13715.0,100.0,0.00729129

@@ -246,6 +246,43 @@ mclass_bler_sim/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/build
 .PHONY : mclass_bler_sim/fast
 
+#=============================================================================
+# Target rules for targets named mclass_adaptive_m_dataset
+
+# Build rule for target.
+mclass_adaptive_m_dataset: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mclass_adaptive_m_dataset
+.PHONY : mclass_adaptive_m_dataset
+
+# fast build rule for target.
+mclass_adaptive_m_dataset/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/build
+.PHONY : mclass_adaptive_m_dataset/fast
+
+adaptive_path_selector/mclass_adaptive_m_dataset.o: adaptive_path_selector/mclass_adaptive_m_dataset.cpp.o
+.PHONY : adaptive_path_selector/mclass_adaptive_m_dataset.o
+
+# target to build an object file
+adaptive_path_selector/mclass_adaptive_m_dataset.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/adaptive_path_selector/mclass_adaptive_m_dataset.cpp.o
+.PHONY : adaptive_path_selector/mclass_adaptive_m_dataset.cpp.o
+
+adaptive_path_selector/mclass_adaptive_m_dataset.i: adaptive_path_selector/mclass_adaptive_m_dataset.cpp.i
+.PHONY : adaptive_path_selector/mclass_adaptive_m_dataset.i
+
+# target to preprocess a source file
+adaptive_path_selector/mclass_adaptive_m_dataset.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/adaptive_path_selector/mclass_adaptive_m_dataset.cpp.i
+.PHONY : adaptive_path_selector/mclass_adaptive_m_dataset.cpp.i
+
+adaptive_path_selector/mclass_adaptive_m_dataset.s: adaptive_path_selector/mclass_adaptive_m_dataset.cpp.s
+.PHONY : adaptive_path_selector/mclass_adaptive_m_dataset.s
+
+# target to generate assembly for a file
+adaptive_path_selector/mclass_adaptive_m_dataset.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/adaptive_path_selector/mclass_adaptive_m_dataset.cpp.s
+.PHONY : adaptive_path_selector/mclass_adaptive_m_dataset.cpp.s
+
 common/mclass_bler_sim.o: common/mclass_bler_sim.cpp.o
 .PHONY : common/mclass_bler_sim.o
 
@@ -308,6 +345,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.i: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.i
@@ -324,6 +362,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.s: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.s
@@ -340,6 +379,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.o: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.o
@@ -356,6 +396,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.i: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.i
@@ -372,6 +413,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.s: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.s
@@ -388,6 +430,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_relation_check.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.o: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
@@ -404,6 +447,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.i: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
@@ -420,6 +464,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.s: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
@@ -436,6 +481,7 @@ home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/ErrorCorrectionCodeBase.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.o: home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
@@ -452,6 +498,7 @@ home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.i: home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
@@ -468,6 +515,7 @@ home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/channel/AWGN.s: home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
@@ -484,6 +532,7 @@ home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/AWGN.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.o: home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
@@ -500,6 +549,7 @@ home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.i: home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
@@ -516,6 +566,7 @@ home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/channel/channelBase.s: home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
@@ -532,6 +583,7 @@ home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/channel/channelBase.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/lib/libMath.o: home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
@@ -548,6 +600,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/lib/libMath.i: home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
@@ -564,6 +617,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/lib/libMath.s: home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
@@ -580,6 +634,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libMath.cpp.s
 
 home/eirin/Polar_eirin_20260107/src/lib/libParser.o: home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
@@ -596,6 +651,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.o
 
 home/eirin/Polar_eirin_20260107/src/lib/libParser.i: home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
@@ -612,6 +668,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.i
 
 home/eirin/Polar_eirin_20260107/src/lib/libParser.s: home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
@@ -628,6 +685,7 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 
 past_experiments/mclass_branch_orders.o: past_experiments/mclass_branch_orders.cpp.o
@@ -830,6 +888,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... mclass_adaptive_m_dataset"
 	@echo "... mclass_bler_sim"
 	@echo "... mclass_branch_orders"
 	@echo "... mclass_code_structure"
@@ -840,6 +899,9 @@ help:
 	@echo "... mclass_perturb_audit"
 	@echo "... mclass_selected_llr"
 	@echo "... mclass_trace_dataset"
+	@echo "... adaptive_path_selector/mclass_adaptive_m_dataset.o"
+	@echo "... adaptive_path_selector/mclass_adaptive_m_dataset.i"
+	@echo "... adaptive_path_selector/mclass_adaptive_m_dataset.s"
 	@echo "... common/mclass_bler_sim.o"
 	@echo "... common/mclass_bler_sim.i"
 	@echo "... common/mclass_bler_sim.s"

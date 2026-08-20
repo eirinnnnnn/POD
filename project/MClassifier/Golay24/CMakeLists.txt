@@ -35,3 +35,8 @@ add_executable(golay_trace_dataset
         common/golay_trace_dataset.cpp
         ${common_src}
     )
+
+add_executable(golay_adaptive_m_dataset
+        adaptive_path_selector/golay_adaptive_m_dataset.cpp
+        ${common_src}
+    )

@@ -1,0 +1,2 @@
+# Empty dependencies file for golay_adaptive_m_dataset.
+# This may be replaced when dependencies are built.

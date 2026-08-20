@@ -4,8 +4,13 @@ import re
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+
+# Embed TrueType fonts in EPS and PDF output instead of EDAS-rejected Type 3 fonts.
+mpl.rcParams["ps.fonttype"] = 42
+mpl.rcParams["pdf.fonttype"] = 42
 
 LINE_RE = re.compile(
     r"SNR\s*=\s*([+-]?\d+(?:\.\d+)?)\s*,.*?BLER\s*=\s*\d+\s*/\s*\d+\s*=\s*([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)"
