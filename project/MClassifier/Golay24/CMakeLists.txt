@@ -13,7 +13,7 @@ include_directories("../../../src/ErrorCorrectionCode")
 include_directories("../../../src/lib")
 include_directories("../../../src/channel")
 include_directories(".")
-include_directories("common")
+include_directories("trace_learnt_path_selector/common")
 
 set(common_src
         ../../../src/lib/libMath.cpp
@@ -27,12 +27,12 @@ set(common_src
     )
 
 add_executable(golay_mclass_bler_sim
-        common/golay_mclass_bler_sim.cpp
+        trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp
         ${common_src}
     )
 
 add_executable(golay_trace_dataset
-        common/golay_trace_dataset.cpp
+        trace_learnt_path_selector/common/golay_trace_dataset.cpp
         ${common_src}
     )
 

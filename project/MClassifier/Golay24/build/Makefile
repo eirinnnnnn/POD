@@ -179,54 +179,6 @@ adaptive_path_selector/golay_adaptive_m_dataset.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/adaptive_path_selector/golay_adaptive_m_dataset.cpp.s
 .PHONY : adaptive_path_selector/golay_adaptive_m_dataset.cpp.s
 
-common/golay_mclass_bler_sim.o: common/golay_mclass_bler_sim.cpp.o
-.PHONY : common/golay_mclass_bler_sim.o
-
-# target to build an object file
-common/golay_mclass_bler_sim.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/common/golay_mclass_bler_sim.cpp.o
-.PHONY : common/golay_mclass_bler_sim.cpp.o
-
-common/golay_mclass_bler_sim.i: common/golay_mclass_bler_sim.cpp.i
-.PHONY : common/golay_mclass_bler_sim.i
-
-# target to preprocess a source file
-common/golay_mclass_bler_sim.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/common/golay_mclass_bler_sim.cpp.i
-.PHONY : common/golay_mclass_bler_sim.cpp.i
-
-common/golay_mclass_bler_sim.s: common/golay_mclass_bler_sim.cpp.s
-.PHONY : common/golay_mclass_bler_sim.s
-
-# target to generate assembly for a file
-common/golay_mclass_bler_sim.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/common/golay_mclass_bler_sim.cpp.s
-.PHONY : common/golay_mclass_bler_sim.cpp.s
-
-common/golay_trace_dataset.o: common/golay_trace_dataset.cpp.o
-.PHONY : common/golay_trace_dataset.o
-
-# target to build an object file
-common/golay_trace_dataset.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/common/golay_trace_dataset.cpp.o
-.PHONY : common/golay_trace_dataset.cpp.o
-
-common/golay_trace_dataset.i: common/golay_trace_dataset.cpp.i
-.PHONY : common/golay_trace_dataset.i
-
-# target to preprocess a source file
-common/golay_trace_dataset.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/common/golay_trace_dataset.cpp.i
-.PHONY : common/golay_trace_dataset.cpp.i
-
-common/golay_trace_dataset.s: common/golay_trace_dataset.cpp.s
-.PHONY : common/golay_trace_dataset.s
-
-# target to generate assembly for a file
-common/golay_trace_dataset.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/common/golay_trace_dataset.cpp.s
-.PHONY : common/golay_trace_dataset.cpp.s
-
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.o: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.o
 
@@ -467,6 +419,54 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 
+trace_learnt_path_selector/common/golay_mclass_bler_sim.o: trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o
+.PHONY : trace_learnt_path_selector/common/golay_mclass_bler_sim.o
+
+# target to build an object file
+trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o
+.PHONY : trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.o
+
+trace_learnt_path_selector/common/golay_mclass_bler_sim.i: trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.i
+.PHONY : trace_learnt_path_selector/common/golay_mclass_bler_sim.i
+
+# target to preprocess a source file
+trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.i
+.PHONY : trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.i
+
+trace_learnt_path_selector/common/golay_mclass_bler_sim.s: trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.s
+.PHONY : trace_learnt_path_selector/common/golay_mclass_bler_sim.s
+
+# target to generate assembly for a file
+trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.s
+.PHONY : trace_learnt_path_selector/common/golay_mclass_bler_sim.cpp.s
+
+trace_learnt_path_selector/common/golay_trace_dataset.o: trace_learnt_path_selector/common/golay_trace_dataset.cpp.o
+.PHONY : trace_learnt_path_selector/common/golay_trace_dataset.o
+
+# target to build an object file
+trace_learnt_path_selector/common/golay_trace_dataset.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/trace_learnt_path_selector/common/golay_trace_dataset.cpp.o
+.PHONY : trace_learnt_path_selector/common/golay_trace_dataset.cpp.o
+
+trace_learnt_path_selector/common/golay_trace_dataset.i: trace_learnt_path_selector/common/golay_trace_dataset.cpp.i
+.PHONY : trace_learnt_path_selector/common/golay_trace_dataset.i
+
+# target to preprocess a source file
+trace_learnt_path_selector/common/golay_trace_dataset.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/trace_learnt_path_selector/common/golay_trace_dataset.cpp.i
+.PHONY : trace_learnt_path_selector/common/golay_trace_dataset.cpp.i
+
+trace_learnt_path_selector/common/golay_trace_dataset.s: trace_learnt_path_selector/common/golay_trace_dataset.cpp.s
+.PHONY : trace_learnt_path_selector/common/golay_trace_dataset.s
+
+# target to generate assembly for a file
+trace_learnt_path_selector/common/golay_trace_dataset.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/trace_learnt_path_selector/common/golay_trace_dataset.cpp.s
+.PHONY : trace_learnt_path_selector/common/golay_trace_dataset.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -481,12 +481,6 @@ help:
 	@echo "... adaptive_path_selector/golay_adaptive_m_dataset.o"
 	@echo "... adaptive_path_selector/golay_adaptive_m_dataset.i"
 	@echo "... adaptive_path_selector/golay_adaptive_m_dataset.s"
-	@echo "... common/golay_mclass_bler_sim.o"
-	@echo "... common/golay_mclass_bler_sim.i"
-	@echo "... common/golay_mclass_bler_sim.s"
-	@echo "... common/golay_trace_dataset.o"
-	@echo "... common/golay_trace_dataset.i"
-	@echo "... common/golay_trace_dataset.s"
 	@echo "... home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.o"
 	@echo "... home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.i"
 	@echo "... home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/BCH.s"
@@ -511,6 +505,12 @@ help:
 	@echo "... home/eirin/Polar_eirin_20260107/src/lib/libParser.o"
 	@echo "... home/eirin/Polar_eirin_20260107/src/lib/libParser.i"
 	@echo "... home/eirin/Polar_eirin_20260107/src/lib/libParser.s"
+	@echo "... trace_learnt_path_selector/common/golay_mclass_bler_sim.o"
+	@echo "... trace_learnt_path_selector/common/golay_mclass_bler_sim.i"
+	@echo "... trace_learnt_path_selector/common/golay_mclass_bler_sim.s"
+	@echo "... trace_learnt_path_selector/common/golay_trace_dataset.o"
+	@echo "... trace_learnt_path_selector/common/golay_trace_dataset.i"
+	@echo "... trace_learnt_path_selector/common/golay_trace_dataset.s"
 .PHONY : help
 
 

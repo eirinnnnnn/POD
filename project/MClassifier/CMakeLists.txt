@@ -26,51 +26,51 @@ set(common_src
     )
 
 add_executable(mclass_dataset
-        past_experiments/mclass_dataset.cpp
+        trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp
         ${common_src}
     )
 
 add_executable(mclass_eval
-        tools/mclass_eval.cpp
+        trace_learnt_path_selector/tools/mclass_eval.cpp
     )
 
 add_executable(mclass_selected_llr
-        past_experiments/mclass_selected_llr.cpp
+        trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp
         ${common_src}
     )
 
 add_executable(mclass_llr_proxy
-        past_experiments/mclass_llr_proxy.cpp
+        trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp
         ${common_src}
     )
 
 add_executable(mclass_branch_orders
-        past_experiments/mclass_branch_orders.cpp
+        trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp
         ${common_src}
     )
 
 add_executable(mclass_perturb_audit
-        past_experiments/mclass_perturb_audit.cpp
+        trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp
         ${common_src}
     )
 
 add_executable(mclass_trace_dataset
-        common/mclass_trace_dataset.cpp
+        trace_learnt_path_selector/common/mclass_trace_dataset.cpp
         ${common_src}
     )
 
 add_executable(mclass_code_structure
-        past_experiments/mclass_code_structure.cpp
+        trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp
         ${common_src}
     )
 
 add_executable(mclass_gmatrix_dump
-        past_experiments/mclass_gmatrix_dump.cpp
+        trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp
         ${common_src}
     )
 
 add_executable(mclass_bler_sim
-        common/mclass_bler_sim.cpp
+        trace_learnt_path_selector/common/mclass_bler_sim.cpp
         ${common_src}
     )
 

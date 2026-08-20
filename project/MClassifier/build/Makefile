@@ -283,54 +283,6 @@ adaptive_path_selector/mclass_adaptive_m_dataset.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/adaptive_path_selector/mclass_adaptive_m_dataset.cpp.s
 .PHONY : adaptive_path_selector/mclass_adaptive_m_dataset.cpp.s
 
-common/mclass_bler_sim.o: common/mclass_bler_sim.cpp.o
-.PHONY : common/mclass_bler_sim.o
-
-# target to build an object file
-common/mclass_bler_sim.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/common/mclass_bler_sim.cpp.o
-.PHONY : common/mclass_bler_sim.cpp.o
-
-common/mclass_bler_sim.i: common/mclass_bler_sim.cpp.i
-.PHONY : common/mclass_bler_sim.i
-
-# target to preprocess a source file
-common/mclass_bler_sim.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/common/mclass_bler_sim.cpp.i
-.PHONY : common/mclass_bler_sim.cpp.i
-
-common/mclass_bler_sim.s: common/mclass_bler_sim.cpp.s
-.PHONY : common/mclass_bler_sim.s
-
-# target to generate assembly for a file
-common/mclass_bler_sim.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/common/mclass_bler_sim.cpp.s
-.PHONY : common/mclass_bler_sim.cpp.s
-
-common/mclass_trace_dataset.o: common/mclass_trace_dataset.cpp.o
-.PHONY : common/mclass_trace_dataset.o
-
-# target to build an object file
-common/mclass_trace_dataset.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_trace_dataset.dir/build.make CMakeFiles/mclass_trace_dataset.dir/common/mclass_trace_dataset.cpp.o
-.PHONY : common/mclass_trace_dataset.cpp.o
-
-common/mclass_trace_dataset.i: common/mclass_trace_dataset.cpp.i
-.PHONY : common/mclass_trace_dataset.i
-
-# target to preprocess a source file
-common/mclass_trace_dataset.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_trace_dataset.dir/build.make CMakeFiles/mclass_trace_dataset.dir/common/mclass_trace_dataset.cpp.i
-.PHONY : common/mclass_trace_dataset.cpp.i
-
-common/mclass_trace_dataset.s: common/mclass_trace_dataset.cpp.s
-.PHONY : common/mclass_trace_dataset.s
-
-# target to generate assembly for a file
-common/mclass_trace_dataset.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_trace_dataset.dir/build.make CMakeFiles/mclass_trace_dataset.dir/common/mclass_trace_dataset.cpp.s
-.PHONY : common/mclass_trace_dataset.cpp.s
-
 home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.o: home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.cpp.o
 .PHONY : home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.o
 
@@ -688,197 +640,245 @@ home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_adaptive_m_dataset.dir/build.make CMakeFiles/mclass_adaptive_m_dataset.dir/home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 .PHONY : home/eirin/Polar_eirin_20260107/src/lib/libParser.cpp.s
 
-past_experiments/mclass_branch_orders.o: past_experiments/mclass_branch_orders.cpp.o
-.PHONY : past_experiments/mclass_branch_orders.o
+trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.o: trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.o
 
 # target to build an object file
-past_experiments/mclass_branch_orders.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_branch_orders.dir/build.make CMakeFiles/mclass_branch_orders.dir/past_experiments/mclass_branch_orders.cpp.o
-.PHONY : past_experiments/mclass_branch_orders.cpp.o
+trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_branch_orders.dir/build.make CMakeFiles/mclass_branch_orders.dir/trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.o
 
-past_experiments/mclass_branch_orders.i: past_experiments/mclass_branch_orders.cpp.i
-.PHONY : past_experiments/mclass_branch_orders.i
+trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.i: trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.i
 
 # target to preprocess a source file
-past_experiments/mclass_branch_orders.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_branch_orders.dir/build.make CMakeFiles/mclass_branch_orders.dir/past_experiments/mclass_branch_orders.cpp.i
-.PHONY : past_experiments/mclass_branch_orders.cpp.i
+trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_branch_orders.dir/build.make CMakeFiles/mclass_branch_orders.dir/trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.i
 
-past_experiments/mclass_branch_orders.s: past_experiments/mclass_branch_orders.cpp.s
-.PHONY : past_experiments/mclass_branch_orders.s
+trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.s: trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.s
 
 # target to generate assembly for a file
-past_experiments/mclass_branch_orders.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_branch_orders.dir/build.make CMakeFiles/mclass_branch_orders.dir/past_experiments/mclass_branch_orders.cpp.s
-.PHONY : past_experiments/mclass_branch_orders.cpp.s
+trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_branch_orders.dir/build.make CMakeFiles/mclass_branch_orders.dir/trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.cpp.s
 
-past_experiments/mclass_code_structure.o: past_experiments/mclass_code_structure.cpp.o
-.PHONY : past_experiments/mclass_code_structure.o
+trace_learnt_path_selector/architecture_experiments/mclass_code_structure.o: trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_code_structure.o
 
 # target to build an object file
-past_experiments/mclass_code_structure.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/past_experiments/mclass_code_structure.cpp.o
-.PHONY : past_experiments/mclass_code_structure.cpp.o
+trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.o
 
-past_experiments/mclass_code_structure.i: past_experiments/mclass_code_structure.cpp.i
-.PHONY : past_experiments/mclass_code_structure.i
+trace_learnt_path_selector/architecture_experiments/mclass_code_structure.i: trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_code_structure.i
 
 # target to preprocess a source file
-past_experiments/mclass_code_structure.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/past_experiments/mclass_code_structure.cpp.i
-.PHONY : past_experiments/mclass_code_structure.cpp.i
+trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.i
 
-past_experiments/mclass_code_structure.s: past_experiments/mclass_code_structure.cpp.s
-.PHONY : past_experiments/mclass_code_structure.s
+trace_learnt_path_selector/architecture_experiments/mclass_code_structure.s: trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_code_structure.s
 
 # target to generate assembly for a file
-past_experiments/mclass_code_structure.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/past_experiments/mclass_code_structure.cpp.s
-.PHONY : past_experiments/mclass_code_structure.cpp.s
+trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_code_structure.dir/build.make CMakeFiles/mclass_code_structure.dir/trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_code_structure.cpp.s
 
-past_experiments/mclass_dataset.o: past_experiments/mclass_dataset.cpp.o
-.PHONY : past_experiments/mclass_dataset.o
+trace_learnt_path_selector/architecture_experiments/mclass_dataset.o: trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_dataset.o
 
 # target to build an object file
-past_experiments/mclass_dataset.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_dataset.dir/build.make CMakeFiles/mclass_dataset.dir/past_experiments/mclass_dataset.cpp.o
-.PHONY : past_experiments/mclass_dataset.cpp.o
+trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_dataset.dir/build.make CMakeFiles/mclass_dataset.dir/trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.o
 
-past_experiments/mclass_dataset.i: past_experiments/mclass_dataset.cpp.i
-.PHONY : past_experiments/mclass_dataset.i
+trace_learnt_path_selector/architecture_experiments/mclass_dataset.i: trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_dataset.i
 
 # target to preprocess a source file
-past_experiments/mclass_dataset.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_dataset.dir/build.make CMakeFiles/mclass_dataset.dir/past_experiments/mclass_dataset.cpp.i
-.PHONY : past_experiments/mclass_dataset.cpp.i
+trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_dataset.dir/build.make CMakeFiles/mclass_dataset.dir/trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.i
 
-past_experiments/mclass_dataset.s: past_experiments/mclass_dataset.cpp.s
-.PHONY : past_experiments/mclass_dataset.s
+trace_learnt_path_selector/architecture_experiments/mclass_dataset.s: trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_dataset.s
 
 # target to generate assembly for a file
-past_experiments/mclass_dataset.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_dataset.dir/build.make CMakeFiles/mclass_dataset.dir/past_experiments/mclass_dataset.cpp.s
-.PHONY : past_experiments/mclass_dataset.cpp.s
+trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_dataset.dir/build.make CMakeFiles/mclass_dataset.dir/trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_dataset.cpp.s
 
-past_experiments/mclass_gmatrix_dump.o: past_experiments/mclass_gmatrix_dump.cpp.o
-.PHONY : past_experiments/mclass_gmatrix_dump.o
+trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.o: trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.o
 
 # target to build an object file
-past_experiments/mclass_gmatrix_dump.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/past_experiments/mclass_gmatrix_dump.cpp.o
-.PHONY : past_experiments/mclass_gmatrix_dump.cpp.o
+trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.o
 
-past_experiments/mclass_gmatrix_dump.i: past_experiments/mclass_gmatrix_dump.cpp.i
-.PHONY : past_experiments/mclass_gmatrix_dump.i
+trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.i: trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.i
 
 # target to preprocess a source file
-past_experiments/mclass_gmatrix_dump.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/past_experiments/mclass_gmatrix_dump.cpp.i
-.PHONY : past_experiments/mclass_gmatrix_dump.cpp.i
+trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.i
 
-past_experiments/mclass_gmatrix_dump.s: past_experiments/mclass_gmatrix_dump.cpp.s
-.PHONY : past_experiments/mclass_gmatrix_dump.s
+trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.s: trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.s
 
 # target to generate assembly for a file
-past_experiments/mclass_gmatrix_dump.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/past_experiments/mclass_gmatrix_dump.cpp.s
-.PHONY : past_experiments/mclass_gmatrix_dump.cpp.s
+trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_gmatrix_dump.dir/build.make CMakeFiles/mclass_gmatrix_dump.dir/trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.cpp.s
 
-past_experiments/mclass_llr_proxy.o: past_experiments/mclass_llr_proxy.cpp.o
-.PHONY : past_experiments/mclass_llr_proxy.o
+trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.o: trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.o
 
 # target to build an object file
-past_experiments/mclass_llr_proxy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_llr_proxy.dir/build.make CMakeFiles/mclass_llr_proxy.dir/past_experiments/mclass_llr_proxy.cpp.o
-.PHONY : past_experiments/mclass_llr_proxy.cpp.o
+trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_llr_proxy.dir/build.make CMakeFiles/mclass_llr_proxy.dir/trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.o
 
-past_experiments/mclass_llr_proxy.i: past_experiments/mclass_llr_proxy.cpp.i
-.PHONY : past_experiments/mclass_llr_proxy.i
+trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.i: trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.i
 
 # target to preprocess a source file
-past_experiments/mclass_llr_proxy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_llr_proxy.dir/build.make CMakeFiles/mclass_llr_proxy.dir/past_experiments/mclass_llr_proxy.cpp.i
-.PHONY : past_experiments/mclass_llr_proxy.cpp.i
+trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_llr_proxy.dir/build.make CMakeFiles/mclass_llr_proxy.dir/trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.i
 
-past_experiments/mclass_llr_proxy.s: past_experiments/mclass_llr_proxy.cpp.s
-.PHONY : past_experiments/mclass_llr_proxy.s
+trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.s: trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.s
 
 # target to generate assembly for a file
-past_experiments/mclass_llr_proxy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_llr_proxy.dir/build.make CMakeFiles/mclass_llr_proxy.dir/past_experiments/mclass_llr_proxy.cpp.s
-.PHONY : past_experiments/mclass_llr_proxy.cpp.s
+trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_llr_proxy.dir/build.make CMakeFiles/mclass_llr_proxy.dir/trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.cpp.s
 
-past_experiments/mclass_perturb_audit.o: past_experiments/mclass_perturb_audit.cpp.o
-.PHONY : past_experiments/mclass_perturb_audit.o
+trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.o: trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.o
 
 # target to build an object file
-past_experiments/mclass_perturb_audit.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_perturb_audit.dir/build.make CMakeFiles/mclass_perturb_audit.dir/past_experiments/mclass_perturb_audit.cpp.o
-.PHONY : past_experiments/mclass_perturb_audit.cpp.o
+trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_perturb_audit.dir/build.make CMakeFiles/mclass_perturb_audit.dir/trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.o
 
-past_experiments/mclass_perturb_audit.i: past_experiments/mclass_perturb_audit.cpp.i
-.PHONY : past_experiments/mclass_perturb_audit.i
+trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.i: trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.i
 
 # target to preprocess a source file
-past_experiments/mclass_perturb_audit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_perturb_audit.dir/build.make CMakeFiles/mclass_perturb_audit.dir/past_experiments/mclass_perturb_audit.cpp.i
-.PHONY : past_experiments/mclass_perturb_audit.cpp.i
+trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_perturb_audit.dir/build.make CMakeFiles/mclass_perturb_audit.dir/trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.i
 
-past_experiments/mclass_perturb_audit.s: past_experiments/mclass_perturb_audit.cpp.s
-.PHONY : past_experiments/mclass_perturb_audit.s
+trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.s: trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.s
 
 # target to generate assembly for a file
-past_experiments/mclass_perturb_audit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_perturb_audit.dir/build.make CMakeFiles/mclass_perturb_audit.dir/past_experiments/mclass_perturb_audit.cpp.s
-.PHONY : past_experiments/mclass_perturb_audit.cpp.s
+trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_perturb_audit.dir/build.make CMakeFiles/mclass_perturb_audit.dir/trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.cpp.s
 
-past_experiments/mclass_selected_llr.o: past_experiments/mclass_selected_llr.cpp.o
-.PHONY : past_experiments/mclass_selected_llr.o
+trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.o: trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.o
 
 # target to build an object file
-past_experiments/mclass_selected_llr.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_selected_llr.dir/build.make CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.o
-.PHONY : past_experiments/mclass_selected_llr.cpp.o
+trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_selected_llr.dir/build.make CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.o
 
-past_experiments/mclass_selected_llr.i: past_experiments/mclass_selected_llr.cpp.i
-.PHONY : past_experiments/mclass_selected_llr.i
+trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.i: trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.i
 
 # target to preprocess a source file
-past_experiments/mclass_selected_llr.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_selected_llr.dir/build.make CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.i
-.PHONY : past_experiments/mclass_selected_llr.cpp.i
+trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_selected_llr.dir/build.make CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.i
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.i
 
-past_experiments/mclass_selected_llr.s: past_experiments/mclass_selected_llr.cpp.s
-.PHONY : past_experiments/mclass_selected_llr.s
+trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.s: trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.s
 
 # target to generate assembly for a file
-past_experiments/mclass_selected_llr.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_selected_llr.dir/build.make CMakeFiles/mclass_selected_llr.dir/past_experiments/mclass_selected_llr.cpp.s
-.PHONY : past_experiments/mclass_selected_llr.cpp.s
+trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_selected_llr.dir/build.make CMakeFiles/mclass_selected_llr.dir/trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.s
+.PHONY : trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.cpp.s
 
-tools/mclass_eval.o: tools/mclass_eval.cpp.o
-.PHONY : tools/mclass_eval.o
+trace_learnt_path_selector/common/mclass_bler_sim.o: trace_learnt_path_selector/common/mclass_bler_sim.cpp.o
+.PHONY : trace_learnt_path_selector/common/mclass_bler_sim.o
 
 # target to build an object file
-tools/mclass_eval.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_eval.dir/build.make CMakeFiles/mclass_eval.dir/tools/mclass_eval.cpp.o
-.PHONY : tools/mclass_eval.cpp.o
+trace_learnt_path_selector/common/mclass_bler_sim.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/trace_learnt_path_selector/common/mclass_bler_sim.cpp.o
+.PHONY : trace_learnt_path_selector/common/mclass_bler_sim.cpp.o
 
-tools/mclass_eval.i: tools/mclass_eval.cpp.i
-.PHONY : tools/mclass_eval.i
+trace_learnt_path_selector/common/mclass_bler_sim.i: trace_learnt_path_selector/common/mclass_bler_sim.cpp.i
+.PHONY : trace_learnt_path_selector/common/mclass_bler_sim.i
 
 # target to preprocess a source file
-tools/mclass_eval.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_eval.dir/build.make CMakeFiles/mclass_eval.dir/tools/mclass_eval.cpp.i
-.PHONY : tools/mclass_eval.cpp.i
+trace_learnt_path_selector/common/mclass_bler_sim.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/trace_learnt_path_selector/common/mclass_bler_sim.cpp.i
+.PHONY : trace_learnt_path_selector/common/mclass_bler_sim.cpp.i
 
-tools/mclass_eval.s: tools/mclass_eval.cpp.s
-.PHONY : tools/mclass_eval.s
+trace_learnt_path_selector/common/mclass_bler_sim.s: trace_learnt_path_selector/common/mclass_bler_sim.cpp.s
+.PHONY : trace_learnt_path_selector/common/mclass_bler_sim.s
 
 # target to generate assembly for a file
-tools/mclass_eval.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_eval.dir/build.make CMakeFiles/mclass_eval.dir/tools/mclass_eval.cpp.s
-.PHONY : tools/mclass_eval.cpp.s
+trace_learnt_path_selector/common/mclass_bler_sim.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_bler_sim.dir/build.make CMakeFiles/mclass_bler_sim.dir/trace_learnt_path_selector/common/mclass_bler_sim.cpp.s
+.PHONY : trace_learnt_path_selector/common/mclass_bler_sim.cpp.s
+
+trace_learnt_path_selector/common/mclass_trace_dataset.o: trace_learnt_path_selector/common/mclass_trace_dataset.cpp.o
+.PHONY : trace_learnt_path_selector/common/mclass_trace_dataset.o
+
+# target to build an object file
+trace_learnt_path_selector/common/mclass_trace_dataset.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_trace_dataset.dir/build.make CMakeFiles/mclass_trace_dataset.dir/trace_learnt_path_selector/common/mclass_trace_dataset.cpp.o
+.PHONY : trace_learnt_path_selector/common/mclass_trace_dataset.cpp.o
+
+trace_learnt_path_selector/common/mclass_trace_dataset.i: trace_learnt_path_selector/common/mclass_trace_dataset.cpp.i
+.PHONY : trace_learnt_path_selector/common/mclass_trace_dataset.i
+
+# target to preprocess a source file
+trace_learnt_path_selector/common/mclass_trace_dataset.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_trace_dataset.dir/build.make CMakeFiles/mclass_trace_dataset.dir/trace_learnt_path_selector/common/mclass_trace_dataset.cpp.i
+.PHONY : trace_learnt_path_selector/common/mclass_trace_dataset.cpp.i
+
+trace_learnt_path_selector/common/mclass_trace_dataset.s: trace_learnt_path_selector/common/mclass_trace_dataset.cpp.s
+.PHONY : trace_learnt_path_selector/common/mclass_trace_dataset.s
+
+# target to generate assembly for a file
+trace_learnt_path_selector/common/mclass_trace_dataset.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_trace_dataset.dir/build.make CMakeFiles/mclass_trace_dataset.dir/trace_learnt_path_selector/common/mclass_trace_dataset.cpp.s
+.PHONY : trace_learnt_path_selector/common/mclass_trace_dataset.cpp.s
+
+trace_learnt_path_selector/tools/mclass_eval.o: trace_learnt_path_selector/tools/mclass_eval.cpp.o
+.PHONY : trace_learnt_path_selector/tools/mclass_eval.o
+
+# target to build an object file
+trace_learnt_path_selector/tools/mclass_eval.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_eval.dir/build.make CMakeFiles/mclass_eval.dir/trace_learnt_path_selector/tools/mclass_eval.cpp.o
+.PHONY : trace_learnt_path_selector/tools/mclass_eval.cpp.o
+
+trace_learnt_path_selector/tools/mclass_eval.i: trace_learnt_path_selector/tools/mclass_eval.cpp.i
+.PHONY : trace_learnt_path_selector/tools/mclass_eval.i
+
+# target to preprocess a source file
+trace_learnt_path_selector/tools/mclass_eval.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_eval.dir/build.make CMakeFiles/mclass_eval.dir/trace_learnt_path_selector/tools/mclass_eval.cpp.i
+.PHONY : trace_learnt_path_selector/tools/mclass_eval.cpp.i
+
+trace_learnt_path_selector/tools/mclass_eval.s: trace_learnt_path_selector/tools/mclass_eval.cpp.s
+.PHONY : trace_learnt_path_selector/tools/mclass_eval.s
+
+# target to generate assembly for a file
+trace_learnt_path_selector/tools/mclass_eval.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mclass_eval.dir/build.make CMakeFiles/mclass_eval.dir/trace_learnt_path_selector/tools/mclass_eval.cpp.s
+.PHONY : trace_learnt_path_selector/tools/mclass_eval.cpp.s
 
 # Help Target
 help:
@@ -902,12 +902,6 @@ help:
 	@echo "... adaptive_path_selector/mclass_adaptive_m_dataset.o"
 	@echo "... adaptive_path_selector/mclass_adaptive_m_dataset.i"
 	@echo "... adaptive_path_selector/mclass_adaptive_m_dataset.s"
-	@echo "... common/mclass_bler_sim.o"
-	@echo "... common/mclass_bler_sim.i"
-	@echo "... common/mclass_bler_sim.s"
-	@echo "... common/mclass_trace_dataset.o"
-	@echo "... common/mclass_trace_dataset.i"
-	@echo "... common/mclass_trace_dataset.s"
 	@echo "... home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.o"
 	@echo "... home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.i"
 	@echo "... home/eirin/Polar_eirin_20260107/src/ErrorCorrectionCode/AED_attemp_20260102.s"
@@ -929,30 +923,36 @@ help:
 	@echo "... home/eirin/Polar_eirin_20260107/src/lib/libParser.o"
 	@echo "... home/eirin/Polar_eirin_20260107/src/lib/libParser.i"
 	@echo "... home/eirin/Polar_eirin_20260107/src/lib/libParser.s"
-	@echo "... past_experiments/mclass_branch_orders.o"
-	@echo "... past_experiments/mclass_branch_orders.i"
-	@echo "... past_experiments/mclass_branch_orders.s"
-	@echo "... past_experiments/mclass_code_structure.o"
-	@echo "... past_experiments/mclass_code_structure.i"
-	@echo "... past_experiments/mclass_code_structure.s"
-	@echo "... past_experiments/mclass_dataset.o"
-	@echo "... past_experiments/mclass_dataset.i"
-	@echo "... past_experiments/mclass_dataset.s"
-	@echo "... past_experiments/mclass_gmatrix_dump.o"
-	@echo "... past_experiments/mclass_gmatrix_dump.i"
-	@echo "... past_experiments/mclass_gmatrix_dump.s"
-	@echo "... past_experiments/mclass_llr_proxy.o"
-	@echo "... past_experiments/mclass_llr_proxy.i"
-	@echo "... past_experiments/mclass_llr_proxy.s"
-	@echo "... past_experiments/mclass_perturb_audit.o"
-	@echo "... past_experiments/mclass_perturb_audit.i"
-	@echo "... past_experiments/mclass_perturb_audit.s"
-	@echo "... past_experiments/mclass_selected_llr.o"
-	@echo "... past_experiments/mclass_selected_llr.i"
-	@echo "... past_experiments/mclass_selected_llr.s"
-	@echo "... tools/mclass_eval.o"
-	@echo "... tools/mclass_eval.i"
-	@echo "... tools/mclass_eval.s"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.o"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.i"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_branch_orders.s"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_code_structure.o"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_code_structure.i"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_code_structure.s"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_dataset.o"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_dataset.i"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_dataset.s"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.o"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.i"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_gmatrix_dump.s"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.o"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.i"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_llr_proxy.s"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.o"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.i"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_perturb_audit.s"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.o"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.i"
+	@echo "... trace_learnt_path_selector/architecture_experiments/mclass_selected_llr.s"
+	@echo "... trace_learnt_path_selector/common/mclass_bler_sim.o"
+	@echo "... trace_learnt_path_selector/common/mclass_bler_sim.i"
+	@echo "... trace_learnt_path_selector/common/mclass_bler_sim.s"
+	@echo "... trace_learnt_path_selector/common/mclass_trace_dataset.o"
+	@echo "... trace_learnt_path_selector/common/mclass_trace_dataset.i"
+	@echo "... trace_learnt_path_selector/common/mclass_trace_dataset.s"
+	@echo "... trace_learnt_path_selector/tools/mclass_eval.o"
+	@echo "... trace_learnt_path_selector/tools/mclass_eval.i"
+	@echo "... trace_learnt_path_selector/tools/mclass_eval.s"
 .PHONY : help
 
 
