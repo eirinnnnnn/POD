@@ -61,7 +61,9 @@ struct Args {
     std::string ini_path;
     double snr = 0.0;
     bool snr_set = false;
-    unsigned int samples = 0;
+    unsigned int samples = 0;      // hard cap, always respected
+    unsigned int target_errors = 0;  // 0 = disabled; else stop early once this many
+                                      // full_ped_correct==0 events are collected
     unsigned int checkpoint = 0;   // single ranking checkpoint t (decode_idx progress count, 1..codeword_length)
     long channel_seed = -2;
     long message_seed = -1;
@@ -80,6 +82,7 @@ static Args parseArgs(int argc, char **argv) {
         if (s == "-ini" || s == "--ini") a.ini_path = need(s);
         else if (s == "--snr") { a.snr = std::stod(need(s)); a.snr_set = true; }
         else if (s == "--samples") a.samples = (unsigned int)std::stoul(need(s));
+        else if (s == "--target-errors") a.target_errors = (unsigned int)std::stoul(need(s));
         else if (s == "--checkpoint") a.checkpoint = (unsigned int)std::stoul(need(s));
         else if (s == "--channel-seed") a.channel_seed = std::stol(need(s));
         else if (s == "--message-seed") a.message_seed = std::stol(need(s));
@@ -180,7 +183,9 @@ int main(int argc, char **argv) {
             out << ",t" << args.checkpoint << "_pm_min_sorted_" << r;
         out << "\n";
 
-        for (unsigned int s = 0; s < args.samples; s++) {
+        unsigned int error_count = 0;
+        unsigned int s = 0;
+        for (; s < args.samples; s++) {
             for (unsigned int i = 0; i < k; i++)
                 message[i] = (ran0(&msg_seed) > 0.5 ? 1 : 0);
             decoder.doEncode(message, codeword);
@@ -259,13 +264,20 @@ int main(int argc, char **argv) {
                 out << "," << traces[order[r]][rank_cp_pos].pm_min;
             out << "\n";
 
+            if (!correct[teacher]) error_count++;
+
             if ((s + 1) % 2000 == 0) {
-                std::cerr << "[progress] samples=" << (s + 1) << "/" << args.samples << "\n";
+                std::cerr << "[progress] samples=" << (s + 1) << "/" << args.samples
+                           << " errors=" << error_count << "\n";
                 std::cerr.flush();
+            }
+            if (args.target_errors > 0 && error_count >= args.target_errors) {
+                s++;  // count this sample in the final total
+                break;
             }
         }
         out.close();
-        std::cerr << "wrote " << args.out_path << " (samples=" << args.samples << ")\n";
+        std::cerr << "wrote " << args.out_path << " (samples=" << s << ", errors=" << error_count << ")\n";
         return 0;
     } catch (const std::exception &e) {
         std::cerr << "[fatal] " << e.what() << "\n";

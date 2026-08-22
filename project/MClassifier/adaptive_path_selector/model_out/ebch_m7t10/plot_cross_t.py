@@ -71,13 +71,21 @@ def run_side(sweep_dir, ckpt_path, feature_marker):
     for t in T_LIST:
         for snr in SNR_LIST:
             f = sweep_dir / "data" / "cross_t" / f"crosst_t{t}_snr{int(snr*100)}.csv"
+            log = sweep_dir / "data" / "cross_t" / f"crosst_t{t}_snr{int(snr*100)}_gen.log"
             if not f.exists():
                 print(f"  missing {f}, skipping")
                 continue
+            # Completion is signaled by the generator's own "wrote ..." line
+            # in its log, not by a fixed row-count threshold: with
+            # --target-errors early-stopping, a genuinely-finished point can
+            # have far fewer rows than the nominal --samples cap (e.g.
+            # 74k instead of 1M), so comparing against SNR_SAMPLES would
+            # wrongly treat it as still in progress.
+            if not (log.exists() and "wrote " in log.read_text()):
+                print(f"  t={t} SNR={snr}: no completion marker yet, still in progress, skipping")
+                continue
             X, y, any_basin = load_eval(f, feature_marker)
-            n = 0 if y is None else len(y)
-            if n < SNR_SAMPLES[snr]:
-                print(f"  t={t} SNR={snr}: only {n}/{SNR_SAMPLES[snr]} samples so far, still in progress, skipping")
+            if y is None:
                 continue
             pred_m = predict(ckpt, X)
             mean_m, bler = score(pred_m, y, any_basin)

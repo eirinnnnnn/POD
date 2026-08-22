@@ -19,6 +19,7 @@ for i, (snr, samples) in enumerate(SNR_SAMPLES):
     cs = 975001 + t*10 + i
     ms = 875001 + t*10 + i
     cmd = [str(SIM), "-ini", str(INI), "--snr", str(snr), "--samples", str(samples),
+           "--target-errors", "100",
            "--checkpoint", str(t), "--channel-seed", str(cs), "--message-seed", str(ms),
            "--out", str(out)]
     print(f"=== pm t=96 SNR={snr} ===", flush=True)
