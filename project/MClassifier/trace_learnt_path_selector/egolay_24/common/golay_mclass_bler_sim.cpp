@@ -350,9 +350,14 @@ int main(int argc, char **argv) {
 
         if (args.dump_frozen) {
             const std::vector<char> &df = decoder.divergeFlags();
-            for (unsigned int i = 0; i < df.size(); i++)
+            for (unsigned int i = 0; i < df.size(); i++) {
                 std::cout << "decode_idx=" << i << " " << (df[i] ? "info" : "frozen")
-                          << " relation_span=" << decoder.relationSpan(i) << "\n";
+                          << " relation_span=" << decoder.relationSpan(i) << " relation=[";
+                const std::vector<unsigned int> &rel = decoder.relationList(i);
+                for (unsigned int j = 0; j < rel.size(); j++)
+                    std::cout << (j ? "," : "") << rel[j];
+                std::cout << "]\n";
+            }
             return 0;
         }
 

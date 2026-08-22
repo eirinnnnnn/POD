@@ -126,6 +126,11 @@ public:
     // (deterministic given earlier decisions).
     const std::vector<char>& divergeFlags() const { return diverge_flag; }
     unsigned int relationSpan(unsigned int decode_idx) const { return (unsigned int)relation_ship[decode_idx].size(); }
+    // Raw dynamic-frozen relation row for decode_idx (see relation_ship
+    // comment above): empty for a genuine information bit; otherwise the
+    // earlier decode-order positions XORed together to force this bit,
+    // with the last entry equal to decode_idx itself.
+    const std::vector<unsigned int>& relationList(unsigned int decode_idx) const { return relation_ship[decode_idx]; }
     
 };
 

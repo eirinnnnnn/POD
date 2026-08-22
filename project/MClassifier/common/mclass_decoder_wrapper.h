@@ -76,6 +76,14 @@ public:
         return sizes;
     }
 
+    // Raw dynamic-frozen relation row for decode_idx: the SCL_mem indices
+    // (earlier decoded positions) whose hard decisions are XORed together to
+    // force this position's value. Empty for a genuine information bit. By
+    // construction the last entry equals decode_idx itself.
+    const std::vector<unsigned int>& relationList(unsigned int decode_idx) const {
+        return relation_ship[decode_idx];
+    }
+
     bool decodeBranchTrace(const std::vector<double> &received,
                            unsigned int branch_idx,
                            const std::vector<unsigned int> &checkpoints,

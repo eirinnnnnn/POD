@@ -1,0 +1,62 @@
+idx  0 : 0.971283
+idx  1 : 0.947432
+idx  2 : 0.572901
+idx  3 : 0.572477
+idx  4 : 0.424491
+idx  5 : 0.041475
+idx  6 : 0.423001
+idx  7 : 0.284293
+idx  8 : 0.013892
+idx  9 : 0.032725
+idx 10 : 0.016766
+idx 11 : 0.000004
+idx 12 : 0.276202
+idx 13 : 0.168185
+idx 14 : 0.003324
+idx 15 : 0.012017
+idx 16 : 0.006063
+idx 17 : 0.000000
+idx 18 : 0.006258
+idx 19 : 0.003144
+idx 20 : 0.000000
+idx 21 : 0.000005
+idx 22 : 0.000002
+idx 23 : 0.000000
+=   5, 0.041475
+=   8, 0.013892
+=   9, 0.032725
+=  10, 0.016766
+=  11, 0.000004
+=  15, 0.012017
+=  16, 0.006063
+=  18, 0.006258
+=  19, 0.003144
+=  21, 0.000005
+=  22, 0.000002
+=  23, 0.000000
+get_basic_bhattacharyya_value 0.198997
+total_bhattacharyya_value 0.132352 111110220000222002002000
+decode_idx=0 frozen relation_span=1 relation=[0]
+decode_idx=1 frozen relation_span=1 relation=[1]
+decode_idx=2 frozen relation_span=1 relation=[2]
+decode_idx=3 frozen relation_span=1 relation=[3]
+decode_idx=4 frozen relation_span=1 relation=[4]
+decode_idx=5 info relation_span=0 relation=[]
+decode_idx=6 frozen relation_span=2 relation=[5,6]
+decode_idx=7 frozen relation_span=2 relation=[5,7]
+decode_idx=8 info relation_span=0 relation=[]
+decode_idx=9 info relation_span=0 relation=[]
+decode_idx=10 info relation_span=0 relation=[]
+decode_idx=11 info relation_span=0 relation=[]
+decode_idx=12 frozen relation_span=4 relation=[9,10,11,12]
+decode_idx=13 frozen relation_span=6 relation=[5,8,9,10,11,13]
+decode_idx=14 frozen relation_span=3 relation=[9,10,14]
+decode_idx=15 info relation_span=0 relation=[]
+decode_idx=16 info relation_span=0 relation=[]
+decode_idx=17 frozen relation_span=3 relation=[8,10,17]
+decode_idx=18 info relation_span=0 relation=[]
+decode_idx=19 info relation_span=0 relation=[]
+decode_idx=20 frozen relation_span=4 relation=[10,15,16,20]
+decode_idx=21 info relation_span=0 relation=[]
+decode_idx=22 info relation_span=0 relation=[]
+decode_idx=23 info relation_span=0 relation=[]

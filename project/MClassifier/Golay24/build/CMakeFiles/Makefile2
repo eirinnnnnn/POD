@@ -66,6 +66,7 @@ CMAKE_BINARY_DIR = /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/
 all: CMakeFiles/golay_mclass_bler_sim.dir/all
 all: CMakeFiles/golay_trace_dataset.dir/all
 all: CMakeFiles/golay_adaptive_m_dataset.dir/all
+all: CMakeFiles/golay_adaptive_m_dataset_model_out.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,6 +77,7 @@ preinstall:
 clean: CMakeFiles/golay_mclass_bler_sim.dir/clean
 clean: CMakeFiles/golay_trace_dataset.dir/clean
 clean: CMakeFiles/golay_adaptive_m_dataset.dir/clean
+clean: CMakeFiles/golay_adaptive_m_dataset_model_out.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -85,7 +87,7 @@ clean: CMakeFiles/golay_adaptive_m_dataset.dir/clean
 CMakeFiles/golay_mclass_bler_sim.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_mclass_bler_sim.dir/build.make CMakeFiles/golay_mclass_bler_sim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19,20 "Built target golay_mclass_bler_sim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30 "Built target golay_mclass_bler_sim"
 .PHONY : CMakeFiles/golay_mclass_bler_sim.dir/all
 
 # Build rule for subdir invocation for target.
@@ -111,7 +113,7 @@ CMakeFiles/golay_mclass_bler_sim.dir/clean:
 CMakeFiles/golay_trace_dataset.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_trace_dataset.dir/build.make CMakeFiles/golay_trace_dataset.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30 "Built target golay_trace_dataset"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles --progress-num=31,32,33,34,35,36,37,38,39,40 "Built target golay_trace_dataset"
 .PHONY : CMakeFiles/golay_trace_dataset.dir/all
 
 # Build rule for subdir invocation for target.
@@ -155,6 +157,32 @@ golay_adaptive_m_dataset: CMakeFiles/golay_adaptive_m_dataset.dir/rule
 CMakeFiles/golay_adaptive_m_dataset.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset.dir/build.make CMakeFiles/golay_adaptive_m_dataset.dir/clean
 .PHONY : CMakeFiles/golay_adaptive_m_dataset.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/golay_adaptive_m_dataset_model_out.dir
+
+# All Build rule for target.
+CMakeFiles/golay_adaptive_m_dataset_model_out.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset_model_out.dir/build.make CMakeFiles/golay_adaptive_m_dataset_model_out.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset_model_out.dir/build.make CMakeFiles/golay_adaptive_m_dataset_model_out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19,20 "Built target golay_adaptive_m_dataset_model_out"
+.PHONY : CMakeFiles/golay_adaptive_m_dataset_model_out.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/golay_adaptive_m_dataset_model_out.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/golay_adaptive_m_dataset_model_out.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/CMakeFiles 0
+.PHONY : CMakeFiles/golay_adaptive_m_dataset_model_out.dir/rule
+
+# Convenience name for target.
+golay_adaptive_m_dataset_model_out: CMakeFiles/golay_adaptive_m_dataset_model_out.dir/rule
+.PHONY : golay_adaptive_m_dataset_model_out
+
+# clean rule for target.
+CMakeFiles/golay_adaptive_m_dataset_model_out.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/golay_adaptive_m_dataset_model_out.dir/build.make CMakeFiles/golay_adaptive_m_dataset_model_out.dir/clean
+.PHONY : CMakeFiles/golay_adaptive_m_dataset_model_out.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

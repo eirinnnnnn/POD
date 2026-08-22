@@ -75,6 +75,11 @@ add_executable(mclass_bler_sim
     )
 
 add_executable(mclass_adaptive_m_dataset
-        adaptive_path_selector/ebch_m7t10/mclass_adaptive_m_dataset.cpp
+        adaptive_path_selector/pm/ebch_m7t10/mclass_adaptive_m_dataset.cpp
+        ${common_src}
+    )
+
+add_executable(mclass_adaptive_m_dataset_model_out
+        adaptive_path_selector/model_out/ebch_m7t10/mclass_adaptive_m_dataset.cpp
         ${common_src}
     )

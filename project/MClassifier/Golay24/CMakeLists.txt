@@ -37,6 +37,11 @@ add_executable(golay_trace_dataset
     )
 
 add_executable(golay_adaptive_m_dataset
-        ../adaptive_path_selector/egolay_24/golay_adaptive_m_dataset.cpp
+        ../adaptive_path_selector/pm/egolay_24/golay_adaptive_m_dataset.cpp
+        ${common_src}
+    )
+
+add_executable(golay_adaptive_m_dataset_model_out
+        ../adaptive_path_selector/model_out/egolay_24/golay_adaptive_m_dataset.cpp
         ${common_src}
     )
