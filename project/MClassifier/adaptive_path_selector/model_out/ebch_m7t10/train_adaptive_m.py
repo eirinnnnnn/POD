@@ -138,6 +138,11 @@ def main():
         w = torch.where(err < 0, args.under_penalty, 1.0)
         return (w * err * err).mean()
 
+    import copy
+    best_mae = float("inf")
+    best_epoch = 0
+    best_state = None
+
     for epoch in range(1, args.epochs + 1):
         model.train()
         total_loss, total = 0.0, 0
@@ -164,6 +169,14 @@ def main():
             mean_m_used = float(used_m.mean().item())
         print(f"epoch={epoch} train_loss={total_loss/total:.6f} val_mae={mae:.4f} "
               f"val_under_rate={under:.4f} val_miss_rate={miss:.4f} val_mean_m={mean_m_used:.2f} (M={M})")
+
+        if mae < best_mae:
+            best_mae = mae
+            best_epoch = epoch
+            best_state = copy.deepcopy(model.state_dict())
+
+    print(f"selecting best epoch={best_epoch} (val_mae={best_mae:.4f}) for export")
+    model.load_state_dict(best_state)
 
     if args.save_pt:
         import torch as _torch

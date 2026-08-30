@@ -39,6 +39,8 @@ struct Args {
     std::string resume_file;
     unsigned int resume_every = 20000;
     unsigned int monitor_every = 2000;
+    bool oracle = false;
+    unsigned int static_m = 0;  // 0 = disabled
 };
 
 static Args parseArgs(int argc, char **argv) {
@@ -60,20 +62,32 @@ static Args parseArgs(int argc, char **argv) {
         else if (s == "--resume-file") a.resume_file = need(s);
         else if (s == "--resume-every") a.resume_every = (unsigned int)std::stoul(need(s));
         else if (s == "--monitor-every") a.monitor_every = (unsigned int)std::stoul(need(s));
+        else if (s == "--oracle") a.oracle = true;
+        else if (s == "--static-m") a.static_m = (unsigned int)std::stoul(need(s));
         else throw std::runtime_error("unknown argument: " + s);
     }
     if (a.ini_path.empty()) throw std::runtime_error("-ini is required");
     if (!a.snr_set) throw std::runtime_error("--snr is required");
     if (a.samples == 0) throw std::runtime_error("--samples is required");
     if (a.checkpoint == 0) throw std::runtime_error("--checkpoint is required");
-    if (a.selector_model_path.empty()) throw std::runtime_error("--selector-model is required");
+    if (a.oracle && a.static_m > 0) throw std::runtime_error("--oracle and --static-m are mutually exclusive");
+    if (!a.oracle && a.static_m == 0 && a.selector_model_path.empty())
+        throw std::runtime_error("--selector-model is required (unless --oracle or --static-m)");
     return a;
 }
 
 // ---- adaptive-m SET-LEVEL selector, matching train_adaptive_m.py's
 // export format exactly ----
+// Two export formats share this loader:
+//  - scalar-regression (train_adaptive_m.py): input_dim, hidden, log_input,
+//    y_mean, y_std, x_mean[], x_std[], W1,b1,W2,b2,W3,b3 (W3/b3 size 1) --
+//    output_dim implicitly 1.
+//  - per-prefix-length BCE classifier (m_prefix/train_adaptive_m_prefix.py):
+//    input_dim, hidden, output_dim, log_input, x_mean[], x_std[],
+//    W1,b1,W2,b2,W3,b3 (W3/b3 size output_dim==M) -- no y_mean/y_std, output
+//    is M logits (one per prefix length k=1..M) instead of one scalar.
 struct SelectorModel {
-    unsigned int input_dim = 0, hidden = 0;
+    unsigned int input_dim = 0, hidden = 0, output_dim = 1;
     bool log_input = true;
     double y_mean = 0.0, y_std = 1.0;
     std::vector<double> x_mean, x_std, W1, b1, W2, b2, W3, b3;
@@ -95,10 +109,20 @@ static SelectorModel loadSelectorModel(const std::string &path) {
     std::string key;
     in >> key >> m.input_dim;
     in >> key >> m.hidden;
-    unsigned int log_flag;
-    in >> key >> log_flag; m.log_input = log_flag != 0;
-    in >> key >> m.y_mean;
-    in >> key >> m.y_std;
+    std::string key3;
+    in >> key3;
+    if (key3 == "output_dim") {
+        in >> m.output_dim;
+        unsigned int log_flag;
+        in >> key >> log_flag; m.log_input = log_flag != 0;
+    } else {
+        // key3 == "log_input"
+        unsigned int log_flag;
+        in >> log_flag; m.log_input = log_flag != 0;
+        m.output_dim = 1;
+        in >> key >> m.y_mean;
+        in >> key >> m.y_std;
+    }
     m.x_mean = readVec(in, "x_mean");
     m.x_std = readVec(in, "x_std");
     m.W1 = readVec(in, "W1");
@@ -131,20 +155,37 @@ static unsigned int selectorPredictM(const SelectorModel &m, const std::vector<d
             acc += m.W2[i * m.hidden + j] * h1[j];
         h2[i] = std::max(0.0, acc);
     }
-    double out = m.b3[0];
-    for (unsigned int j = 0; j < m.hidden; j++)
-        out += m.W3[j] * h2[j];
-    double pred = out * m.y_std + m.y_mean;
-    long used = (long)std::ceil(pred);
-    if (used < 1) used = 1;
-    if (used > (long)M) used = M;
-    return (unsigned int)used;
+    if (m.output_dim == 1) {
+        double out = m.b3[0];
+        for (unsigned int j = 0; j < m.hidden; j++)
+            out += m.W3[j] * h2[j];
+        double pred = out * m.y_std + m.y_mean;
+        long used = (long)std::ceil(pred);
+        if (used < 1) used = 1;
+        if (used > (long)M) used = M;
+        return (unsigned int)used;
+    }
+
+    // per-prefix-length classifier: M logits, one per k=1..M, cumulative-max
+    // monotonicity fix, then smallest k crossing p=0.5 (sigmoid(logit)>0
+    // equivalently), else clamp to M.
+    double running_max = -std::numeric_limits<double>::infinity();
+    for (unsigned int k = 0; k < m.output_dim; k++) {
+        double logit = m.b3[k];
+        for (unsigned int j = 0; j < m.hidden; j++)
+            logit += m.W3[k * m.hidden + j] * h2[j];
+        running_max = std::max(running_max, logit);
+        if (running_max > 0.0)  // sigmoid(x) > 0.5  <=>  x > 0
+            return k + 1;
+    }
+    return M;
 }
 
 static std::string configSignature(const Args &a) {
     std::ostringstream ss;
     ss << a.ini_path << "|" << a.snr << "|" << a.samples << "|" << a.target_errors
-       << "|" << a.checkpoint << "|" << a.selector_model_path;
+       << "|" << a.checkpoint << "|"
+       << (a.oracle ? "ORACLE" : (a.static_m > 0 ? "STATIC" + std::to_string(a.static_m) : a.selector_model_path));
     return ss.str();
 }
 
@@ -242,7 +283,10 @@ int main(int argc, char **argv) {
         config["AWGN"]["seed_string"] = std::to_string(args.channel_seed);
 
         MClassDecoder decoder(config["AdjustPolarDecoder"]);
-        SelectorModel selector = loadSelectorModel(args.selector_model_path);
+        SelectorModel selector;
+        if (!args.oracle && args.static_m == 0) {
+            selector = loadSelectorModel(args.selector_model_path);
+        }
 
         AWGN channel(config["AWGN"]);
         channel.setCodeRate(decoder.getCodeRate());
@@ -251,7 +295,7 @@ int main(int argc, char **argv) {
         const unsigned int k = decoder.messageLength();
         const unsigned int M = decoder.branchCount();
         if (args.checkpoint > n) throw std::runtime_error("--checkpoint exceeds codeword length");
-        if (selector.input_dim != M)
+        if (!args.oracle && args.static_m == 0 && selector.input_dim != M)
             throw std::runtime_error("selector model input_dim does not match branch count M");
 
         std::vector<unsigned int> checkpoints;
@@ -306,15 +350,35 @@ int main(int argc, char **argv) {
                 return traces[a][cp_pos].pm_min < traces[b][cp_pos].pm_min;
             });
 
-            std::vector<double> x(M);
-            for (unsigned int r = 0; r < M; r++)
-                x[r] = traces[order[r]][cp_pos].pm_min;
-            unsigned int used_m = selectorPredictM(selector, x, M);
-            sum_used_m += used_m;
-
+            unsigned int used_m;
             unsigned int best = order[0];
-            for (unsigned int r = 1; r < used_m; r++)
-                if (metrics[order[r]] < metrics[best]) best = order[r];
+            if (args.oracle) {
+                // true per-sample minimal prefix length under THIS ranking:
+                // walk the running-best ratchet and stop at the first r
+                // where it's already correct (pickBest's own oracle) -- no
+                // selector model involved. Only fails when full_ped (r=M)
+                // itself fails, i.e. this is the real floor.
+                used_m = M;
+                for (unsigned int r = 1; r <= M; r++) {
+                    if (r > 1 && metrics[order[r - 1]] < metrics[best]) best = order[r - 1];
+                    if (correct[best]) { used_m = r; break; }
+                }
+            } else if (args.static_m > 0) {
+                // fixed, non-adaptive prefix length for every sample --
+                // isolates the value of per-sample adaptivity from just
+                // picking a good constant width.
+                used_m = args.static_m;
+                for (unsigned int r = 1; r < used_m; r++)
+                    if (metrics[order[r]] < metrics[best]) best = order[r];
+            } else {
+                std::vector<double> x(M);
+                for (unsigned int r = 0; r < M; r++)
+                    x[r] = traces[order[r]][cp_pos].pm_min;
+                used_m = selectorPredictM(selector, x, M);
+                for (unsigned int r = 1; r < used_m; r++)
+                    if (metrics[order[r]] < metrics[best]) best = order[r];
+            }
+            sum_used_m += used_m;
             if (!correct[best]) error_count++;
 
             if ((s + 1) % args.monitor_every == 0) printStatus(s);

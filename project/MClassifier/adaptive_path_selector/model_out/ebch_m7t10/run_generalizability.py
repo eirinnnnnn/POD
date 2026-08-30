@@ -22,7 +22,7 @@ TRACE_MODELS = {
     96: GAIN_DRILL / "t96_weights.txt",
 }
 T_LIST = [8, 32, 64, 96]
-SNR_LIST = [2.00, 2.25, 2.50, 2.75, 3.00, 3.50, 4.00]
+SNR_LIST = [2.00, 2.25, 2.50, 2.75, 3.00, 3.50, 4.00, 4.50]
 TARGET_ERRORS = 500
 SAMPLES_CAP = 1_000_000
 FIELDS = ["eval_t", "snr", "samples", "errors", "mean_m", "bler"]

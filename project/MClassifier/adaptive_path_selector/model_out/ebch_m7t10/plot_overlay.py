@@ -93,7 +93,14 @@ def collect(sweep_dir, ckpt_path, feature_marker, target_samples=None):
         am, ab = score(pred_m, y, any_basin)
         oracle_used = np.where(y == 0, ckpt["M"], y)
         om, ob = score(oracle_used, y, any_basin)
-        per_snr.append((snr, am, ab, om, ob))
+        # static-width PED: same fixed m for every sample at this SNR,
+        # equal to the oracle's own mean_m (rounded, clamped to [1, M]) --
+        # isolates the value of per-sample adaptivity from just picking a
+        # good constant width.
+        static_m = int(np.clip(round(om), 1, ckpt["M"]))
+        static_used = np.full_like(y, static_m, dtype=np.float64)
+        sm, sb = score(static_used, y, any_basin)
+        per_snr.append((snr, am, ab, om, ob, sm, sb))
     return sorted(per_snr), ckpt["M"]
 
 
@@ -102,10 +109,23 @@ def write_results_txt(path, pm_snr, mo_snr):
         w = csv.writer(f)
         w.writerow(["side", "snr", "method", "mean_m", "bler"])
         for side, rows in (("pm", pm_snr), ("model_out", mo_snr)):
-            for snr, am, ab, om, ob in rows:
+            for snr, am, ab, om, ob, sm, sb in rows:
                 w.writerow([side, snr, "adaptive", f"{am:.6f}", f"{ab:.6f}"])
                 w.writerow([side, snr, "oracle", f"{om:.6f}", f"{ob:.6f}"])
+                w.writerow([side, snr, "static_ped", f"{sm:.6f}", f"{sb:.6f}"])
     print(f"wrote {path}")
+
+
+def load_real_static(path):
+    # real-pickBest re-measurement of the static-width PED baseline
+    # (run_static_ped.py / static_ped.txt), target-errors=1000,
+    # samples<=100k -- preferred over the proxy-metric static_ped computed
+    # inline in collect() when available.
+    if not path.exists():
+        return None
+    with open(path, newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    return sorted((float(r["snr"]), float(r["mean_m"]), float(r["bler"])) for r in rows)
 
 
 def main():
@@ -120,18 +140,35 @@ def main():
         print("no complete model_out SNR points yet -- nothing to overlay")
         return
 
+    pm_real_static = load_real_static(PM_DIR / "static_ped.txt")
+    mo_real_static = load_real_static(HERE / "static_ped.txt")
+
     fig, ax = plt.subplots(figsize=(10.5, 7))
     if pm_snr:
-        s, am, ab, om, ob = zip(*pm_snr)
+        s, am, ab, om, ob, sm, sb = zip(*pm_snr)
         ax.plot(s, ob, color="#2a78d6", linestyle="-", marker="o", markersize=6,
                 linewidth=2, label="pm: oracle (ground truth required m)", zorder=3)
         ax.plot(s, ab, color="#d6622a", linestyle="--", marker="^", markersize=6,
                 linewidth=1.6, label="pm: adaptive path selector", zorder=2)
-    s, am, ab, om, ob = zip(*mo_snr)
+        if pm_real_static:
+            rs, rm, rb = zip(*pm_real_static)
+            ax.plot(rs, rb, color="#8a7a1f", linestyle=":", marker="s", markersize=6,
+                    linewidth=1.6, label="pm: static-width PED (m=oracle mean, real pickBest)", zorder=1)
+        else:
+            ax.plot(s, sb, color="#8a7a1f", linestyle=":", marker="s", markersize=6,
+                    linewidth=1.6, label="pm: static-width PED (m=oracle mean, proxy)", zorder=1)
+    s, am, ab, om, ob, sm, sb = zip(*mo_snr)
     ax.plot(s, ob, color="#1fa34a", linestyle="-", marker="o", markersize=6,
             linewidth=2, label="model_out: oracle (ground truth required m)", zorder=3)
     ax.plot(s, ab, color="#a31f8a", linestyle="--", marker="^", markersize=6,
             linewidth=1.6, label="model_out: adaptive path selector", zorder=2)
+    if mo_real_static:
+        rs, rm, rb = zip(*mo_real_static)
+        ax.plot(rs, rb, color="#1f8a7a", linestyle=":", marker="s", markersize=6,
+                linewidth=1.6, label="model_out: static-width PED (m=oracle mean, real pickBest)", zorder=1)
+    else:
+        ax.plot(s, sb, color="#1f8a7a", linestyle=":", marker="s", markersize=6,
+                linewidth=1.6, label="model_out: static-width PED (m=oracle mean, proxy)", zorder=1)
 
     ax.set_yscale("log")
     ax.set_xlabel("Eb/N0 (dB)")
@@ -148,12 +185,14 @@ def main():
 
     fig2, ax2 = plt.subplots(figsize=(10.5, 7))
     if pm_snr:
-        s, am, ab, om, ob = zip(*pm_snr)
+        s, am, ab, om, ob, sm, sb = zip(*pm_snr)
         ax2.plot(s, om, color="#2a78d6", marker="o", label="pm: oracle")
         ax2.plot(s, am, color="#d6622a", marker="^", label="pm: adaptive")
-    s, am, ab, om, ob = zip(*mo_snr)
+        ax2.plot(s, sm, color="#8a7a1f", marker="s", linestyle=":", label="pm: static-width PED")
+    s, am, ab, om, ob, sm, sb = zip(*mo_snr)
     ax2.plot(s, om, color="#1fa34a", marker="o", label="model_out: oracle")
     ax2.plot(s, am, color="#a31f8a", marker="^", label="model_out: adaptive")
+    ax2.plot(s, sm, color="#1f8a7a", marker="s", linestyle=":", label="model_out: static-width PED")
     ax2.set_xlabel("Eb/N0 (dB)")
     ax2.set_ylabel("mean branches used")
     ax2.set_title("Average pruning width used")

@@ -49,6 +49,7 @@ def main():
                      color=t_colors[t], label=f"pm t={t}", zorder=2)
 
     ax.set_yscale("log")
+    ax.set_xlim(2.0, 4.5)
     ax.set_xlabel("Eb/N0 (dB)")
     ax.set_ylabel("BLER (real pickBest-among-top-predicted-m)")
     ax.set_title("model_out vs pm generalization (target-errors=500 trial) -- solid=model_out, dashed=pm")
