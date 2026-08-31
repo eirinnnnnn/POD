@@ -278,7 +278,15 @@ int main(int argc, char **argv) {
         if (T > n) throw std::runtime_error("trace model's max checkpoint exceeds codeword length");
         const std::vector<unsigned int> &checkpoints = model.checkpoints_needed;
         const bool largest = model.direction_largest;
-        const char *col_base = largest ? "trace_prob_sorted" : "trace_score_sorted";
+        const unsigned int T_pos = (unsigned int)checkpoints.size() - 1;  // T == checkpoints.back()
+
+        // richer per-branch input: the same multi-statistic trace vector
+        // trace_learnt's own scorer consumes (pm_min/gap/mean/max,
+        // llr_abs_min/mean/max), instead of trace_learnt's single
+        // collapsed trace_prob/trace_score output -- ranking order stays
+        // trace-score-based (unchanged), only the INPUT features widen.
+        static const char *STAT_NAMES[7] = {
+            "pm_min", "pm_gap", "pm_mean", "pm_max", "llr_abs_min", "llr_abs_mean", "llr_abs_max"};
 
         long msg_seed = args.message_seed;
         std::vector<char> message(k, 0), codeword(n, 0);
@@ -288,7 +296,8 @@ int main(int argc, char **argv) {
         if (!out) throw std::runtime_error("cannot open --out for writing: " + args.out_path);
         out << "sample,M,m_required,full_ped_correct,m_required_basin,any_basin_exists";
         for (unsigned int r = 1; r <= M; r++)
-            out << ",t" << T << "_" << col_base << "_" << r;
+            for (unsigned int si = 0; si < 7; si++)
+                out << ",t" << T << "_" << STAT_NAMES[si] << "_sorted_" << r;
         out << "\n";
 
         unsigned int error_count = 0;
@@ -353,9 +362,9 @@ int main(int argc, char **argv) {
             out << s << "," << M << "," << m_required << "," << (correct[teacher] ? 1 : 0)
                 << "," << m_required_basin << "," << (any_basin_exists ? 1 : 0);
             for (unsigned int r = 0; r < M; r++) {
-                double sc = scores[order[r]];
-                double val = largest ? 1.0 / (1.0 + std::exp(-sc)) : sc;
-                out << "," << val;
+                const MClassTracePoint &p = traces[order[r]][T_pos];
+                out << "," << p.pm_min << "," << p.pm_gap << "," << p.pm_mean << "," << p.pm_max
+                    << "," << p.llr_abs_min << "," << p.llr_abs_mean << "," << p.llr_abs_max;
             }
             out << "\n";
 

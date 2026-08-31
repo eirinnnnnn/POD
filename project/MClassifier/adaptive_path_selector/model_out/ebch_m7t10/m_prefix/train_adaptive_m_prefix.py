@@ -54,11 +54,16 @@ def load_dataset(path):
     if raw.ndim == 1:
         raw = raw.reshape(1, -1)
 
-    M = int(raw[0, col["M"]])
+    M = int(raw[0, col["M"]])  # branch count -- always the per-prefix output width
     feature_cols = [n for n in names if n.startswith("t") and "_sorted_" in n]
+    # sort by rank r (trailing int); Python's sort is stable, so ties (the
+    # 7 stat columns sharing one rank, in the "rich" per-branch format)
+    # keep their original file order -- rank-major, stat-minor, matching
+    # mclass_adaptive_m_dataset.cpp's emission order exactly.
     feature_cols.sort(key=lambda n: int(n.rsplit("_", 1)[1]))
-    if len(feature_cols) != M:
-        raise ValueError(f"expected {M} sorted-feature columns, found {len(feature_cols)}")
+    input_dim = len(feature_cols)
+    if input_dim % M != 0:
+        raise ValueError(f"feature column count {input_dim} is not a multiple of M={M}")
     feature_idx = [col[n] for n in feature_cols]
 
     X = raw[:, feature_idx].astype(np.float32)
@@ -67,7 +72,7 @@ def load_dataset(path):
 
     k = np.arange(1, M + 1, dtype=np.float64)[None, :]
     y_prefix = (k >= m_required_basin[:, None]).astype(np.float32)  # [N, M]
-    return X, y_prefix, m_required_basin, full_ped_correct, M, feature_cols
+    return X, y_prefix, m_required_basin, full_ped_correct, M, input_dim, feature_cols
 
 
 def log_transform_inputs(X):
@@ -144,6 +149,7 @@ def main():
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--val-frac", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--weight-decay", type=float, default=1e-4)
     parser.add_argument("--log-input", action="store_true",
                          help="enable the log1p input transform (off by default for model_out -- "
                               "trace_prob is already bounded [0,1])")
@@ -160,7 +166,7 @@ def main():
         raise SystemExit("PyTorch is required for training: pip install torch") from exc
 
     rng = np.random.default_rng(args.seed)
-    X, y_prefix, m_req_basin, full_ped_correct, M, feature_cols = load_dataset(args.data)
+    X, y_prefix, m_req_basin, full_ped_correct, M, input_dim, feature_cols = load_dataset(args.data)
     log_input = args.log_input
     if log_input:
         X = log_transform_inputs(X)
@@ -186,13 +192,13 @@ def main():
         weights_train = sample_weights(m_req_basin[train_idx])
 
     model = nn.Sequential(
-        nn.Linear(M, args.hidden),
+        nn.Linear(input_dim, args.hidden),
         nn.ReLU(),
         nn.Linear(args.hidden, args.hidden),
         nn.ReLU(),
         nn.Linear(args.hidden, M),
     )
-    opt = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    opt = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     loader = DataLoader(
         TensorDataset(torch.from_numpy(X_train), torch.from_numpy(y_train), torch.from_numpy(weights_train)),
         batch_size=args.batch_size, shuffle=True,
@@ -242,7 +248,7 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     sd = model.state_dict()
     with out.open("w", encoding="utf-8") as f:
-        f.write(f"input_dim {M}\n")
+        f.write(f"input_dim {input_dim}\n")
         f.write(f"hidden {args.hidden}\n")
         f.write(f"output_dim {M}\n")
         f.write(f"log_input {1 if log_input else 0}\n")

@@ -439,7 +439,7 @@ int main(int argc, char **argv) {
         const unsigned int k = decoder.messageLength();
         const unsigned int M = decoder.branchCount();
         if (T > n) throw std::runtime_error("trace model's max checkpoint exceeds codeword length");
-        if (!args.oracle && args.static_m == 0 && selector.input_dim != M)
+        if (!args.oracle && args.static_m == 0 && selector.input_dim != M && selector.input_dim != 7 * M)
             throw std::runtime_error("selector model input_dim does not match branch count M");
         const std::vector<unsigned int> &checkpoints = trace_model.checkpoints_needed;
         const bool largest = trace_model.direction_largest;
@@ -515,12 +515,30 @@ int main(int argc, char **argv) {
                 for (unsigned int r = 1; r < used_m; r++)
                     if (metrics[order[r]] < metrics[best]) best = order[r];
             } else {
-                // selector input: same sorted-probability vector the offline
-                // pipeline used (t{T}_trace_prob_sorted_1..M)
-                std::vector<double> x(M);
-                for (unsigned int r = 0; r < M; r++) {
-                    double sc = scores[order[r]];
-                    x[r] = largest ? 1.0 / (1.0 + std::exp(-sc)) : sc;
+                std::vector<double> x;
+                if (selector.input_dim == M) {
+                    // collapsed-score input: same sorted-probability vector
+                    // the offline pipeline used (t{T}_trace_prob_sorted_1..M)
+                    x.resize(M);
+                    for (unsigned int r = 0; r < M; r++) {
+                        double sc = scores[order[r]];
+                        x[r] = largest ? 1.0 / (1.0 + std::exp(-sc)) : sc;
+                    }
+                } else {
+                    // rich per-branch input (7*M): the same multi-statistic
+                    // trace vector trace_learnt's own scorer consumes
+                    // (pm_min/gap/mean/max, llr_abs_min/mean/max), ranking
+                    // order still trace-score-based -- matches
+                    // mclass_adaptive_m_dataset.cpp's column order exactly
+                    // (rank-major, stat-minor).
+                    const unsigned int T_pos = (unsigned int)checkpoints.size() - 1;
+                    x.resize(7 * M);
+                    for (unsigned int r = 0; r < M; r++) {
+                        const MClassTracePoint &p = traces[order[r]][T_pos];
+                        double *xr = &x[r * 7];
+                        xr[0] = p.pm_min; xr[1] = p.pm_gap; xr[2] = p.pm_mean; xr[3] = p.pm_max;
+                        xr[4] = p.llr_abs_min; xr[5] = p.llr_abs_mean; xr[6] = p.llr_abs_max;
+                    }
                 }
                 used_m = selectorPredictM(selector, x, M);
                 // the actual decision: pickBest (lowest final metric) among
