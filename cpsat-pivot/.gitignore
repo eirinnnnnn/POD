@@ -1,0 +1,18 @@
+# external solver source trees (cloned, ~32M) — rebuild with tools/CnC/build.sh
+tools/
+
+# generated CNF / DRAT / P_0 output matrices (~160M)
+cnc_work/
+
+# python bytecode
+__pycache__/
+
+# superseded / broken caches kept only for local reference
+stratum_sweep_cache.BROKEN_CUT.json
+fullsearch_cache*.json
+hardunk.txt
+
+# solver run logs
+k16_*.log
+rm_cms_overnight.log
+capture_unknowns.log
