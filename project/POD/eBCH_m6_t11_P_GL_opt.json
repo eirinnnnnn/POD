@@ -1,0 +1,61 @@
+{
+ "file": "eBCH_m6_t11_P_GL_opt.matrix",
+ "date": "2026-09-19",
+ "code": "eBCH m=6 t=11, [64,16] (project/POD/eBCH_m6_t11.matrix)",
+ "construction": "pi = P_field o Q_A with A in GL(6,2)",
+ "P_field": "pi(x)=1+log_alpha(x), pi(0)=0; alpha root of x^6+x^4+x^3+x+1 (Conway, reduction mask 0b011011); LSB of x = coeff of alpha^0",
+ "A_columns": [
+  1,
+  2,
+  6,
+  8,
+  20,
+  33
+ ],
+ "A_columns_meaning": "A e_i as an integer, i=0..5 (bit 0 = LSB); Q_A(z)=A z",
+ "transvection_word": [
+  [
+   1,
+   2
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   2,
+   4
+  ],
+  [
+   0,
+   5
+  ]
+ ],
+ "transvection_word_meaning": "A = T_1...T_k, T=(i,j): z_i <- z_i + z_j (0-indexed bits); pi built by pi <- pi o Q_T from P_field",
+ "convention": "pi[a]=argmax(P[a,:]); relabelled code = G_b[:,pi] = G_b P^T; pi[a]=P_field[A a]",
+ "objective": "sum of Bhattacharyya Z over the pivot profile, Eb/N0 = 3.0 dB, rate 16/64",
+ "zsum": 2.00993,
+ "baseline_zsum_repo_m6_t11_P_and_P_field": 2.316021,
+ "single_z1z3_shear_zsum": 2.094968,
+ "optimality": "EXACT optimum over the whole GL(6,2) orbit of P_field: all 615,195 flags of GL(6,2)/L enumerated (gl_flag_enum_20260919.cpp), 30 distinct pivot profiles, this is the best; 189 flags attain it",
+ "rm_degree_d": 2,
+ "nonzero_coefficient_columns": 22,
+ "pivot_profile": [
+  15,
+  23,
+  27,
+  29,
+  30,
+  31,
+  45,
+  46,
+  47,
+  51,
+  54,
+  55,
+  59,
+  61,
+  62,
+  63
+ ]
+}

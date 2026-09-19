@@ -1,0 +1,181 @@
+{
+ "file": "eBCH_m7_t10_P_GL_opt.matrix",
+ "date": "2026-09-19",
+ "code": "eBCH m=7 t=10, [128,64] (project/POD/eBCH_m7_t10.matrix)",
+ "construction": "pi = P_field o Q_A with A in GL(7,2)",
+ "P_field": "pi(x)=1+log_alpha(x), pi(0)=0; alpha root of x^7+x+1 (Conway, reduction mask 0b0000011); LSB of x = coeff of alpha^0",
+ "A_columns": [
+  4,
+  2,
+  18,
+  38,
+  10,
+  106,
+  1
+ ],
+ "A_columns_meaning": "A e_i as an integer, i=0..6 (bit 0 = LSB); Q_A(z)=A z; one coset representative (columns reduced against the later columns)",
+ "transvection_word": [
+  [
+   0,
+   2
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   4
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   4,
+   2
+  ],
+  [
+   3,
+   5
+  ],
+  [
+   0,
+   3
+  ],
+  [
+   1,
+   3
+  ],
+  [
+   5,
+   3
+  ],
+  [
+   4,
+   5
+  ],
+  [
+   0,
+   4
+  ],
+  [
+   3,
+   4
+  ],
+  [
+   5,
+   4
+  ],
+  [
+   5,
+   6
+  ],
+  [
+   0,
+   5
+  ],
+  [
+   1,
+   5
+  ],
+  [
+   3,
+   5
+  ],
+  [
+   4,
+   5
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   0,
+   6
+  ],
+  [
+   2,
+   6
+  ],
+  [
+   5,
+   6
+  ]
+ ],
+ "transvection_word_meaning": "A = T_1...T_k, T=(i,j): z_i <- z_i + z_j (0-indexed bits); pi built by pi <- pi o Q_T from P_field",
+ "convention": "pi[a]=argmax(P[a,:]); relabelled code = G_b[:,pi] = G_b P^T; pi[a]=P_field[A a]",
+ "objective": "sum of Bhattacharyya Z over the pivot profile, Eb/N0 = 3.0 dB, rate 64/128",
+ "zsum": 8.700179,
+ "baseline_zsum_repo_m7_t10_P_and_P_field": 9.124275,
+ "optimality": "EXACT optimum over the whole GL(7,2) orbit of P_field: all 78,129,765 flags of GL(7,2)/L enumerated (gl_flag_enum_20260919.cpp, 7 min on 8 threads), 265 distinct pivot profiles, this is the best; attained by 2,667 flags. Runner-up 8.700186 is eBCH_m7_t10_P_GL_20260919.matrix (restart search).",
+ "rm_degree_d": 4,
+ "nonzero_coefficient_columns": 99,
+ "pivot_profile": [
+  7,
+  11,
+  13,
+  14,
+  15,
+  22,
+  23,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  39,
+  43,
+  45,
+  46,
+  47,
+  51,
+  53,
+  54,
+  55,
+  57,
+  58,
+  59,
+  60,
+  61,
+  62,
+  63,
+  71,
+  75,
+  77,
+  78,
+  79,
+  83,
+  85,
+  86,
+  87,
+  89,
+  90,
+  91,
+  92,
+  93,
+  94,
+  95,
+  101,
+  102,
+  103,
+  107,
+  108,
+  109,
+  110,
+  111,
+  115,
+  117,
+  118,
+  119,
+  121,
+  122,
+  123,
+  124,
+  125,
+  126,
+  127
+ ]
+}
