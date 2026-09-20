@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python gen_ini.py)"
+      "Bash(python gen_ini.py)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

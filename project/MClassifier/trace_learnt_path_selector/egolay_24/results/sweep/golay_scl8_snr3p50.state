@@ -1,0 +1,6 @@
+sig /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_scl8.ini|3.5|40000|m=1,
+sample_count 40000
+full_ped_errors 205
+msg_seed 2051190429
+channel_seed_string 1936102625
+static_errors 205

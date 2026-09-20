@@ -1,0 +1,9 @@
+SNR=2.0 t=24 done (cached=False, samples=20960)
+SNR=2.25 t=24 done (cached=False, samples=27470)
+SNR=2.5 t=24 done (cached=False, samples=38604)
+SNR=2.75 t=24 done (cached=False, samples=56970)
+SNR=3.0 t=24 done (cached=False, samples=79243)
+SNR=3.5 t=24 done (cached=False, samples=197110)
+SNR=4.0 t=24 done (cached=False, samples=551654)
+SNR=4.5 t=24 done (cached=False, samples=1724984)
+updated /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/sweep/golay_t_sweep_m2_single_results.txt and /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/sweep/golay_t_sweep_m2_cumulative_results.txt

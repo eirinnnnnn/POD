@@ -472,11 +472,12 @@ def main() -> None:
     plt.xticks(xticks)
     plt.grid(True, which="both", linestyle="--", linewidth=0.5, alpha=0.6)
 
+    n_legend = len(plt.gca().get_legend_handles_labels()[1])
     plt.legend(
         loc="upper right",
-        ncol=2,
+        ncol=3 if n_legend > 16 else 2,
         frameon=True,
-        fontsize=10,
+        fontsize=7.5 if n_legend > 16 else 10,
         columnspacing=1.0,
         handletextpad=0.5,
         borderaxespad=0.4,

@@ -1,0 +1,3 @@
+failed: -ini /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_scl8.ini --snr 0.0 --samples 5000 --target-errors 500 --channel-seed 720001 --message-seed 620001 --m-list 1 --monitor-every 100000
+[fatal] --snr is required
+

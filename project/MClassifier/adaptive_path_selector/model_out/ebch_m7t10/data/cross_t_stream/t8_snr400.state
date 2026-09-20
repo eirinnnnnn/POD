@@ -1,0 +1,6 @@
+sig /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/ebch_m7t10/results/ebn0_sweep.ini|4|1000000|1000|/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/ebch_m7t10/results/clean_trace_upto_t8_weights.txt|/home/eirin/Polar_eirin_20260107/project/MClassifier/adaptive_path_selector/model_out/ebch_m7t10/weights_t64_snr2p0.txt
+sample_count 60000
+error_count 857
+sum_used_m 474472
+msg_seed 1736347207
+channel_seed_string 1598658723

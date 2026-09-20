@@ -1,0 +1,6 @@
+sig /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/ebch_m7t10/results/ebn0_sweep.ini|4|1000000|500|/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/ebch_m7t10/results/clean_trace_upto_t8_weights.txt|/home/eirin/Polar_eirin_20260107/project/MClassifier/adaptive_path_selector/model_out/ebch_m7t10/weights_t8_snr2p0_bestepoch.txt
+sample_count 20000
+error_count 349
+sum_used_m 134034
+msg_seed 1562068860
+channel_seed_string 509845094

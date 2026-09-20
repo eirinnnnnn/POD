@@ -1,0 +1,18 @@
+{
+  "format": "mclass_csv_v1",
+  "csv_path": "clean_train_metric_12k.csv",
+  "ini_path": "ebn0_sweep.ini",
+  "samples": 12000,
+  "max_samples": 12000,
+  "target_errors": 0,
+  "block_errors": 954,
+  "label_mode": "metric",
+  "n": 128,
+  "k": 64,
+  "M": 64,
+  "list_size": 4,
+  "awgn_start": "2.0",
+  "awgn_step_type": "SNR",
+  "awgn_seed": "92001",
+  "message_seed": "91001"
+}

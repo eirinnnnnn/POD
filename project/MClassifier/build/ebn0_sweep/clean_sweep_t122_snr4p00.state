@@ -1,0 +1,7 @@
+sig /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/ebch_m7t10/results/ebn0_sweep.ini|4|1500000|122|/home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/ebch_m7t10/gain_drill/t122_weights.txt|k=8,
+sample_count 1120000
+full_ped_errors 165
+msg_seed 949159005
+channel_seed_string 202775899
+static_errors 165
+trace_errors 165

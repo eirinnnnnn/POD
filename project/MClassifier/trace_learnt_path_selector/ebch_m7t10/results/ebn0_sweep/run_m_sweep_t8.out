@@ -1,0 +1,9 @@
+SNR=2.0 t=8 m-sweep done (cached=False, samples=9262)
+SNR=2.25 t=8 m-sweep done (cached=False, samples=15528)
+SNR=2.5 t=8 m-sweep done (cached=False, samples=24919)
+SNR=2.75 t=8 m-sweep done (cached=False, samples=46281)
+SNR=3.0 t=8 m-sweep done (cached=False, samples=88312)
+SNR=3.5 t=8 m-sweep done (cached=False, samples=444477)
+SNR=4.0 t=8 m-sweep done (cached=False, samples=1500000)
+SNR=4.5 t=8 m-sweep done (cached=False, samples=1000000)
+updated /home/eirin/Polar_eirin_20260107/project/MClassifier/build/ebn0_sweep/m_sweep_t8_results.txt

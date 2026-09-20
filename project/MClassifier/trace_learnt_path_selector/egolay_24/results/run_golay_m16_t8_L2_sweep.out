@@ -1,0 +1,9 @@
+SNR=2.0 done (cached=False, samples=8000)
+SNR=2.25 done (cached=False, samples=12000)
+SNR=2.5 done (cached=False, samples=20000)
+SNR=2.75 done (cached=False, samples=35000)
+SNR=3.0 done (cached=False, samples=60000)
+SNR=3.5 done (cached=False, samples=130000)
+SNR=4.0 done (cached=False, samples=300000)
+SNR=4.5 done (cached=False, samples=600000)
+updated /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/sweep/golay_m16_t8_L2_results.txt

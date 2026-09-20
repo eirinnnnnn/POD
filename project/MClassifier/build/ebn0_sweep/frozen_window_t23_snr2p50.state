@@ -1,0 +1,7 @@
+sig /home/eirin/Polar_eirin_20260107/project/MClassifier/trace_learnt_path_selector/ebch_m7t10/results/ebn0_sweep.ini|2.5|80000|23||k=8,
+sample_count 20000
+full_ped_errors 624
+msg_seed 1427503585
+channel_seed_string 506084186
+static_errors 5415
+trace_errors 0

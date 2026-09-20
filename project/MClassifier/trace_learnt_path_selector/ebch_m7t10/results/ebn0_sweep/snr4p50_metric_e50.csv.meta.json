@@ -1,0 +1,18 @@
+{
+  "format": "mclass_csv_v1",
+  "csv_path": "/home/eirin/Polar_eirin_20260107/project/MClassifier/build/ebn0_sweep/snr4p50_metric_e50.csv.tmp",
+  "ini_path": "/home/eirin/Polar_eirin_20260107/project/MClassifier/build/ebn0_sweep.ini",
+  "samples": 4000000,
+  "max_samples": 4000000,
+  "target_errors": 50,
+  "block_errors": 48,
+  "label_mode": "oracle_correct_then_metric",
+  "n": 128,
+  "k": 64,
+  "M": 64,
+  "list_size": 4,
+  "awgn_start": "4.5",
+  "awgn_step_type": "SNR",
+  "awgn_seed": "901008",
+  "message_seed": "801008"
+}

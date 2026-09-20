@@ -1,0 +1,9 @@
+SNR=2.0 pure_scl8 done (cached=False, samples=3000)
+SNR=2.25 pure_scl8 done (cached=False, samples=5000)
+SNR=2.5 pure_scl8 done (cached=False, samples=8000)
+SNR=2.75 pure_scl8 done (cached=False, samples=12000)
+SNR=3.0 pure_scl8 done (cached=False, samples=20000)
+SNR=3.5 pure_scl8 done (cached=False, samples=40000)
+SNR=4.0 pure_scl8 done (cached=False, samples=80000)
+SNR=4.5 pure_scl8 done (cached=False, samples=150000)
+updated /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/sweep/golay_m_sweep_results.txt

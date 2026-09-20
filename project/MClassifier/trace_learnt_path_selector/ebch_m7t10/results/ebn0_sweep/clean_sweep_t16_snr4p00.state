@@ -1,0 +1,7 @@
+sig /home/eirin/Polar_eirin_20260107/project/MClassifier/build/ebn0_sweep.ini|4|1500000|16|/home/eirin/Polar_eirin_20260107/project/MClassifier/build/clean_trace_upto_t16_weights.txt|k=8,
+sample_count 60000
+full_ped_errors 12
+msg_seed 784956180
+channel_seed_string 1036137214
+static_errors 1324
+trace_errors 776

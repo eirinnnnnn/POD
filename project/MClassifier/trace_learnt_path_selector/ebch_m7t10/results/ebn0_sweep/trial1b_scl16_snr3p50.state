@@ -1,0 +1,7 @@
+sig ebn0_sweep_scl16.ini|3.5|400000|0||k=8,
+sample_count 400000
+full_ped_errors 11
+msg_seed 1767764226
+channel_seed_string 1690303540
+static_errors 0
+trace_errors 0

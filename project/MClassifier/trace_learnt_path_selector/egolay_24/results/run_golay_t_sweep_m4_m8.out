@@ -1,0 +1,51 @@
+imported 32 reference rows from golay_t_sweep_m2_results.txt
+SNR=2.0 t=4 done (cached=False, samples=19567)
+SNR=2.25 t=4 done (cached=False, samples=27498)
+SNR=2.5 t=4 done (cached=False, samples=39598)
+SNR=2.75 t=4 done (cached=False, samples=54930)
+SNR=3.0 t=4 done (cached=False, samples=81587)
+SNR=3.5 t=4 done (cached=False, samples=185980)
+SNR=4.0 t=4 done (cached=False, samples=531204)
+failed: -ini /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_sweep_m16_L2.ini --snr 4.5 --samples 2000000 --target-errors 1000 --checkpoint 4 --channel-seed 780408 --message-seed 680408 --m-list 4,8 --model /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_trace_t4_weights.txt --monitor-every 50000
+idx  0 : 0.971283
+idx  1 : 0.947432
+idx  2 : 0.572901
+idx  3 : 0.572477
+idx  4 : 0.424491
+idx  5 : 0.041475
+idx  6 : 0.423001
+idx  7 : 0.284293
+idx  8 : 0.013892
+idx  9 : 0.032725
+idx 10 : 0.016766
+idx 11 : 0.000004
+idx 12 : 0.276202
+idx 13 : 0.168185
+idx 14 : 0.003324
+idx 15 : 0.012017
+idx 16 : 0.006063
+idx 17 : 0.000000
+idx 18 : 0.006258
+idx 19 : 0.003144
+idx 20 : 0.000000
+idx 21 : 0.000005
+idx 22 : 0.000002
+idx 23 : 0.000000
+=   5, 0.041475
+=   8, 0.013892
+=   9, 0.032725
+=  10, 0.016766
+=  11, 0.000004
+=  15, 0.012017
+=  16, 0.006063
+=  18, 0.006258
+=  19, 0.003144
+=  21, 0.000005
+=  22, 0.000002
+=  23, 0.000000
+get_basic_bhattacharyya_value 0.198997
+total_bhattacharyya_value 0.132352 111110220000222002002000
+message_length/codeword_length = 12/24
+channel set code rate: 0.500000 
+[fatal] cannot open model weights: /home/eirin/Polar_eirin_20260107/project/MClassifier/Golay24/build/golay_trace_t4_weights.txt
+
