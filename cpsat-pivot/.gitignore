@@ -19,3 +19,4 @@ capture_unknowns.log
 
 # compiled GL flag enumerator (build: g++ -O3 -march=native -fopenmp -o gl_flag_enum gl_flag_enum_20260919.cpp)
 gl_flag_enum
+gl_flag_enum_sym
