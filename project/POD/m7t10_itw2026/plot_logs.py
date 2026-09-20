@@ -24,8 +24,29 @@ SC_RE = re.compile(r"^SC$", re.IGNORECASE)
 SCL_RE = re.compile(r"^SCL(\d+)$", re.IGNORECASE)
 POD_SC_RE = re.compile(r"^(?:POD|AED)(\d+)SC$", re.IGNORECASE)
 POD_SCL_RE = re.compile(r"^(?:POD|AED)(\d+)SCL(\d+)$", re.IGNORECASE)
+# Cyclic-shift parallel paths (baseline to PED): CPC127SC, CPC127SCL8, ...
+CPC_SC_RE = re.compile(r"^CPC(\d+)SC$", re.IGNORECASE)
+CPC_SCL_RE = re.compile(r"^CPC(\d+)SCL(\d+)$", re.IGNORECASE)
 MLD_RE = re.compile(r"^MLD$", re.IGNORECASE)
 OSD_RE = re.compile(r"^OSD(\d+)$", re.IGNORECASE)
+
+# Trailing trial-variant tag, e.g. SC_P / SC_GL.  The tag selects which
+# permutation_src the run used; the part before it names the decoder.
+VARIANT_RE = re.compile(r"^(.*)_(P|GL)$")
+
+# Linestyle = variant, applied only when a plot mixes variants (otherwise
+# linestyle keeps its usual meaning of decoder family).
+VARIANT_LINESTYLE: Dict[str, object] = {
+    "P":  "-",
+    "GL": (0, (4, 1.6)),
+}
+
+VARIANT_TAG: Dict[str, str] = {
+    "P":  "P",
+    "GL": "GL",
+}
+
+VARIANT_ORDER = ["P", "GL"]
 
 # Effective list sizes to be represented consistently across all plots.
 EFF_SIZES = [1, 4, 8, 16, 32, 64, 128, 256]
@@ -38,6 +59,8 @@ FAMILY_COLOR: Dict[str, str] = {
     "SCL": "tab:orange",
     "POD_SC": "tab:green",
     "POD_SCL": "tab:green",
+    "CPC_SC": "tab:purple",
+    "CPC_SCL": "tab:purple",
     "MLD": "black",
     "OSD": "tab:blue",
     "UNKNOWN": "tab:blue",
@@ -46,11 +69,18 @@ FAMILY_COLOR: Dict[str, str] = {
 # Dark green palette for PED/POD ensemble size M.
 # The first one starts from the normal matplotlib tab:green color.
 PED_M_COLOR: Dict[int, str] = {
+    # M = 2, 8, 16 added for the P-vs-GL trial set: without them these all
+    # fell back to tab:green and collided with each other at equal eff size.
+    2: "#8fd18f",   # light
     4: "#2ca02c",   # normal tab:green
+    8: "#1f6f1f",
+    16: "#145214",
     # 32: "#238823",
     # 16: "#1f6f1f",
     32: "#104510",
-    64: "#104510",
+    64: "#0a2d0a",   # was identical to M=32
+    127: "#004d40",  # M=127 PED (dark teal-green)
+    128: "#004d40",  # (superseded by 127)
     # 64: "#185c18",
     # 64: "#104510",
 }
@@ -65,6 +95,12 @@ EFF_MARKER: Dict[int, str] = {
     64: "P",
     128: "X",
     256: "*",
+    512: "h",
+    127: "X",
+    1016: "H",
+    1024: "H",
+    2032: "8",
+    2048: "8",
 }
 
 # Fallback marker when a decoder does not have one of the canonical effective sizes.
@@ -74,6 +110,8 @@ FAMILY_FALLBACK_MARKER: Dict[str, str] = {
     "SCL": "o",
     "POD_SC": "o",
     "POD_SCL": "o",
+    "CPC_SC": "o",
+    "CPC_SCL": "o",
     "MLD": "X",
     "OSD": "^",
     "UNKNOWN": "o",
@@ -86,6 +124,8 @@ LINESTYLE_MAP: Dict[str, object] = {
     "SCL": "--",
     "POD_SC": "-",
     "POD_SCL": "-",
+    "CPC_SC": "-",
+    "CPC_SCL": "-",
     "MLD": "-",
     "OSD": (0, (3, 1, 1, 1)),
     "UNKNOWN": "-",
@@ -125,7 +165,32 @@ def parse_log(log_path: Path) -> Tuple[List[float], List[float]]:
     return list(xs), list(ys)
 
 
+def split_variant(name: str) -> Tuple[str, object]:
+    m = VARIANT_RE.match(name.strip())
+    if m:
+        return m.group(1), m.group(2)
+    return name.strip(), None
+
+
+def tag_label(label: str, variant) -> str:
+    """Append the variant as a superscript, e.g. $\\mathrm{SC}^{\\mathrm{GL}}$."""
+    if variant is None:
+        return label
+    tag = VARIANT_TAG.get(variant, variant)
+    if label.startswith("$") and label.endswith("$"):
+        return label[:-1] + rf"^{{\mathrm{{{tag}}}}}$"
+    return f"{label} ({tag})"
+
+
 def decode_info(name: str) -> Dict[str, object]:
+    """Decoder family/size/label, with any trial-variant tag split off first."""
+    base, variant = split_variant(name)
+    info = decode_base(base)
+    info["variant"] = variant
+    return info
+
+
+def decode_base(name: str) -> Dict[str, object]:
     s = name.strip()
 
     if HD_RE.match(s):
@@ -155,6 +220,29 @@ def decode_info(name: str) -> Dict[str, object]:
             "M": None,
             "L": L,
             "label": rf"$\mathrm{{SCL}}_{{{L}}}$",
+        }
+
+    m = CPC_SC_RE.match(s)
+    if m:
+        M = int(m.group(1))
+        return {
+            "family": "CPC_SC",
+            "eff_size": M,
+            "M": M,
+            "L": 1,
+            "label": rf"$\mathrm{{CPC}}_{{{M}}}\!-\!\mathrm{{SC}}$",
+        }
+
+    m = CPC_SCL_RE.match(s)
+    if m:
+        M = int(m.group(1))
+        L = int(m.group(2))
+        return {
+            "family": "CPC_SCL",
+            "eff_size": M * L,
+            "M": M,
+            "L": L,
+            "label": rf"$\mathrm{{CPC}}_{{{M}}}\!-\!\mathrm{{SCL}}_{{{L}}}$",
         }
 
     m = POD_SC_RE.match(s)
@@ -223,14 +311,22 @@ def color_of(info: Dict[str, object]) -> str:
     return FAMILY_COLOR.get(family, "tab:gray")
 
 
-def style_of(name: str) -> Dict[str, object]:
+def style_of(name: str, mark_variant: bool = False) -> Dict[str, object]:
     info = decode_info(name)
     family = str(info["family"])
     eff_size = info["eff_size"]
+    variant = info.get("variant")
 
     color = color_of(info)
     marker = EFF_MARKER.get(eff_size, FAMILY_FALLBACK_MARKER.get(family, "o"))
     linestyle = LINESTYLE_MAP.get(family, "-")
+
+    # When several variants share one plot, linestyle encodes the variant and
+    # the label carries it too; family is then read off color and marker.
+    label = info["label"]
+    if mark_variant and variant is not None:
+        linestyle = VARIANT_LINESTYLE.get(variant, linestyle)
+        label = tag_label(label, variant)
 
     linewidth = 1.8 if family in {"HD", "MLD"} else 1.3
     markersize = 6 if family not in {"MLD"} else 7
@@ -241,7 +337,7 @@ def style_of(name: str) -> Dict[str, object]:
         "linestyle": linestyle,
         "linewidth": linewidth,
         "markersize": markersize,
-        "label": info["label"],
+        "label": label,
         "family": family,
         "eff_size": eff_size,
         "M": info.get("M", None),
@@ -257,6 +353,8 @@ def sort_key(folder_name: str) -> Tuple[int, int, int, int, str]:
         "SCL": 2,
         "POD_SC": 3,
         "POD_SCL": 4,
+        "CPC_SC": 4,
+        "CPC_SCL": 4,
         "MLD": 5,
         "OSD": 6,
         "UNKNOWN": 7,
@@ -310,6 +408,12 @@ def main() -> None:
 
     plt.figure(figsize=(8.0, 5.6))
     plotted = False
+
+    variants = {split_variant(Path(s).name)[1] for s in args.folders}
+    variants.discard(None)
+    mark_variant = len(variants) > 1
+    if mark_variant:
+        print(f"[info] variant mode: linestyle encodes {sorted(variants)}")
     emph_names = {name.strip().upper() for name in args.emph}
 
     # for folder_str in sorted(args.folders, key=lambda s: sort_key(Path(s).name)):
@@ -325,7 +429,7 @@ def main() -> None:
             print(f"[warn] no valid BLER lines in {log_path}")
             continue
 
-        st = style_of(folder.name)
+        st = style_of(folder.name, mark_variant=mark_variant)
         is_emph = folder.name.upper() in emph_names
         if is_emph:
             st = apply_emphasis(st)
@@ -369,7 +473,7 @@ def main() -> None:
     plt.grid(True, which="both", linestyle="--", linewidth=0.5, alpha=0.6)
 
     plt.legend(
-        loc="lower left",
+        loc="upper right",
         ncol=2,
         frameon=True,
         fontsize=10,

@@ -617,8 +617,19 @@ def save_matrix_txt(path, M):
 # ================================================================
 
 if __name__ == "__main__":
-    m = 5 
-    t = 3 
+    import argparse
+
+    ap = argparse.ArgumentParser(
+        description="Build the extended primitive narrow-sense BCH code eBCH(m,t): "
+                    "generator G, reduced parity-check H, and an automorphism generator set "
+                    "(JSON input for schreier_sims.py)."
+    )
+    ap.add_argument("--m", type=int, required=True, help="field degree; code length n = 2^m")
+    ap.add_argument("--t", type=int, required=True, help="designed error-correction capability (exponents 1..2t)")
+    ap.add_argument("--out_dir", default=".", help="output directory (default: current directory)")
+    args = ap.parse_args()
+    m, t = args.m, args.t
+    os.makedirs(args.out_dir, exist_ok=True)
 
     print(f"[info] Building eBCH(m={m}, t={t}) with canonical GF-indexing...")
     G, H, elements, GF = generate_eBCH(m, t)
@@ -626,12 +637,12 @@ if __name__ == "__main__":
     codetype = f"eBCH_m{m}_t{t}"
 
     # Export G
-    G_path = f"{codetype}.matrix"
+    G_path = os.path.join(args.out_dir, f"{codetype}.matrix")
     save_matrix_txt(G_path, G)
     print(f"[info] Saved G matrix -> {G_path}  (shape {G.shape})")
 
     # Export reduced H
-    H_path = f"{codetype}_H.matrix"
+    H_path = os.path.join(args.out_dir, f"{codetype}_H.matrix")
     save_matrix_txt(H_path, H.T)
     print(f"[info] Saved H matrix -> {H_path}  (shape {H.shape})")
 
@@ -663,6 +674,6 @@ if __name__ == "__main__":
         ],
     }
 
-    out_path = f"generator_set_eBCH_m{m}_t{t}.json"
+    out_path = os.path.join(args.out_dir, f"generator_set_eBCH_m{m}_t{t}.json")
     save_checkpoint_json(out_path, data)
     print(f"[info] Saved automorphism generator set -> {out_path}")

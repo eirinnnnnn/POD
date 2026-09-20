@@ -1,0 +1,264 @@
+{
+ "file": "eBCH_m8_t19_P_GL_opt.matrix",
+ "date": "2026-09-19",
+ "code": "eBCH m=8 t=19, [256,123] (project/POD/eBCH_m8_t19.matrix, built by generator_set_eBCH.py --m 8 --t 19)",
+ "construction": "pi = P_field o Q_A with A in GL(8,2)",
+ "P_field": "pi(x)=1+log_alpha(x), pi(0)=0; alpha root of x^8+x^4+x^3+x^2+1 (Conway, reduction mask 0b00011101); LSB of x = coeff of alpha^0",
+ "A_columns": [
+  2,
+  4,
+  38,
+  18,
+  68,
+  146,
+  10,
+  1
+ ],
+ "A_columns_meaning": "A e_i as an integer, i=0..7 (bit 0 = LSB); Q_A(z)=A z; one coset representative",
+ "transvection_word": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   2,
+   1
+  ],
+  [
+   2,
+   5
+  ],
+  [
+   0,
+   2
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   5,
+   2
+  ],
+  [
+   3,
+   4
+  ],
+  [
+   0,
+   3
+  ],
+  [
+   4,
+   3
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   6,
+   4
+  ],
+  [
+   5,
+   7
+  ],
+  [
+   3,
+   5
+  ],
+  [
+   7,
+   5
+  ],
+  [
+   1,
+   6
+  ],
+  [
+   3,
+   6
+  ],
+  [
+   4,
+   6
+  ],
+  [
+   2,
+   7
+  ],
+  [
+   3,
+   7
+  ],
+  [
+   5,
+   7
+  ]
+ ],
+ "transvection_word_meaning": "A = T_1...T_k, T=(i,j): z_i <- z_i + z_j (0-indexed bits); pi built by pi <- pi o Q_T from P_field",
+ "convention": "pi[a]=argmax(P[a,:]); relabelled code = G_b[:,pi] = G_b P^T; pi[a]=P_field[A a]",
+ "objective": "sum of Bhattacharyya Z over the pivot profile, rate 123/256; same optimal profile at Eb/N0 = 2, 3, 4 and 5 dB",
+ "zsum_3dB": 18.302319,
+ "baseline_zsum_3dB_P_field_and_paper_eq_P": 19.391626,
+ "zsum_by_snr": {
+  "2.0": {
+   "opt": 29.08349,
+   "P_field": 31.53619
+  },
+  "3.0": {
+   "opt": 18.30232,
+   "P_field": 19.39163
+  },
+  "4.0": {
+   "opt": 9.0407,
+   "P_field": 9.22262
+  },
+  "5.0": {
+   "opt": 3.0376,
+   "P_field": 3.04496
+  }
+ },
+ "optimality": "EXACT optimum over the whole GL(8,2) orbit of P_field: all 19,923,090,075 flags of GL(8,2)/L covered by enumerating 78,129,765 flags with the last column fixed to 1 (Singer-cycle symmetry; gl_flag_enum_sym_20260919.cpp, 27.5 min on 8 threads), 4,789 distinct pivot profiles, this is the best; attained by 39 enumerated flags.",
+ "rm_degree_d": 4,
+ "P_field_rm_degree_d": 4,
+ "nonzero_coefficient_columns": 163,
+ "pivot_profile": [
+  15,
+  23,
+  27,
+  29,
+  30,
+  31,
+  39,
+  43,
+  45,
+  46,
+  47,
+  51,
+  53,
+  54,
+  55,
+  57,
+  58,
+  59,
+  60,
+  61,
+  62,
+  63,
+  71,
+  75,
+  77,
+  78,
+  79,
+  85,
+  86,
+  87,
+  89,
+  90,
+  91,
+  92,
+  93,
+  94,
+  95,
+  102,
+  103,
+  106,
+  107,
+  108,
+  109,
+  110,
+  111,
+  115,
+  117,
+  118,
+  119,
+  121,
+  122,
+  123,
+  124,
+  125,
+  126,
+  127,
+  135,
+  139,
+  141,
+  142,
+  143,
+  150,
+  151,
+  153,
+  154,
+  155,
+  156,
+  157,
+  158,
+  159,
+  167,
+  170,
+  171,
+  172,
+  173,
+  174,
+  175,
+  179,
+  181,
+  182,
+  183,
+  185,
+  186,
+  187,
+  188,
+  189,
+  190,
+  191,
+  199,
+  203,
+  204,
+  205,
+  206,
+  207,
+  213,
+  214,
+  215,
+  217,
+  218,
+  219,
+  220,
+  221,
+  222,
+  223,
+  230,
+  231,
+  234,
+  235,
+  236,
+  237,
+  238,
+  239,
+  243,
+  245,
+  246,
+  247,
+  249,
+  250,
+  251,
+  252,
+  253,
+  254,
+  255
+ ]
+}

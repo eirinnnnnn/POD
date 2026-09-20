@@ -27,6 +27,28 @@ POD_SCL_RE = re.compile(r"^(?:POD|AED)(\d+)SCL(\d+)$", re.IGNORECASE)
 MLD_RE = re.compile(r"^MLD$", re.IGNORECASE)
 OSD_RE = re.compile(r"^OSD(\d+)$", re.IGNORECASE)
 
+# Trailing trial-variant tag, e.g. SCL8_eq / AED16SCL8_shear.  The tag selects
+# the permutation_src the run used; the part before it names the decoder.
+VARIANT_RE = re.compile(r"^(.*)_(eq|shear|gl)$", re.IGNORECASE)
+
+# Linestyle = variant, but only when a plot mixes several variants (otherwise
+# linestyle keeps its usual meaning of decoder family).  Ordered by the
+# Bhattacharyya zsum of the permutation at 3 dB: eq 2.316021,
+# shear 2.094968, gl 2.009930 (exact GL(6,2) optimum).
+VARIANT_LINESTYLE: Dict[str, object] = {
+    "eq": "-",
+    "shear": (0, (4, 1.6)),
+    "gl": (0, (1, 1.4)),
+}
+
+VARIANT_TAG: Dict[str, str] = {
+    "eq": "eq",
+    "shear": "sh",
+    "gl": "GL",
+}
+
+VARIANT_ORDER = ["eq", "shear", "gl"]
+
 # Effective list sizes to be represented consistently across all plots.
 EFF_SIZES = [1, 4, 8, 16, 32, 64, 128, 256]
 
@@ -48,10 +70,22 @@ MARKER_MAP: Dict[str, str] = {
     "HD": "o",
     "SC": "s",
     "SCL": "s",
-    "POD_SC": "v",
+    "POD_SC": "<",
     "POD_SCL": "v",
     "MLD": "X",
     "OSD": "^",
+}
+
+# Within PED-SCL the marker additionally encodes the PED order M, because
+# different (M, L) splits can share an effective size -- and therefore a
+# color -- e.g. PED_4-SCL_8 vs PED_8-SCL_4 (32), PED_16-SCL_8 vs
+# PED_8-SCL_16 (128).
+POD_SCL_MARKER_BY_M: Dict[int, str] = {
+    2:  "^",
+    4:  "v",
+    8:  "D",
+    16: "P",
+    32: "*",
 }
 
 # Linestyle = broad family
@@ -87,7 +121,32 @@ def parse_log(log_path: Path) -> Tuple[List[float], List[float]]:
     return list(xs), list(ys)
 
 
+def split_variant(name: str) -> Tuple[str, Optional[str]]:
+    m = VARIANT_RE.match(name.strip())
+    if m:
+        return m.group(1), m.group(2).lower()
+    return name.strip(), None
+
+
+def tag_label(label: str, variant: Optional[str]) -> str:
+    """Append the variant as a superscript, e.g. $\\mathrm{SCL}_{8}^{\\mathrm{eq}}$."""
+    if variant is None:
+        return label
+    tag = VARIANT_TAG.get(variant, variant)
+    if label.startswith("$") and label.endswith("$"):
+        return label[:-1] + rf"^{{\mathrm{{{tag}}}}}$"
+    return f"{label} ({tag})"
+
+
 def decode_info(name: str) -> Dict[str, object]:
+    """Decoder family/size/label, with any trial-variant tag split off first."""
+    base, variant = split_variant(name)
+    info = decode_base(base)
+    info["variant"] = variant
+    return info
+
+
+def decode_base(name: str) -> Dict[str, object]:
     s = name.strip()
 
     if HD_RE.match(s):
@@ -129,6 +188,7 @@ def decode_info(name: str) -> Dict[str, object]:
         return {
             "family": "POD_SCL",
             "eff_size": M * L,
+            "aed_M": M,
             "label": rf"$\mathrm{{PED}}_{{{M}}}\!-\!\mathrm{{SCL}}_{{{L}}}$",
         }
 
@@ -155,14 +215,24 @@ def decode_info(name: str) -> Dict[str, object]:
     }
 
 
-def style_of(name: str) -> Dict[str, object]:
+def style_of(name: str, mark_variant: bool = False) -> Dict[str, object]:
     info = decode_info(name)
     family = info["family"]
     eff_size = info["eff_size"]
+    variant = info["variant"]
 
     color = EFF_COLOR.get(eff_size, "black")
     marker = MARKER_MAP.get(family, "o")
+    if family == "POD_SCL":
+        marker = POD_SCL_MARKER_BY_M.get(info.get("aed_M"), marker)
     linestyle = LINESTYLE_MAP.get(family, "-")
+
+    # When several variants share one plot, linestyle encodes the variant and
+    # the label carries it too; family is then read off the marker.
+    label = info["label"]
+    if mark_variant and variant is not None:
+        linestyle = VARIANT_LINESTYLE.get(variant, linestyle)
+        label = tag_label(label, variant)
 
     # Slight emphasis for reference-like curves.
     linewidth = 1.8 if family in {"HD", "MLD"} else 1.3
@@ -174,9 +244,10 @@ def style_of(name: str) -> Dict[str, object]:
         "linestyle": linestyle,
         "linewidth": linewidth,
         "markersize": markersize,
-        "label": info["label"],
+        "label": label,
         "family": family,
         "eff_size": eff_size,
+        "variant": variant,
     }
 
 
@@ -193,7 +264,7 @@ def apply_emphasis(style: Dict[str, object]) -> Dict[str, object]:
     return emph
 
 
-def sort_key(folder_name: str) -> Tuple[int, int, str]:
+def sort_key(folder_name: str) -> Tuple[int, int, str, int]:
     info = decode_info(folder_name)
     family_order = {
         "HD": 0,
@@ -207,7 +278,11 @@ def sort_key(folder_name: str) -> Tuple[int, int, str]:
     }
     eff = info["eff_size"]
     eff_rank = EFF_SIZES.index(eff) if eff in EFF_SIZES else 999
-    return (family_order.get(info["family"], 999), eff_rank, folder_name.upper())
+    base, variant = split_variant(folder_name)
+    # Variant sorts last, so an eq/shear pair for the same decoder is adjacent
+    # in the legend and easy to compare.
+    var_rank = VARIANT_ORDER.index(variant) if variant in VARIANT_ORDER else 999
+    return (family_order.get(info["family"], 999), eff_rank, base.upper(), var_rank)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -240,8 +315,16 @@ def main() -> None:
     xticks = np.arange(snr_start, snr_stop + 0.5 * snr_step, snr_step)
 
     plt.figure(figsize=(8.0, 5.6))
-    plotted = False
+    plotted = 0
     emph_names = {name.strip().upper() for name in args.emph}
+
+    # Only let the variant take over the linestyle if the plot actually mixes
+    # variants; a single-variant plot keeps the usual family linestyles.
+    variants = {split_variant(Path(s).name)[1] for s in args.folders}
+    variants.discard(None)
+    mark_variant = len(variants) > 1
+    if mark_variant:
+        print(f"[info] variant mode: linestyle encodes {sorted(variants)}")
 
     for folder_str in sorted(args.folders, key=lambda s: sort_key(Path(s).name)):
         folder = Path(folder_str).expanduser().resolve()
@@ -255,7 +338,7 @@ def main() -> None:
             print(f"[warn] no valid BLER lines in {log_path}")
             continue
 
-        st = style_of(folder.name)
+        st = style_of(folder.name, mark_variant=mark_variant)
         is_emph = folder.name.upper() in emph_names
         if is_emph:
             st = apply_emphasis(st)
@@ -281,7 +364,7 @@ def main() -> None:
         eff_text = f", eff={eff}" if eff is not None else ""
         emph_text = ", emphasized" if is_emph else ""
         print(f"[info] {folder.name}: {len(snrs)} points{eff_text}{emph_text}")
-        plotted = True
+        plotted += 1
 
     if not plotted:
         raise SystemExit("No curves were plotted.")
@@ -295,9 +378,9 @@ def main() -> None:
 
     plt.legend(
         loc="lower left",
-        ncol=2,
+        ncol=3 if plotted > 14 else 2,
         frameon=True,
-        fontsize=10,
+        fontsize=8 if plotted > 14 else 10,
         columnspacing=1.0,
         handletextpad=0.5,
         borderaxespad=0.4,

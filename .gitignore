@@ -11,3 +11,7 @@ project/**/inspect_*.csv
 *.csv
 *.log
 project/**/inspect_*.csv
+
+# POD/OSD per-run monitor spam (carriage-return progress counters, GB-scale)
+**/run_logs/
+*.stdout
